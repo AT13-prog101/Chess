@@ -1,5 +1,5 @@
 package src;
 
 public class King {
-    private char figure;
+    private char figure = 'K';
 }
