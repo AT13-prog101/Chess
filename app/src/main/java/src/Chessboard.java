@@ -44,6 +44,9 @@ public class Chessboard {
     private Piece BPeon7;
     private Piece BPeon8;
     public Chessboard() {
+        initializeChessboard();
+    }
+    public void initializeChessboard() {
         board = new Piece[DIMENSION][DIMENSION];
         pieces = new ArrayList<Piece>();
         WRook1 = new Rook(true, 0, 0); pieces.add(WRook1);
