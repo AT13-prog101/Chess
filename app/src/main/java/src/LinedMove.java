@@ -1,4 +1,8 @@
 package src;
 
-public class LinedMove {
+public class LinedMove implements MovePiece{
+    @Override
+    public void move() {
+        
+    }
 }
