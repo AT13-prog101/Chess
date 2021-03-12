@@ -2,7 +2,7 @@ package src;
 
 public class LinedMove implements MovePiece{
     @Override
-    public void move() {
+    public void move(int posX, int posY) {
         
     }
 }
