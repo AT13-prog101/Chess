@@ -12,6 +12,8 @@ public class Game {
     public Game(int id) {
         this.gameId = id;
         chessboard = new Chessboard();
+        player1 = new Player("Player1", "White");
+        player2 = new Player("Player2", "Black");
     }
     public void gameInit() {
         chessboard.printBoard();
@@ -27,13 +29,15 @@ public class Game {
                 String moveToMake = sc.nextLine();
                 player1.makeMove(moveToMake);
                 String[] move = player1.getMove();
-                chessboard.movePiece(move);
+                chessboard.movePiece(move, player1);
+                turn = false;
             } else {
                 System.out.println("Black turn .. Make a move:");
                 String moveToMake = sc.nextLine();
                 player1.makeMove(moveToMake);
                 String[] move = player2.getMove();
-                chessboard.movePiece(move);
+                chessboard.movePiece(move, player2);
+                turn = true;
             }
         }
     }

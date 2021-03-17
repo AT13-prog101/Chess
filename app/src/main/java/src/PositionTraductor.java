@@ -35,7 +35,14 @@ public class PositionTraductor {
         positions[1] = Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - NUMBER_OF_ROWS);
         return positions;
     }
-
+    public int getXIndexNotation(String algebraicNotation) {
+        char characterCol = algebraicNotation.charAt(0);
+        return (int)characterCol - ASCII_CODE_FOR_A;
+    }
+    public int getYIndexNotation(String algebraicNotation) {
+        char characterRow = algebraicNotation.charAt(1);
+        return Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - NUMBER_OF_ROWS);
+    }
     /**
      * Given 2 values that represent the row and col positions in a matrix. Return the corresponding
      * algebraic notation for that position

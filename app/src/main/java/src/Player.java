@@ -24,6 +24,9 @@ public class Player {
     public String[] getMove() {
         return move;
     }
+    public String getColor() {
+        return color;
+    }
     void invalidMessage(){
         System.out.println("The inserted info is not valid");
     }
