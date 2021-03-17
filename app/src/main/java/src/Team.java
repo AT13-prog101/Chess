@@ -55,6 +55,9 @@ public abstract class Team {
         }
         return null;
     }
+    public List<Piece> getSetOfPieces() {
+        return  setOfPieces;
+    }
 
         /**
          * Fills the set of pieces of the team with Pieces

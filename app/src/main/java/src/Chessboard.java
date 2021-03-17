@@ -5,21 +5,49 @@ import src.Pieces.Piece;
 
 import javax.swing.text.Position;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Chessboard {
     public final static int DIMENSION = 8;
-    private Piece[][] board;
+    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];
     private Team whiteTeam;
     private Team blackTeam;
     PositionTraductor positionTraductor = new PositionTraductor();;
     public Chessboard() {
         initializeChessboard();
     }
+
+    /**
+     * Creates teams and instanciates pieces into teams.
+     */
     public void initializeChessboard() {
         whiteTeam = new WhiteTeam();
         whiteTeam.initializeTeam();
         blackTeam = new BlackTeam();
         blackTeam.initializeTeam();
+        fillBoard();
+    }
+
+    /**
+     * Reference teams' pieces in board
+     */
+    public void fillBoard() {
+        fillBoardWithNull();
+        List<Piece> whitePieces = whiteTeam.getSetOfPieces();
+        List<Piece> blackPieces = blackTeam.getSetOfPieces();
+        for (int i = 0; i < whitePieces.size(); i++) {
+            Piece whitePiece = whitePieces.get(i);
+            Piece blackPiece = blackPieces.get(i);
+            board[whitePiece.getInitPosY()][whitePiece.getInitPosX()] = whitePiece;
+            board[blackPiece.getInitPosY()][blackPiece.getInitPosX()] = blackPiece;
+        }
+    }
+    public void fillBoardWithNull() {
+        for (int i = 0; i < DIMENSION; i++) {
+            for (int j = 0; j < DIMENSION; j++) {
+                board[i][j] = null;
+            }
+        }
     }
 
     /**
