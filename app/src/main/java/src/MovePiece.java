@@ -1,5 +1,5 @@
 package src;
 
 public interface MovePiece {
-    void move(int posX,int posY);
+    void move(int posX,int posY, boolean isWhite);
 }
