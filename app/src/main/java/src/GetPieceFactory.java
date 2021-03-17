@@ -4,6 +4,11 @@ public class GetPieceFactory {
     public GetPieceFactory() {
 
     }
+
+    /**
+     * Creates a Piece given the parameters name, isWhite, posX and posY
+     *
+     */
     public Piece getPiece(String name, boolean isWhite, int posX, int posY) {
         Piece piece = null;
         switch (name) {

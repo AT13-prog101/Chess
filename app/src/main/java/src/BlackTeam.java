@@ -24,6 +24,10 @@ public class BlackTeam extends Team{
     ArrayList<String> piecesOrder = new ArrayList<String>(Arrays.asList(
             "Rook", "Horse", "Bishop", "King", "Queen", "Bishop", "Horse", "Rook",
             "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"));
+
+    /**
+     * Add pieces with their initial positions to the Team of black pieces
+     */
     public void initializeTeam() {
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         int arrayPos = 0;

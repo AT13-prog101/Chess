@@ -22,10 +22,10 @@ public class WhiteTeam extends Team{
     int row6 = 6;
     int row7 = 7;
     ArrayList<String> piecesOrder = new ArrayList<String>(Arrays.asList(
-                        "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook",
-                        "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"));
+                        "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn",
+                        "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook"));
     /**
-     * Add pieces with their initial positions to the list of white pieces
+     * Add pieces with their initial positions to the Team of white pieces
      */
     public void initializeTeam() {
         GetPieceFactory getPieceFactory = new GetPieceFactory();
