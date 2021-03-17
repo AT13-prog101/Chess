@@ -2,6 +2,7 @@ package src;
 
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Chessboard {
@@ -14,6 +15,8 @@ public class Chessboard {
     boolean turn;
     public Chessboard() {
         initializeChessboard();
+        player1 = new Player("Player1", "White");
+        player2 = new Player("Player2", "Black");
     }
     public void initializeChessboard() {
         whiteTeam = new WhiteTeam();
