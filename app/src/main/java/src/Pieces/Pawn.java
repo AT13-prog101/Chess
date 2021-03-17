@@ -1,9 +1,9 @@
-package src;
+package src.Pieces;
 
 public class Pawn extends Piece{
     private char figure = 'P';
-    public Pawn(boolean white, int initPosX, int initPosY) {
-        super(white, initPosX, initPosY);
+    public Pawn(char color, int initPosX, int initPosY) {
+        super(color, initPosX, initPosY);
     }
     public char getFigure() {
         return this.figure;

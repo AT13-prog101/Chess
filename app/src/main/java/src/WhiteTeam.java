@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.Piece;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,6 +23,7 @@ public class WhiteTeam extends Team{
      */
     int row6 = 6;
     int row7 = 7;
+    private final char COLOR = 'w';
     ArrayList<String> piecesOrder = new ArrayList<String>(Arrays.asList(
                         "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn",
                         "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook"));
@@ -32,7 +35,7 @@ public class WhiteTeam extends Team{
         int arrayPos = 0;
         for (int row = row6; row <= row7; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), true, col, row);
+                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), COLOR, col, row);
                 super.setOfPieces.add(piece);
                 arrayPos += 1;
             }

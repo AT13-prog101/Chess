@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
-    String name;
-    String color;
-    String[] move = new String[2];;
+    private String name;
+    private String color;
+    private String[] move = new String[2];;
     Player(String name, String color){
         this.name = name;
         this.color = color;

@@ -1,6 +1,7 @@
-package src;
+package src.Pieces;
 
 public abstract class Piece {
+    private char color;
     private boolean isWhite;
     private char figure;
     private int initPosX;
@@ -10,8 +11,8 @@ public abstract class Piece {
     private boolean isCaptured;
     //private Move move;
 
-    public Piece(boolean white, int initPosX, int initPosY) {
-        this.isWhite = white;
+    public Piece(char color, int initPosX, int initPosY) {
+        this.color = color;
         this.isCaptured = false;
         this.initPosX = initPosX;
         this.initPosY = initPosY;
@@ -28,9 +29,11 @@ public abstract class Piece {
     public int getInitPosX() {
         return initPosX;
     }
-
     public int getInitPosY() {
         return initPosY;
+    }
+    public char getColor() {
+        return color;
     }
     public char getFigure() {
         return this.figure;
