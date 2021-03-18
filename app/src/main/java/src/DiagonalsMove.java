@@ -21,9 +21,8 @@ public class DiagonalsMove implements MovePiece {
         int numerMax = Math.max(posX, posY);
         int numerMin = Math.min(posX, posY);
         boolean killPiece = !piece.getColorWhite();
-        //quadrant  IV (I)
+
         for (int i = 1; numerMax + i < board.length; i++) {
-            //board[posX + i][posY + i] = "X";
             if (board[posX + i][posY + i] == null) {
                 movePoints.add(new Point(posX + i, posY + i));
             }
@@ -35,7 +34,7 @@ public class DiagonalsMove implements MovePiece {
                 break;
             }
         }
-        //quadrant  II (III)
+
         for (int i = 1; numerMin - i >= 0; i++) {
             if (board[posX - i][posY - i] == null) {
                 movePoints.add(new Point(posX - i, posY - i));
@@ -49,7 +48,6 @@ public class DiagonalsMove implements MovePiece {
             }
         }
 
-        //quadrant  III (IV)
         for (int i = 1; posX + i < board.length && posY - i >= 0; i++) {
             if (board[posX + i][posY - i] == null) {
                 movePoints.add(new Point(posX + i, posY - i));
@@ -63,9 +61,7 @@ public class DiagonalsMove implements MovePiece {
             }
         }
 
-        //quadrant  I (II)
         for (int i = 1; posY + i < board.length && posX - i >= 0; i++) {
-            //board[posX -i][posY + i] = "X";
             if (board[posX - i][posY + i] == null) {
                 movePoints.add(new Point(posX - i, posY + i));
             }
