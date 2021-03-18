@@ -5,6 +5,8 @@ public abstract class Piece {
     private int initPosX;
     private int initPosY;
     private boolean isCaptured;
+    private boolean isMoved;
+
     //private MovePiece move;
 
     public Piece(boolean white, int initPosX, int initPosY) {
@@ -12,6 +14,7 @@ public abstract class Piece {
         this.isCaptured = false;
         this.initPosX = initPosX;
         this.initPosY = initPosY;
+        this.isMoved = false;
     }
 
     /**
@@ -35,7 +38,7 @@ public abstract class Piece {
      * Return initial position in X of Piece
      * @return initPosX
      */
-    public int getInitPosX() {
+    public int getPosX() {
         return initPosX;
     }
 
@@ -43,7 +46,7 @@ public abstract class Piece {
      * Set initial position in X of Piece when the piece is moved
      * @param initPosX
      */
-    public void setInitPosX(int initPosX) {
+    public void setPosX(int initPosX) {
         this.initPosX = initPosX;
     }
 
@@ -51,7 +54,7 @@ public abstract class Piece {
      * Return initial position in Y of Piece
      * @return initPosY
      */
-    public int getInitPosY() {
+    public int getPosY() {
         return initPosY;
     }
 
@@ -59,7 +62,7 @@ public abstract class Piece {
      * Set initial position in Y of Piece when the piece is moved
      * @param initPosY
      */
-    public void setInitPosY(int initPosY) {
+    public void setPosY(int initPosY) {
         this.initPosY = initPosY;
     }
 
@@ -67,13 +70,23 @@ public abstract class Piece {
      * Control if the moved made by the piece is valid or not
      * @return true when position is valid.
      */
-    /* public boolean isValidMove(int endPosX, int endPosY) {
-        if (move(endPosX, endPosY)) {
-            this.initPosX = endPosX;
-            this.initPosY = endPosY;
-            return true;
-        }
-        return false;
+    public boolean getColorWhite() {
+        return this.isWhite;
     }
-    */
+
+    /**
+     *  Method that returns if the Piece has moved.
+     * @return isMoved
+     */
+    public boolean isMoved() {
+        return this.isMoved;
+    }
+
+    /**
+     *  Set if a piece has moved
+     * @param moved
+     */
+    public void setIsMoved(boolean moved) {
+        this.isMoved = moved;
+    }
 }
