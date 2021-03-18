@@ -27,7 +27,7 @@ public class DiagonalsMove implements MovePiece {
             if (board[posX + i][posY + i] == null) {
                 movePoints.add(new Point(posX + i, posY + i));
             }
-            if (board[posX + i][posY + i].getColorWhite() == killPiece) {
+            if (board[posX + i][posY + i].getColorWhite() != killPiece) {
                 movePoints.add(new Point(posX + i, posY + i));
                 break;
             }
@@ -40,7 +40,7 @@ public class DiagonalsMove implements MovePiece {
             if (board[posX - i][posY - i] == null) {
                 movePoints.add(new Point(posX - i, posY - i));
             }
-            if (board[posX - i][posY - i].getColorWhite() == killPiece) {
+            if (board[posX - i][posY - i].getColorWhite() != killPiece) {
                 movePoints.add(new Point(posX - i, posY - i));
                 break;
             }
@@ -54,7 +54,7 @@ public class DiagonalsMove implements MovePiece {
             if (board[posX + i][posY - i] == null) {
                 movePoints.add(new Point(posX + i, posY - i));
             }
-            if (board[posX + i][posY - i].getColorWhite() == killPiece) {
+            if (board[posX + i][posY - i].getColorWhite() != killPiece) {
                 movePoints.add(new Point(posX + i, posY - i));
                 break;
             }
@@ -69,7 +69,7 @@ public class DiagonalsMove implements MovePiece {
             if (board[posX - i][posY + i] == null) {
                 movePoints.add(new Point(posX - i, posY + i));
             }
-            if (board[posX - i][posY + i].getColorWhite() == killPiece) {
+            if (board[posX - i][posY + i].getColorWhite() != killPiece) {
                 movePoints.add(new Point(posX - i, posY + i));
                 break;
             }
