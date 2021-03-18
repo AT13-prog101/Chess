@@ -5,16 +5,15 @@ public abstract class Piece {
     private char figure;
     private int initPosX;
     private int initPosY;
-    private int finPosX;
-    private int finPosY;
     private boolean isCaptured;
-    //private Move move;
+    private boolean isMoved;
 
     public Piece(boolean white, int initPosX, int initPosY) {
         this.isWhite = white;
         this.isCaptured = false;
         this.initPosX = initPosX;
         this.initPosY = initPosY;
+        this.isMoved = false;
     }
 
     public void setCaptured(boolean isCaptured) {
@@ -34,5 +33,25 @@ public abstract class Piece {
     }
     public char getFigure() {
         return this.figure;
+    }
+
+    public void setPosX(int posX) {
+        this.initPosX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.initPosY = posY;
+    }
+
+    public boolean isMoved() {
+        return this.isMoved;
+    }
+
+    public void setIsMoved(boolean move) {
+        this.isMoved = move;
+    }
+
+    public boolean getColorWhite() {
+        return this.isWhite;
     }
 }
