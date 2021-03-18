@@ -1,5 +1,9 @@
 package src;
 
+import src.Pieces.Piece;
+
+import java.util.ArrayList;
+
 public class SpecialMove implements MovePiece{
     //Castling move
     @Override
@@ -33,5 +37,9 @@ public class SpecialMove implements MovePiece{
 
     public  boolean spaceBetweenFree() {
         return true;
+    }
+
+    public ArrayList<String> getValidMoves(String position) {
+        return  null;
     }
 }

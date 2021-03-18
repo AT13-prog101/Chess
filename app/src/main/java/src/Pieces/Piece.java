@@ -1,14 +1,21 @@
-package src;
+package src.Pieces;
+
+import src.MovePiece;
+
+import java.util.ArrayList;
 
 public abstract class Piece {
+    private char color;
     private boolean isWhite;
     private char figure;
     private int initPosX;
     private int initPosY;
     private boolean isCaptured;
     private boolean isMoved;
+    private ArrayList<MovePiece> moveTypes = new ArrayList<MovePiece>();
 
     public Piece(boolean white, int initPosX, int initPosY) {
+        this.color = color;
         this.isWhite = white;
         this.isCaptured = false;
         this.initPosX = initPosX;
@@ -53,5 +60,21 @@ public abstract class Piece {
 
     public boolean getColorWhite() {
         return this.isWhite;
+    }
+
+    public void addMoveType(MovePiece movePiece) {
+        this.moveTypes.add(movePiece);
+    }
+
+    public char getColor() {
+        return color;
+    }
+
+    public ArrayList<String> getValidMoves(String position) {
+        ArrayList<String> validMoves = new ArrayList<String>();
+        for (MovePiece movePiece : moveTypes) {
+            validMoves.addAll(movePiece.getValidMoves(position));
+        }
+        return validMoves;
     }
 }

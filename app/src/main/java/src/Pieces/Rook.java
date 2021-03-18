@@ -1,4 +1,4 @@
-package src;
+package src.Pieces;
 
 public class Rook extends Piece{
     private char figure = 'R';

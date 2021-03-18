@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.Piece;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,4 +60,7 @@ public class PawnMove implements MovePiece{
         return true;
     }
 
+    public ArrayList<String> getValidMoves(String position) {
+        return  null;
+    }
 }

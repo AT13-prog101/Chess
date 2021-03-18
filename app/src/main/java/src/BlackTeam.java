@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.Piece;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
