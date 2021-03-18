@@ -2,6 +2,7 @@ package src;
 
 public abstract class Piece {
     private boolean isWhite;
+    private char figure;
     private int initPosX;
     private int initPosY;
     private int finPosX;
@@ -30,5 +31,8 @@ public abstract class Piece {
 
     public int getInitPosY() {
         return initPosY;
+    }
+    public char getFigure() {
+        return this.figure;
     }
 }

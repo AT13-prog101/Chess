@@ -1,25 +1,55 @@
 package src;
 
+import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Chessboard {
-    public final int ASCI_CODE_A = 97;
-    private final int DIMENSION = 8;
-    private String[][] board = new String[DIMENSION][DIMENSION];
+    public final static int DIMENSION = 8;
+    private Piece[][] board;
+    private Team whiteTeam;
+    private Team blackTeam;
+    private Player player1;
+    private Player player2;
     boolean turn;
     public Chessboard() {
+        initializeChessboard();
+    }
+    public void initializeChessboard() {
+        whiteTeam = new WhiteTeam();
+        whiteTeam.initializeTeam();
+        blackTeam = new BlackTeam();
+        blackTeam.initializeTeam();
+    }
+    public void gameInit() {
+        printBoard();
+    }
+    public void printBoard() {
+        for (int row = 0; row < DIMENSION; row++) {
+            System.out.print(DIMENSION - row + " | ");
+            for (int col = 0; col < DIMENSION; col++) {
+                Piece piece;
+                if (whiteTeam.thereIsPiece(col, row)) {
+                    piece = whiteTeam.getPiece(col, row);
+                } else {
+                    piece = blackTeam.getPiece(col,row);
+                }
+                if (piece != null) {
+                    String figure = String.valueOf(piece.getFigure()) + " ";
+                    System.out.print(figure);
+                }
+            }
+            System.out.println("");
+        }
+        System.out.println("   ----------------");
+        System.out.println("    a b c d e f g h");
+    }
+
+    public void translatePosToMatrix() {
 
     }
-    public void fillBoard() {
-        for (int i = DIMENSION - 1; i >= 0; i--) {
-            int asciiCode = ASCI_CODE_A;
-            for (int j = DIMENSION - 1; j >=0; j--) {
-                char colPos = (char)asciiCode;
-                board[i][j] = String.valueOf(DIMENSION - i) + colPos;
-                asciiCode += 1;
-            }
-            asciiCode = ASCI_CODE_A;
-        }
-    }
-    public String[][] getBoard() {
-        return board;
+
+    public void movePiece() {
+
     }
 }
