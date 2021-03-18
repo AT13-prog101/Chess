@@ -24,6 +24,10 @@ public class Chessboard {
     public void gameInit() {
         printBoard();
     }
+
+    /**
+     * Prints the board in console
+     */
     public void printBoard() {
         for (int row = 0; row < DIMENSION; row++) {
             System.out.print(DIMENSION - row + " | ");
