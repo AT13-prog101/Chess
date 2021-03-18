@@ -66,6 +66,9 @@ public abstract class Piece {
         this.moveTypes.add(movePiece);
     }
 
+    public void setColor(char color) {
+        this.color = color;
+    }
     public char getColor() {
         return color;
     }
