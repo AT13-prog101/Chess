@@ -7,12 +7,7 @@ import java.util.List;
 public class KnightMove implements MovePiece{
     List<Point> movePoints = new ArrayList<Point>();
 
-    @Override
-    public void move(int posX, int posY, boolean isWhite) {
-
-    }
-
-    public void moved(int posX, int posY, Piece piece) {
+    public void move(int posX, int posY, Piece piece) {
         if(isMoveValid(posX, posY)) {
             piece.setPosY(posY);
             piece.setPosX(posX);

@@ -34,7 +34,6 @@ public class LinedMove implements MovePiece {
         }
         //Up
         for (int i = 0; i < posX; i++) {
-            //board[i][posY] = "X";
             if (board[i][posY] == null) {
                 movePoints.add(new Point(i, posY));
             }
@@ -72,8 +71,6 @@ public class LinedMove implements MovePiece {
                 break;
             }
         }
-        //The piece doesn't occupy its position again
-        //board[posX][posY] = " ";
     }
 
     public boolean isMoveValid(int xDest, int yDest) {

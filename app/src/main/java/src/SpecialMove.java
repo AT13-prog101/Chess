@@ -2,8 +2,7 @@ package src;
 
 public class SpecialMove implements MovePiece{
     //Castling move
-    @Override
-    public void move(int posX, int posY, boolean isWhite) {
+    public void move(int posX, int posY, Piece piece) {
 
     }
 
