@@ -1,25 +1,26 @@
 package src;
 
 public class Chessboard {
-    public final int ASCI_CODE_A = 97;
-    private final int DIMENSION = 8;
-    private String[][] board = new String[DIMENSION][DIMENSION];
-    boolean turn;
-    public Chessboard() {
 
+    static final int DIMENSION = 8;
+    public static String[][] board = {
+            {"BR", "BH", "BB", "BQ", "WK", "BB", "BH", "BR"},
+            {"BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"},
+            {"  ", "..", "  ", "..", "  ", "..", "  ", ".."},
+            {"..", "  ", "..", "  ", "..", "  ", "..", "  "},
+            {"  ", "..", "  ", "..", "  ", "..", "  ", ".."},
+            {"..", "  ", "..", "  ", "..", "  ", "..", "  "},
+            {"WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"},
+            {"WR", "WH", "WB", "WQ", "WK", "WB", "WH", "WR"}};
+    public Chessboard() {
     }
-    public void fillBoard() {
-        for (int i = DIMENSION - 1; i >= 0; i--) {
-            int asciiCode = ASCI_CODE_A;
-            for (int j = DIMENSION - 1; j >=0; j--) {
-                char colPos = (char)asciiCode;
-                board[i][j] = String.valueOf(DIMENSION - i) + colPos;
-                asciiCode += 1;
+    static void printBoard(){
+        for (int i = 0; i<DIMENSION; i++){
+            for (int j = 0; j<DIMENSION; j++){
+                System.out.print(board[i][j]);
             }
-            asciiCode = ASCI_CODE_A;
+            System.out.println();
         }
     }
-    public String[][] getBoard() {
-        return board;
-    }
+
 }
