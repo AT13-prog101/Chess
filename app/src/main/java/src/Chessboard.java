@@ -37,15 +37,17 @@ public class Chessboard {
             }
             System.out.println("");
         }
-        System.out.println("   ----------------");
-        System.out.println("    a b c d e f g h");
+        System.out.println("   -----------------------");
+        System.out.println("    a  b  c  d  e  f  g  h");
     }
 
     public void translatePosToMatrix() {
 
     }
-
-    public void movePiece() {
+    public boolean isCheckmate () {
+        return false;
+    }
+    public void movePiece(String[] moveToMake, Player player) {
 
     }
 }
