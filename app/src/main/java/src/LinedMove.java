@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 public class LinedMove implements MovePiece{
 
     @Override
@@ -24,5 +26,8 @@ public class LinedMove implements MovePiece{
         }
         //The piece doesn't occupy its position again
         //board[posX][posY] = " ";
+    }
+    public ArrayList<String> getValidMoves(String position) {
+        return  null;
     }
 }

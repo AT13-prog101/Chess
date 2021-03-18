@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.Piece;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,5 +60,9 @@ public class KnightMove implements MovePiece{
      */
     public boolean isSpaceEmpty(int xPosition, int yPosition, boolean isWhite) {
         return true;
+    }
+
+    public ArrayList<String> getValidMoves(String position) {
+        return  null;
     }
 }

@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.Piece;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,7 +35,7 @@ public class BlackTeam extends Team{
         int arrayPos = 0;
         for (int row = row0; row <= row1; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), true, col, row);
+                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), false, col, row);
                 setOfPieces.add(piece);
                 arrayPos += 1;
             }

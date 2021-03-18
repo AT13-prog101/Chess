@@ -1,5 +1,7 @@
 package src;
 
+import src.Pieces.*;
+
 public class GetPieceFactory {
     public GetPieceFactory() {
 

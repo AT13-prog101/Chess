@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 public class DiagonalsMove implements MovePiece{
     @Override
     public void move(int posX, int posY, boolean isWhite) {
@@ -26,5 +28,8 @@ public class DiagonalsMove implements MovePiece{
         }
         //The piece doesn't occupy its position again
         //board[posX][posY] = " ";
+    }
+    public ArrayList<String> getValidMoves(String position) {
+        return  null;
     }
 }
