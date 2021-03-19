@@ -16,9 +16,10 @@ public class KingMove implements MovePiece{
      */
     public void move(int posX, int posY, Piece piece) {
         possibleMoves(piece);
+        if(isMoveValid(posX, posY)) {
             piece.setPosY(posY);
             piece.setPosX(posX);
-
+        }
     }
 
     /**
@@ -28,8 +29,8 @@ public class KingMove implements MovePiece{
      */
     public List<Point> possibleMoves(Piece piece) {
 
-        int[] xPossiblePos = {2, 1, -1, -2, -2, -1, 1, 2};
-        int[] yPossiblePos = {1, 2, 2, 1, -1, -2, -2, -1};
+        int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
+        int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
 
         int xActPos = piece.getInitPosX();
         int yActPos = piece.getInitPosY();
@@ -38,12 +39,48 @@ public class KingMove implements MovePiece{
             int xPosition = xActPos + xPossiblePos[i];
             int yPosition = yActPos + yPossiblePos[i];
             if (0 < xPosition && 0 < yPosition &&xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
+                if(isSpaceEmpty(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
                     movePoints.add(new Point(xPosition, yPosition));
+                }
             }
         }
         return movePoints;
     }
+    /**
+     * Verify if the destination selected for the player is valid
+     * @param xDest
+     * @param yDest
+     * @return true if move is possible, false if move is no possible
+     */
+    private boolean isMoveValid(int xDest, int yDest) {
+        for (Point availableMove: movePoints) {
+            if (availableMove.getX() == xDest && availableMove.getY() == yDest)
+                return true;
+        }
+        return false;
+    }
 
+    /**
+     *  Verify if the space of destination is free from piece of the same color or is empty.
+     * @param piece is the piece in the possible position.
+     * @param isWhite is the color of the Knight that is moving
+     * @return true is space is empty or has a piece of different color, false if has piece of same color
+     */
+    public boolean isSpaceEmpty(Piece piece, boolean isWhite) {
+        if(piece == null || piece.getColorWhite() != isWhite)
+            return true;
+        return false;
+    }
+
+    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
+        if(piece.getColorWhite() == isWhite)
+            return true;
+        return false;
+    }
+
+    public void setPieceCaptured(Piece piece) {
+        piece.setCaptured(true);
+    }
     @Override
     public ArrayList<String> getValidMoves(String position) {
         return null;
