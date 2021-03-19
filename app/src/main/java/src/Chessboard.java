@@ -4,7 +4,7 @@ public class Chessboard {
 
     static final int DIMENSION = 8;
     public static String[][] board = {
-            {"BR", "BH", "BB", "BQ", "WK", "BB", "BH", "BR"},
+            {"BR", "BH", "BB", "BQ", "BK", "BB", "BH", "BR"},
             {"BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"},
             {"  ", "..", "  ", "..", "  ", "..", "  ", ".."},
             {"..", "  ", "..", "  ", "..", "  ", "..", "  "},
