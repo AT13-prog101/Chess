@@ -27,6 +27,8 @@ public class Chessboard {
                     Piece piece = board[row][col];
                     String figure = String.valueOf(piece.getColor()) + String.valueOf(piece.getFigure()) + " ";
                     System.out.print(figure);
+                } else {
+                    System.out.print("  " + " ");
                 }
             }
             System.out.println("");
@@ -42,6 +44,23 @@ public class Chessboard {
         return false;
     }
     public void movePiece(String[] moveToMake, Player player) {
+        PositionTraductor positionTraductor = new PositionTraductor();
+        int sourceXpos = positionTraductor.getXIndexNotation(moveToMake[0]);
+        int sourceYpos = positionTraductor.getYIndexNotation(moveToMake[0]);
 
+        int targetXpos = positionTraductor.getXIndexNotation(moveToMake[1]);
+        int targetYpos = positionTraductor.getYIndexNotation(moveToMake[1]);
+        System.out.println(sourceXpos + " " + sourceYpos);
+        System.out.println(targetXpos + " " + targetYpos);
+        System.out.println(" ");
+        Piece sourcePiece;
+        if (Chessboard.board[sourceYpos][sourceXpos] != null) {
+            sourcePiece = Chessboard.board[sourceYpos][sourceXpos];
+            Chessboard.board[targetYpos][targetXpos] = Chessboard.board[sourceYpos][sourceXpos];
+            Chessboard.board[sourceYpos][sourceXpos] = null;
+        }
+//        Piece targetPiece = Chessboard.board[targetYpos][targetXpos];
+//        Chessboard.board[sourceYpos][sourceXpos] = targetPiece;
+        printBoard();
     }
 }

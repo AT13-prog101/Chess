@@ -5,10 +5,26 @@ import static org.junit.Assert.assertEquals;
 
 public class PositionTraductorTest {
     @Test
-    public void getIndexNotationGivena1Return00() {
+    public void getIndexNotationGivena8Return00() {
         PositionTraductor positionTraductor = new PositionTraductor();
         String expected = "00";
         int[] indexNotation = positionTraductor.getIndexNotation("a8");
+        String actual = String.valueOf(indexNotation[0]) + String.valueOf(indexNotation[1]);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void getIndexNotationGivenb8Return10() {
+        PositionTraductor positionTraductor = new PositionTraductor();
+        String expected = "10";
+        int[] indexNotation = positionTraductor.getIndexNotation("b8");
+        String actual = String.valueOf(indexNotation[0]) + String.valueOf(indexNotation[1]);
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void getIndexNotationGivena1Return07() {
+        PositionTraductor positionTraductor = new PositionTraductor();
+        String expected = "07";
+        int[] indexNotation = positionTraductor.getIndexNotation("a1");
         String actual = String.valueOf(indexNotation[0]) + String.valueOf(indexNotation[1]);
         assertEquals(expected, actual);
     }

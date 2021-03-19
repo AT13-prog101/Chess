@@ -34,7 +34,7 @@ public class Game {
             } else {
                 System.out.println("Black turn .. Make a move:");
                 String moveToMake = sc.nextLine();
-                player1.makeMove(moveToMake);
+                player2.makeMove(moveToMake);
                 String[] move = player2.getMove();
                 chessboard.movePiece(move, player2);
                 turn = true;
