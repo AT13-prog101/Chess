@@ -20,13 +20,13 @@ public class DiagonalsMove implements MovePiece {
         int posY = piece.getInitPosY();
         int numerMax = Math.max(posX, posY);
         int numerMin = Math.min(posX, posY);
-        boolean killPiece = !piece.getColorWhite();
-
+        boolean oppositeColor = !piece.getColorWhite();
+        //southeast (SE)
         for (int i = 1; numerMax + i < board.length; i++) {
             if (board[posX + i][posY + i] == null) {
                 movePoints.add(new Point(posX + i, posY + i));
             }
-            if (board[posX + i][posY + i].getColorWhite() != killPiece) {
+            if (board[posX + i][posY + i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX + i, posY + i));
                 break;
             }
@@ -34,12 +34,12 @@ public class DiagonalsMove implements MovePiece {
                 break;
             }
         }
-
+        //northwest (NW).
         for (int i = 1; numerMin - i >= 0; i++) {
             if (board[posX - i][posY - i] == null) {
                 movePoints.add(new Point(posX - i, posY - i));
             }
-            if (board[posX - i][posY - i].getColorWhite() != killPiece) {
+            if (board[posX - i][posY - i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX - i, posY - i));
                 break;
             }
@@ -47,12 +47,12 @@ public class DiagonalsMove implements MovePiece {
                 break;
             }
         }
-
+        //southwest (SW)
         for (int i = 1; posX + i < board.length && posY - i >= 0; i++) {
             if (board[posX + i][posY - i] == null) {
                 movePoints.add(new Point(posX + i, posY - i));
             }
-            if (board[posX + i][posY - i].getColorWhite() != killPiece) {
+            if (board[posX + i][posY - i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX + i, posY - i));
                 break;
             }
@@ -60,12 +60,12 @@ public class DiagonalsMove implements MovePiece {
                 break;
             }
         }
-
+        //northeast (NE)
         for (int i = 1; posY + i < board.length && posX - i >= 0; i++) {
             if (board[posX - i][posY + i] == null) {
                 movePoints.add(new Point(posX - i, posY + i));
             }
-            if (board[posX - i][posY + i].getColorWhite() != killPiece) {
+            if (board[posX - i][posY + i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX - i, posY + i));
                 break;
             }

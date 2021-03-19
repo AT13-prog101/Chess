@@ -17,7 +17,7 @@ public class LinedMove implements MovePiece {
     }
 
     public void possibleMoves(Piece[][] board, Piece piece) {
-        boolean killPiece = !piece.getColorWhite();
+        boolean oppositeColor = !piece.getColorWhite();
         //Down
         int posY = piece.getInitPosY();
         int posX = piece.getInitPosX();
@@ -25,7 +25,7 @@ public class LinedMove implements MovePiece {
             if (board[i][posY] == null) {
                 movePoints.add(new Point(i, posY));
             }
-            if (board[i][posY].getColorWhite() != killPiece) {
+            if (board[i][posY].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(i, posY));
                 break;
             }
@@ -38,7 +38,7 @@ public class LinedMove implements MovePiece {
             if (board[i][posY] == null) {
                 movePoints.add(new Point(i, posY));
             }
-            if (board[i][posY].getColorWhite() != killPiece) {
+            if (board[i][posY].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(i, posY));
                 break;
             }
@@ -51,7 +51,7 @@ public class LinedMove implements MovePiece {
             if (board[posX][i] == null) {
                 movePoints.add(new Point(posX, i));
             }
-            if (board[posX][i].getColorWhite() != killPiece) {
+            if (board[posX][i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX, i));
                 break;
             }
@@ -64,7 +64,7 @@ public class LinedMove implements MovePiece {
             if (board[posX][i] == null) {
                 movePoints.add(new Point(posX, i));
             }
-            if (board[posX][i].getColorWhite() != killPiece) {
+            if (board[posX][i].getColorWhite() != oppositeColor) {
                 movePoints.add(new Point(posX, i));
                 break;
             }
