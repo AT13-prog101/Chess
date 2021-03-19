@@ -1,28 +1,36 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     String name;
     boolean playerTurn;
     String color;
-    private String[] move = new String[2];
     Player(String name, String color){
         this.name = name;
         this.color = color;
     }
-    void makeMove(String movement){
+    public List<String> makeMove(String movement){
+        List<String> moves = new ArrayList<String>();
         if (movement.isEmpty()) {
             invalidMessage();
             makeMove(movement);
         }
         char[] inputArray= movement.toCharArray();
         String position = "";
-        move[0] = position + inputArray[2] + inputArray[3];
-        move[1] = position + inputArray[7] + inputArray[8];
-    }
-    public String[] getMove() {
-        return move;
+        if (movement.length() == 2) {
+            moves.add(position + inputArray[0] + inputArray[1]);
+            return moves;
+        } else {
+            if (movement.length() == 5) {
+                moves.add(position + inputArray[0] + inputArray[1]);
+                moves.add(position + inputArray[3] + inputArray[4]);
+            } else {
+                return null;
+            }
+        }
+        return null;
     }
     public String getColor() {
         return color;

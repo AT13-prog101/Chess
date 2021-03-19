@@ -2,6 +2,8 @@ package src;
 
 import src.Pieces.Piece;
 
+import java.util.List;
+
 public class Chessboard {
     public final static int DIMENSION = 8;
     public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
@@ -43,13 +45,13 @@ public class Chessboard {
     public boolean isCheckmate () {
         return false;
     }
-    public void movePiece(String[] moveToMake, Player player) {
+    public void movePiece(List<String> moveToMake, Player player) {
         PositionTraductor positionTraductor = new PositionTraductor();
-        int sourceXpos = positionTraductor.getXIndexNotation(moveToMake[0]);
-        int sourceYpos = positionTraductor.getYIndexNotation(moveToMake[0]);
+        int sourceXpos = positionTraductor.getXIndexNotation(moveToMake.get(0));
+        int sourceYpos = positionTraductor.getYIndexNotation(moveToMake.get(0));
 
-        int targetXpos = positionTraductor.getXIndexNotation(moveToMake[1]);
-        int targetYpos = positionTraductor.getYIndexNotation(moveToMake[1]);
+        int targetXpos = positionTraductor.getXIndexNotation(moveToMake.get(1));
+        int targetYpos = positionTraductor.getYIndexNotation(moveToMake.get(1));
         System.out.println(sourceXpos + " " + sourceYpos);
         System.out.println(targetXpos + " " + targetYpos);
         System.out.println(" ");

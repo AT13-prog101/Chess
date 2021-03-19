@@ -1,5 +1,6 @@
 package src;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -27,16 +28,14 @@ public class Game {
             if(turn == true) {
                 System.out.println("White turn .. Make a move:");
                 String moveToMake = sc.nextLine();
-                player1.makeMove(moveToMake);
-                String[] move = player1.getMove();
-                chessboard.movePiece(move, player1);
+                List<String> moves = player1.makeMove(moveToMake);
+                chessboard.movePiece(moves, player1);
                 turn = false;
             } else {
                 System.out.println("Black turn .. Make a move:");
                 String moveToMake = sc.nextLine();
-                player2.makeMove(moveToMake);
-                String[] move = player2.getMove();
-                chessboard.movePiece(move, player2);
+                List<String> moves = player2.makeMove(moveToMake);
+                chessboard.movePiece(moves, player2);
                 turn = true;
             }
         }
