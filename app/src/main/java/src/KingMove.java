@@ -81,6 +81,7 @@ public class KingMove implements MovePiece{
     public void setPieceCaptured(Piece piece) {
         piece.setCaptured(true);
     }
+
     @Override
     public ArrayList<String> getValidMoves(String position) {
         return null;
