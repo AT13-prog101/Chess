@@ -1,9 +1,8 @@
 package src;
 
 public class PositionTraductor {
-    private final int ASCII_CODE_FOR_A = 97;
-    private final int ASCII_CODE_FOR_0 = 48;
-    private final int NUMBER_OF_ROWS = 8;
+    private static final int ASCII_CODE_FOR_A = 97;
+    private static final int ASCII_CODE_FOR_0 = 48;
     /**
      * PositionTraductor switches from one notation to the other.
      *
@@ -32,26 +31,26 @@ public class PositionTraductor {
         char characterCol = algebraicNotation.charAt(0);
         char characterRow = algebraicNotation.charAt(1);
         positions[0] = (int)characterCol - ASCII_CODE_FOR_A;
-        positions[1] = Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - NUMBER_OF_ROWS);
+        positions[1] = Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - Chessboard.DIMENSION);
         return positions;
     }
-    public int getXIndexNotation(String algebraicNotation) {
+    public static int getXIndexNotation(String algebraicNotation) {
         char characterCol = algebraicNotation.charAt(0);
         return  (int)characterCol - ASCII_CODE_FOR_A;
     }
-    public int getYIndexNotation(String algebraicNotation) {
+    public static int getYIndexNotation(String algebraicNotation) {
         char characterRow = algebraicNotation.charAt(1);
-        return Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - NUMBER_OF_ROWS);
+        return Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - Chessboard.DIMENSION);
     }
     /**
      * Given 2 values that represent the row and col positions in a matrix. Return the corresponding
      * algebraic notation for that position
      */
-    public String getAlgebraicNotation(int colIndex, int rowIndex) {
+    public static String getAlgebraicNotation(int colIndex, int rowIndex) {
         //Adding column value in algebraic notation
         String algebraicNotation = String.valueOf((char)(colIndex + 97));
         //2nd value is row position
-        int rowAlgebraic = NUMBER_OF_ROWS - rowIndex;
+        int rowAlgebraic = Chessboard.DIMENSION - rowIndex;
         algebraicNotation += String.valueOf(rowAlgebraic);
         return algebraicNotation;
     }

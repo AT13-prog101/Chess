@@ -45,24 +45,15 @@ public class Chessboard {
     public boolean isCheckmate () {
         return false;
     }
-    public void movePiece(List<String> moveToMake, Player player) {
+    public void movePiece(List<Position> moveToMake, Player player) {
         PositionTraductor positionTraductor = new PositionTraductor();
-        int sourceXpos = positionTraductor.getXIndexNotation(moveToMake.get(0));
-        int sourceYpos = positionTraductor.getYIndexNotation(moveToMake.get(0));
+        Position source = moveToMake.get(0);
+        Position target = moveToMake.get(1);
 
-        int targetXpos = positionTraductor.getXIndexNotation(moveToMake.get(1));
-        int targetYpos = positionTraductor.getYIndexNotation(moveToMake.get(1));
-        System.out.println(sourceXpos + " " + sourceYpos);
-        System.out.println(targetXpos + " " + targetYpos);
-        System.out.println(" ");
-        Piece sourcePiece;
-        if (Chessboard.board[sourceYpos][sourceXpos] != null) {
-            sourcePiece = Chessboard.board[sourceYpos][sourceXpos];
-            Chessboard.board[targetYpos][targetXpos] = Chessboard.board[sourceYpos][sourceXpos];
-            Chessboard.board[sourceYpos][sourceXpos] = null;
+        if (Chessboard.board[source.getPosY()][source.getPosX()] != null) {
+            Chessboard.board[target.getPosY()][target.getPosX()] = Chessboard.board[source.getPosY()][source.getPosX()];
+            Chessboard.board[source.getPosY()][source.getPosX()] = null;
         }
-//        Piece targetPiece = Chessboard.board[targetYpos][targetXpos];
-//        Chessboard.board[sourceYpos][sourceXpos] = targetPiece;
         printBoard();
     }
 }

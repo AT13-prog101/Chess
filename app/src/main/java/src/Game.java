@@ -28,13 +28,13 @@ public class Game {
             if(turn == true) {
                 System.out.println("White turn .. Make a move:");
                 String moveToMake = sc.nextLine();
-                List<String> moves = player1.makeMove(moveToMake);
+                List<Position> moves = player1.makeMove(moveToMake);
                 chessboard.movePiece(moves, player1);
                 turn = false;
             } else {
                 System.out.println("Black turn .. Make a move:");
                 String moveToMake = sc.nextLine();
-                List<String> moves = player2.makeMove(moveToMake);
+                List<Position> moves = player2.makeMove(moveToMake);
                 chessboard.movePiece(moves, player2);
                 turn = true;
             }
