@@ -39,7 +39,7 @@ public class KingMove implements MovePiece{
             int xPosition = xActPos + xPossiblePos[i];
             int yPosition = yActPos + yPossiblePos[i];
             if (0 < xPosition && 0 < yPosition &&xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
-                if(isSpaceEmpty(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
+                if(isPositionAvailable(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
                     movePoints.add(new Point(xPosition, yPosition));
                 }
             }
@@ -63,23 +63,13 @@ public class KingMove implements MovePiece{
     /**
      *  Verify if the space of destination is free from piece of the same color or is empty.
      * @param piece is the piece in the possible position.
-     * @param isWhite is the color of the Knight that is moving
+     * @param isWhite is the color of the King that is moving
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
-    public boolean isSpaceEmpty(Piece piece, boolean isWhite) {
-        if(piece == null || piece.getColorWhite() != isWhite)
+    public boolean isPositionAvailable(Piece piece, boolean colorMoving) {
+        if(piece == null || piece.getColorWhite() != colorMoving)
             return true;
         return false;
-    }
-
-    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if(piece.getColorWhite() == isWhite)
-            return true;
-        return false;
-    }
-
-    public void setPieceCaptured(Piece piece) {
-        piece.setCaptured(true);
     }
 
     @Override
