@@ -38,7 +38,7 @@ public class KingMove implements MovePiece{
         for(int i = 0; i < xPossiblePos.length ; i++) {
             int xPosition = xActPos + xPossiblePos[i];
             int yPosition = yActPos + yPossiblePos[i];
-            if (0 < xPosition && 0 < yPosition &&xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
+            if (0 <= xPosition && 0 <= yPosition &&xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
                 if(isPositionAvailable(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
                     movePoints.add(new Point(xPosition, yPosition));
                 }
