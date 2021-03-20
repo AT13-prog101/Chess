@@ -63,7 +63,7 @@ public class KingMove implements MovePiece{
     /**
      *  Verify if the space of destination is free from piece of the same color or is empty.
      * @param piece is the piece in the possible position.
-     * @param isWhite is the color of the King that is moving
+     * @param colorMoving is the color of the King that is moving
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
     public boolean isPositionAvailable(Piece piece, boolean colorMoving) {

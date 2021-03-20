@@ -46,6 +46,12 @@ public class LinedMove implements MovePiece {
         }
     }
 
+    /**
+     * Verify if the destination selected for the player is valid
+     * @param xDest
+     * @param yDest
+     * @return true if move is possible, false if move is no possible
+     */
     public boolean isMoveValid(int xDest, int yDest) {
         for (Point availableMove : movePoints) {
             if (availableMove.getX() == xDest && availableMove.getY() == yDest)
