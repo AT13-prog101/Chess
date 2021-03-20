@@ -83,7 +83,7 @@ public class KnightMove implements MovePiece{
         piece.setCaptured(true);
     }
 
-    public ArrayList<String> getValidMoves(String position) {
+    public ArrayList<Position> getValidMoves(Position position) {
         return  null;
     }
 }

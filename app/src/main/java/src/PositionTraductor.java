@@ -34,10 +34,17 @@ public class PositionTraductor {
         positions[1] = Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - Chessboard.DIMENSION);
         return positions;
     }
+
+    /**
+     * Returns the X value from an algebraic format position
+     */
     public static int getXIndexNotation(String algebraicNotation) {
         char characterCol = algebraicNotation.charAt(0);
         return  (int)characterCol - ASCII_CODE_FOR_A;
     }
+    /**
+     * Returns the Y value from an algebraic format position
+     */
     public static int getYIndexNotation(String algebraicNotation) {
         char characterRow = algebraicNotation.charAt(1);
         return Math.abs(((int)characterRow - ASCII_CODE_FOR_0) - Chessboard.DIMENSION);

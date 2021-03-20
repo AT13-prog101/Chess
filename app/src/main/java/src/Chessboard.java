@@ -10,6 +10,10 @@ public class Chessboard {
     private Team whiteTeam;
     private Team blackTeam;
     boolean turn;
+
+    /**
+     * Chessboard initializes the pieces from its Team instances
+     */
     public Chessboard() {
         initializeChessboard();
     }
@@ -39,21 +43,10 @@ public class Chessboard {
         System.out.println("    a  b  c  d  e  f  g  h");
     }
 
-    public void translatePosToMatrix() {
-
-    }
+    /**
+     * Checks if a king has been taken.
+     */
     public boolean isCheckmate () {
         return false;
-    }
-    public void movePiece(List<Position> moveToMake, Player player) {
-        PositionTraductor positionTraductor = new PositionTraductor();
-        Position source = moveToMake.get(0);
-        Position target = moveToMake.get(1);
-
-        if (Chessboard.board[source.getPosY()][source.getPosX()] != null) {
-            Chessboard.board[target.getPosY()][target.getPosX()] = Chessboard.board[source.getPosY()][source.getPosX()];
-            Chessboard.board[source.getPosY()][source.getPosX()] = null;
-        }
-        printBoard();
     }
 }
