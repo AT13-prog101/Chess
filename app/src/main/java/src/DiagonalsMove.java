@@ -22,25 +22,25 @@ public class DiagonalsMove implements MovePiece {
         int numberMin = Math.min(posX, posY);
         //southeast (SE)
         for (int i = 1; numberMax + i < board.length; i++) {
-            if (isAccessiblePosition(posX + i,posY + i,piece.getColorWhite())){
+            if (!isAccessiblePosition(posX + i,posY + i,piece.getColorWhite())){
                 break;
             }
         }
         //northwest (NW).
         for (int i = 1; numberMin - i >= 0; i++) {
-            if (isAccessiblePosition(posX - i,posY - i,piece.getColorWhite())){
+            if (!isAccessiblePosition(posX - i,posY - i,piece.getColorWhite())){
                 break;
             }
         }
         //southwest (SW)
         for (int i = 1; posX + i < board.length && posY - i >= 0; i++) {
-            if (isAccessiblePosition(posX + i,posY - i,piece.getColorWhite())){
+            if (!isAccessiblePosition(posX + i,posY - i,piece.getColorWhite())){
                 break;
             }
         }
         //northeast (NE)
         for (int i = 1; posY + i < board.length && posX - i >= 0; i++) {
-            if (isAccessiblePosition(posX - i,posY + i,piece.getColorWhite())){
+            if (!isAccessiblePosition(posX - i,posY + i,piece.getColorWhite())){
                 break;
             }
         }

@@ -22,53 +22,25 @@ public class LinedMove implements MovePiece {
         int posY = piece.getInitPosY();
         int posX = piece.getInitPosX();
         for (int i = posX + 1; i < board.length; i++) {
-            if (board[i][posY] == null) {
-                movePoints.add(new Point(i, posY));
-            }
-            if (board[i][posY].getColorWhite() != oppositeColor) {
-                movePoints.add(new Point(i, posY));
-                break;
-            }
-            if (board[i][posY].getColorWhite() == piece.getColorWhite()) {
+            if (!isAccessiblePosition(i,posY,piece.getColorWhite())){
                 break;
             }
         }
         //Up
         for (int i = 0; i < posX; i++) {
-            if (board[i][posY] == null) {
-                movePoints.add(new Point(i, posY));
-            }
-            if (board[i][posY].getColorWhite() != oppositeColor) {
-                movePoints.add(new Point(i, posY));
-                break;
-            }
-            if (board[i][posY].getColorWhite() == piece.getColorWhite()) {
+            if (!isAccessiblePosition(i,posY,piece.getColorWhite())){
                 break;
             }
         }
         //right
         for (int i = posY + 1; i < board.length; i++) {
-            if (board[posX][i] == null) {
-                movePoints.add(new Point(posX, i));
-            }
-            if (board[posX][i].getColorWhite() != oppositeColor) {
-                movePoints.add(new Point(posX, i));
-                break;
-            }
-            if (board[posX][i].getColorWhite() == piece.getColorWhite()) {
+            if (!isAccessiblePosition(posX , i,piece.getColorWhite())){
                 break;
             }
         }
         //Left
         for (int i = 0; i < posY; i++) {
-            if (board[posX][i] == null) {
-                movePoints.add(new Point(posX, i));
-            }
-            if (board[posX][i].getColorWhite() != oppositeColor) {
-                movePoints.add(new Point(posX, i));
-                break;
-            }
-            if (board[posX][i].getColorWhite() == piece.getColorWhite()) {
+            if (!isAccessiblePosition(posX , i,piece.getColorWhite())){
                 break;
             }
         }
@@ -84,14 +56,25 @@ public class LinedMove implements MovePiece {
 
     /**
      * Verify if the space of destination is free from piece of the same color
-     *
-     * @param xPosition
-     * @param yPosition
-     * @param isWhite
-     * @return
+     * @param posX is a position analise of Chessboard
+     * @param posY is a position analise of Chessboard
+     * @return boolean which say is accessible Position
      */
-    public boolean isSpaceEmpty(int xPosition, int yPosition, boolean isWhite) {
-        return true;
+    public boolean isAccessiblePosition(int posX, int posY, boolean colorPiece) {
+        boolean oppositeColor = !colorPiece;
+
+        if (Chessboard.board[posX][posY] == null) {
+            movePoints.add(new Point(posX , posY));
+            return true;
+        }
+        if (Chessboard.board[posX][posY].getColorWhite() != oppositeColor) {
+            movePoints.add(new Point(posX , posY ));
+            return false;
+        }
+        if (Chessboard.board[posX ][posY].getColorWhite() == colorPiece) {
+            return false;
+        }
+        return false;
     }
 
     public ArrayList<Position> getValidMoves(Position position) {
