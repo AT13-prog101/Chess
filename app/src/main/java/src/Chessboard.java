@@ -2,12 +2,18 @@ package src;
 
 import src.Pieces.Piece;
 
+import java.util.List;
+
 public class Chessboard {
     public final static int DIMENSION = 8;
     public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
     boolean turn;
+
+    /**
+     * Chessboard initializes the pieces from its Team instances
+     */
     public Chessboard() {
         initializeChessboard();
     }
@@ -27,6 +33,8 @@ public class Chessboard {
                     Piece piece = board[row][col];
                     String figure = String.valueOf(piece.getColor()) + String.valueOf(piece.getFigure()) + " ";
                     System.out.print(figure);
+                } else {
+                    System.out.print("  " + " ");
                 }
             }
             System.out.println("");
@@ -35,13 +43,10 @@ public class Chessboard {
         System.out.println("    a  b  c  d  e  f  g  h");
     }
 
-    public void translatePosToMatrix() {
-
-    }
+    /**
+     * Checks if a king has been taken.
+     */
     public boolean isCheckmate () {
         return false;
-    }
-    public void movePiece(String[] moveToMake, Player player) {
-
     }
 }

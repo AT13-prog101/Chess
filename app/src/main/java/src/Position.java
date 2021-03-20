@@ -8,10 +8,13 @@ public class Position {
     public Position(int posX, int posY){
         this.posX = posX;
         this.posY = posY;
+        this.charAlg = PositionTraductor.getAlgebraicNotation(posX, posY);
     }
 
     public Position(String charAlgebraic) {
         this.charAlg = charAlgebraic;
+        this.posX = PositionTraductor.getXIndexNotation(charAlgebraic);
+        this.posY = PositionTraductor.getYIndexNotation(charAlgebraic);
     }
 
     /**

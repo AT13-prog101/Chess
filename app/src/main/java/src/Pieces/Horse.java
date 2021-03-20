@@ -1,5 +1,7 @@
 package src.Pieces;
 
+import src.KnightMove;
+
 public class Horse extends Piece{
     private char figure = 'H';
     public Horse(boolean white, int initPosX, int initPosY) {
@@ -10,6 +12,7 @@ public class Horse extends Piece{
         {
             setColor('B');
         }
+        addMoveType(new KnightMove());
     }
     public char getFigure() {
         return this.figure;

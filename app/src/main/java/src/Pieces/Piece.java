@@ -1,8 +1,10 @@
 package src.Pieces;
 
 import src.MovePiece;
+import src.Position;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Piece {
     private char color;
@@ -12,7 +14,7 @@ public abstract class Piece {
     private int initPosY;
     private boolean isCaptured;
     private boolean isMoved;
-    private ArrayList<MovePiece> moveTypes = new ArrayList<MovePiece>();
+    private List<MovePiece> moveTypes = new ArrayList<MovePiece>();
 
     public Piece(boolean white, int initPosX, int initPosY) {
         this.color = color;
@@ -73,8 +75,8 @@ public abstract class Piece {
         return color;
     }
 
-    public ArrayList<String> getValidMoves(String position) {
-        ArrayList<String> validMoves = new ArrayList<String>();
+    public List<Position> getValidMoves(Position position) {
+        List<Position> validMoves = new ArrayList<Position>();
         for (MovePiece movePiece : moveTypes) {
             validMoves.addAll(movePiece.getValidMoves(position));
         }

@@ -38,7 +38,7 @@ public class SpecialMove implements MovePiece{
         return true;
     }
 
-    public ArrayList<String> getValidMoves(String position) {
+    public ArrayList<Position> getValidMoves(Position position) {
         return  null;
     }
 }

@@ -1,5 +1,7 @@
 package src.Pieces;
 
+import src.LinedMove;
+
 public class Rook extends Piece{
     private char figure = 'R';
     public Rook(boolean white, int initPosX, int initPosY) {
@@ -10,6 +12,7 @@ public class Rook extends Piece{
         {
             setColor('B');
         }
+        addMoveType(new LinedMove());
     }
     public char getFigure() {
         return this.figure;
