@@ -1,25 +1,28 @@
 package src;
 
+import java.security.spec.ECField;
 import java.util.List;
 import java.util.Scanner;
 
 public class Game {
     private int gameId;
-    private Player player1;
-    private Player player2;
+    private Player playerWhite;
+    private Player playerBlack;
     private Chessboard chessboard;
     private boolean turn = true; // true = white, false = black
+    private final boolean PLAYER_WHITE = true;
+    private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
     private MoveController moveController = new MoveController();
-
+    Scanner sc;
     /**
      * Game represents a match between 2 players and controls the cycle of turns
      */
     public Game(int id) {
         this.gameId = id;
         chessboard = new Chessboard();
-        player1 = new Player("Player1", "White");
-        player2 = new Player("Player2", "Black");
+        playerWhite = new Player("Player1", PLAYER_WHITE);
+        playerBlack = new Player("Player2", PLAYER_BLACK);
     }
 
     /**
@@ -27,6 +30,7 @@ public class Game {
      */
     public void gameInit() {
         chessboard.printBoard();
+        sc = new Scanner(System.in);
         while(gameFinished == false) {
             doGameCycle();
         }
@@ -36,22 +40,29 @@ public class Game {
      * Iterates the turns
      */
     public void doGameCycle() {
-        Scanner sc = new Scanner(System.in);
         if(!chessboard.isCheckmate()) {
             if(turn == true) {
-                Position sourcePosition = inputSourceWhite(sc);
-                printValidMoves(moveController.getValidMoves(sourcePosition, player1));
-                Position targetPosition = inputTargetWhite(sc);
-                moveController.makeAMove(targetPosition, player1);
-                chessboard.printBoard();
-                turn = false;
+                try {
+                    Position sourcePosition = inputSourceWhite(sc);
+                    printValidMoves(moveController.getValidMoves(sourcePosition, playerWhite));
+                    Position targetPosition = inputTargetWhite(sc);
+                    moveController.makeAMove(targetPosition, playerWhite);
+                    this.turn = false;
+                    chessboard.printBoard();
+                } catch (Exception e) {
+                    System.out.println("Wrong input");
+                }
             } else {
-                Position sourcePosition = inputSourceBlack(sc);
-                printValidMoves(moveController.getValidMoves(sourcePosition, player2));
-                Position targetPosition = inputTargetBlack(sc);
-                moveController.makeAMove(targetPosition, player2);
-                chessboard.printBoard();
-                turn = true;
+                try {
+                    Position sourcePosition = inputSourceBlack(sc);
+                    printValidMoves(moveController.getValidMoves(sourcePosition, playerBlack));
+                    Position targetPosition = inputTargetBlack(sc);
+                    moveController.makeAMove(targetPosition, playerBlack);
+                    this.turn = true;
+                    chessboard.printBoard();
+                } catch (Exception e) {
+                    System.out.println("Wrong input");
+                }
             }
         }
     }

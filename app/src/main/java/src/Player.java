@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Player {
     String name;
+    boolean isWhite;
     boolean playerTurn;
     String color;
-    Player(String name, String color){
+    Player(String name, boolean isWhite){
         this.name = name;
-        this.color = color;
+        this.isWhite = isWhite;
     }
-    public String getColor() {
-        return color;
+    public boolean isWhite() {
+        return isWhite;
     }
 }

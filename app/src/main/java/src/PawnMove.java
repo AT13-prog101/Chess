@@ -61,5 +61,7 @@ public class PawnMove implements MovePiece{
             return true;
         return false;
     }
-
+    public ArrayList<Position> getValidMoves(Position position) {
+        return  null;
+    }
 }

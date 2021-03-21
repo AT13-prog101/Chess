@@ -75,7 +75,7 @@ public abstract class Piece {
         return color;
     }
 
-    public List<Position> getValidMoves(Position position) {
+    public List<Position> getValidMoves() {
         List<Position> validMoves = new ArrayList<Position>();
         for (MovePiece movePiece : moveTypes) {
             validMoves.addAll(movePiece.getPossibleMoves(this));
