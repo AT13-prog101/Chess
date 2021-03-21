@@ -1,7 +1,5 @@
 package src;
-
 import src.Pieces.Piece;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +73,6 @@ public class DiagonalsMove implements MovePiece {
     }
 
     public ArrayList<Position> getValidMoves(Position position) {
-        return null;
+        return  null;
     }
 }
