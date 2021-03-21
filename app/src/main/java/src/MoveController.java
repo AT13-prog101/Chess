@@ -25,8 +25,7 @@ public class MoveController {
                     //save reference of source piece
                     Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
                     //change piece's position data
-                    pieceToMove.setPosX(target.getPosX());
-                    pieceToMove.setPosY(target.getPosY());
+                    pieceToMove.updatePosition(target.getPosX(), target.getPosY());
                     //move position to target position
                     Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
                     //remove reference to piece from source position
