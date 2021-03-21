@@ -22,6 +22,11 @@ public class KingMove implements MovePiece{
         }
     }
 
+    @Override
+    public List<Position> getValidMoves(Position position) {
+        return null;
+    }
+
     /**
      * Return a List of Points with all possible moves of Knight
      * @param piece the Knight piece
@@ -70,10 +75,5 @@ public class KingMove implements MovePiece{
         if(piece == null || piece.getColorWhite() != colorMoving)
             return true;
         return false;
-    }
-
-    @Override
-    public ArrayList<String> getValidMoves(String position) {
-        return null;
     }
 }
