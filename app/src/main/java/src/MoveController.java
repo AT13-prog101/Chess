@@ -8,10 +8,14 @@ import java.util.List;
 
 public class MoveController {
 
+    private Game game;
     private Position source;
     private Position target;
     private Player player;
     private List<Position> validMoves = new ArrayList<Position>();
+    public MoveController(Game game) {
+        this.game = game;
+    }
     /**
      * Given the 2nd input, moves the piece to the target position.
      */
@@ -24,6 +28,9 @@ public class MoveController {
                 if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
                     //save reference of source piece
                     Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
+                    if (pieceToMove.getFigure() == 'K') {
+                        game.setGameFinished(true);
+                    }
                     //change piece's position data
                     pieceToMove.updatePosition(target.getPosX(), target.getPosY());
                     //move position to target position

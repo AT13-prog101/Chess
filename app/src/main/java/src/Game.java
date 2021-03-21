@@ -13,7 +13,7 @@ public class Game {
     private final boolean PLAYER_WHITE = true;
     private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
-    private MoveController moveController = new MoveController();
+    private MoveController moveController = new MoveController(this);
     Scanner sc;
     /**
      * Game represents a match between 2 players and controls the cycle of turns
@@ -34,6 +34,7 @@ public class Game {
         while(gameFinished == false) {
             doGameCycle();
         }
+        System.out.println("Game finished");
     }
 
     /**
@@ -90,5 +91,9 @@ public class Game {
         System.out.println("White turn: Introduce Target position");
         Position pos = new Position(sc.nextLine());
         return pos;
+    }
+
+    public void setGameFinished(boolean gameFinished) {
+        this.gameFinished = gameFinished;
     }
 }
