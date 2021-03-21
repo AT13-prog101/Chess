@@ -40,6 +40,7 @@ public abstract class Piece {
     public int getInitPosY() {
         return initPosY;
     }
+
     public char getFigure() {
         return this.figure;
     }
@@ -78,7 +79,7 @@ public abstract class Piece {
     public List<Position> getValidMoves(Position position) {
         List<Position> validMoves = new ArrayList<Position>();
         for (MovePiece movePiece : moveTypes) {
-            validMoves.addAll(movePiece.getValidMoves(position));
+            validMoves.addAll(movePiece.getPossibleMoves(this));
         }
         return validMoves;
     }
