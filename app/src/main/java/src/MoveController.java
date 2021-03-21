@@ -2,6 +2,7 @@ package src;
 
 import src.Pieces.Piece;
 
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,20 +10,26 @@ public class MoveController {
 
     private Position source;
     private Position target;
-    private Player player1;
-    private Player player2;
+    private Player player;
     private List<Position> validMoves = new ArrayList<Position>();
     /**
      * Given the 2nd input, moves the piece to the target position.
      */
     public void makeAMove(Position target, Player player) {
         this.target = target;
-        Piece toMove = Chessboard.board[target.getPosY()][target.getPosX()];
+        this.player = player;
+        //Search the target position in the list of valid moves of the piece to move
             for (int i = 0; i < validMoves.size(); i++) {
                 Position pos = validMoves.get(i);
-                if (target.getPosY() == pos.getPosY() && pos.getPosX() == pos.getPosX()) {
-                    Piece piece = Chessboard.board[source.getPosY()][source.getPosX()];
-                    Chessboard.board[target.getPosY()][target.getPosX()] = piece;
+                if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
+                    //save reference of source piece
+                    Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
+                    //change piece's position data
+                    pieceToMove.setPosX(target.getPosX());
+                    pieceToMove.setPosY(target.getPosY());
+                    //move position to target position
+                    Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
+                    //remove reference to piece from source position
                     Chessboard.board[source.getPosY()][source.getPosX()] = null;
                 }
             }
@@ -33,9 +40,15 @@ public class MoveController {
      */
     public List<Position> getValidMoves(Position source, Player player) {
         this.source = source;
-        this.player1 = player;
+        this.player = player;
         Piece piece = Chessboard.board[source.getPosY()][source.getPosX()];
-        validMoves = piece.getValidMoves(source);
-        return validMoves;
+        if (player.isWhite == piece.getColorWhite()) {
+            validMoves = piece.getValidMoves();
+            return validMoves;
+        }
+        else {
+            validMoves = null;
+            return validMoves;
+        }
     }
 }

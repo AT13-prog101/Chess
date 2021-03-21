@@ -1,5 +1,6 @@
 package src;
 
+import org.checkerframework.checker.units.qual.A;
 import src.Pieces.Piece;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,9 @@ public class KnightMove implements MovePiece{
      */
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
-
+        movePositions = new ArrayList<>();
         int[] xKnightMoves = {2, 1, -1, -2, -2, -1, 1, 2};
-        int[] yKnightMoves = {1, 2, 2, 1, -1, -2, -2, -1};
+        int[] yKnightMoves = {-1, -2, -2, -1, 1, 2, 2, 1};
 
         int xActPos = piece.getInitPosX();
         int yActPos = piece.getInitPosY();
@@ -24,8 +25,8 @@ public class KnightMove implements MovePiece{
         for(int i = 0; i < xKnightMoves.length ; i++) {
             int xPosition = xActPos + xKnightMoves[i];
             int yPosition = yActPos + yKnightMoves[i];
-            if (0 < xPosition && 0 < yPosition &&xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
-                if(isSpaceEmpty(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
+            if (0 <= xPosition && 0 <= yPosition && xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
+                if(isSpaceEmpty(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
                     movePositions.add(new Position(xPosition, yPosition));
                 }
             }
