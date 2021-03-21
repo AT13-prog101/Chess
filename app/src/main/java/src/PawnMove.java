@@ -1,57 +1,65 @@
 package src;
 
 import src.Pieces.Piece;
-
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PawnMove implements MovePiece{
-    List<Point> movePoints = new ArrayList<Point>();
+    private List<Position> movePositions = new ArrayList<>();
 
-    public void move(int posX, int posY, Piece piece) {
-        if(isMoveValid(posX, posY)) {
-            piece.setPosY(posY);
-            piece.setPosX(posX);
-            piece.setIsMoved(true);
-            movePoints = new ArrayList<Point>();
-            if(piece.getInitPosY() == 0 || piece.getInitPosY() < 8)
-                promotePawn();
-        }
-    }
-
-    public void possibleMoves(int[][] chessBoard, Piece piece) {
-        int oneMove = 1;
-        int doubleMove = 2;
+    /**
+     * Return a List of Positions with all possible moves of Pawn
+     * @param piece the Pawn piece
+     * @return movePoints List of Points of moves
+     */
+    public List<Position> getPossibleMoves(Piece piece) {
+        int oneMove = piece.getInitPosY() + 1;
+        int doubleMove = piece.getInitPosY() + 2;
+        int xDiagonalMLeft = piece.getInitPosX() - 1;
+        int xDiagonalMRight = piece.getInitPosX() + 1;
+        int yDiagonalM = piece.getInitPosY() -1;
         if(piece.getColorWhite()) {
-            oneMove = -1;
-            doubleMove = -2;
+            oneMove = piece.getInitPosY() -1;
+            doubleMove = piece.getInitPosY() -2;
+            yDiagonalM = piece.getInitPosY() + 1;
         }
         if(!piece.isMoved()) {
-            if(isSpaceEmpty(piece.getInitPosX(), piece.getInitPosY() + doubleMove, piece.getColorWhite()))
-                movePoints.add(new Point(piece.getInitPosX(), piece.getInitPosY() + doubleMove));
+            if(isSpaceEmpty(Chessboard.board[piece.getInitPosX()][doubleMove]))
+                movePositions.add(new Position(piece.getInitPosX(), doubleMove));
         }
-        if(0 <= (piece.getInitPosY() + oneMove) && (piece.getInitPosY() + oneMove) < chessBoard.length)
-            movePoints.add(new Point(piece.getInitPosX(), piece.getInitPosY() + oneMove));
+        if(isSpaceEmpty(Chessboard.board[piece.getInitPosX()][oneMove])) {
+            if(0 <= (piece.getInitPosY() + oneMove) && (piece.getInitPosY() + oneMove) < Chessboard.DIMENSION)  {
+                movePositions.add(new Position(piece.getInitPosX(), oneMove));
+            }
+        }
+        if(isSpaceWithEnemy(Chessboard.board[xDiagonalMLeft][yDiagonalM], piece.getColorWhite())) {
+            movePositions.add(new Position(xDiagonalMLeft, yDiagonalM));
+        }
+        if(isSpaceWithEnemy(Chessboard.board[xDiagonalMRight][yDiagonalM], piece.getColorWhite())) {
+            movePositions.add(new Position(xDiagonalMRight, yDiagonalM));
+        }
+        return movePositions;
     }
 
-    public boolean isMoveValid(int xDest, int yDest) {
-        for (Point availableMove: movePoints) {
-            if (availableMove.getX() == xDest && availableMove.getY() == yDest)
-                return true;
-        }
+    /**
+     *  Verify if the space of destination is free from piece of the same color or is empty.
+     * @param piece is the piece in the possible position.
+     * @return true is space is empty or has a piece of different color, false if has piece of same color
+     */
+    private boolean isSpaceEmpty(Piece piece) {
+        return piece == null;
+    }
+
+    /**
+     *  Verify if there are enemy pieces in diagonal of Pawn
+     * @param piece is the piece in the possible position
+     * @param isWhite the color of the Pawn
+     * @return true if there is an enemy, false if not
+     */
+    private boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
+        if(piece.getColorWhite() == isWhite)
+            return true;
         return false;
     }
 
-    public void promotePawn() {
-
-    }
-
-    public boolean isSpaceEmpty(int xPosition, int yPosition, boolean isWhite) {
-        return true;
-    }
-
-    public ArrayList<Position> getValidMoves(Position position) {
-        return  null;
-    }
 }
