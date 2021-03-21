@@ -21,13 +21,13 @@ public class King extends Piece {
      *
      * @return life of king
      */
-    public boolean getAlive(){return alive;}
+    public boolean getLive(){return alive;}
 
     /** Change status life of king
      *
      * @return void
      */
-    public void setAlive(boolean changeStatusLife){ this.alive=changeStatusLife;}
+    public void setLive(boolean changeStatusLife){ this.alive=changeStatusLife;}
 
     /** Return figure of king
      *
