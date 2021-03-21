@@ -77,4 +77,7 @@ public class LinedMove implements MovePiece {
         }
         return false;
     }
+    public ArrayList<Position> getPossibleMoves(Piece piece) {
+        return  null;
+    }
 }
