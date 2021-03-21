@@ -3,6 +3,7 @@ package src;
 import src.Pieces.Piece;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SpecialMove implements MovePiece{
     //Castling move
@@ -10,7 +11,10 @@ public class SpecialMove implements MovePiece{
 
     }
 
-
+    @Override
+    public List<Position> getValidMoves(Position position, boolean colorPiece) {
+        return null;
+    }
 
     public void castling(Piece king, Piece rook) {
         int posKing;
