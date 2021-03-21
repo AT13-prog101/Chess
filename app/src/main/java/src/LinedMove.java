@@ -1,60 +1,65 @@
 package src;
 
 import src.Pieces.Piece;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LinedMove implements MovePiece {
-    List<Point> movePoints = new ArrayList<Point>();
+    List<Position> movePoints = new ArrayList<Position>();
 
+    @Override
     public void move(int posX, int posY, Piece piece) {
         if (isMoveValid(posX, posY)) {
             piece.setPosY(posY);
             piece.setPosX(posX);
-            movePoints = new ArrayList<Point>();
+            movePoints = new ArrayList<Position>();
         }
     }
 
-    public void possibleMoves(Piece[][] board, Piece piece) {
-        boolean oppositeColor = !piece.getColorWhite();
+    @Override
+    public List<Position> getValidMoves(Position position, boolean colorPiece) {
+        boolean oppositeColor = !colorPiece;
         //Down
-        int posY = piece.getInitPosY();
-        int posX = piece.getInitPosX();
-        for (int i = posX + 1; i < board.length; i++) {
-            if (!isAccessiblePosition(i,posY,piece.getColorWhite())){
+        int posY = position.getPosY();
+        int posX = position.getPosX();
+        for (int i = posX + 1; i < Chessboard.DIMENSION; i++) {
+            if (!isAccessiblePosition(i, posY, colorPiece)) {
                 break;
             }
         }
         //Up
         for (int i = 0; i < posX; i++) {
-            if (!isAccessiblePosition(i,posY,piece.getColorWhite())){
+            if (!isAccessiblePosition(i, posY, colorPiece)) {
                 break;
             }
         }
         //right
-        for (int i = posY + 1; i < board.length; i++) {
-            if (!isAccessiblePosition(posX , i,piece.getColorWhite())){
+        for (int i = posY + 1; i < Chessboard.DIMENSION; i++) {
+            if (!isAccessiblePosition(posX, i, colorPiece)) {
                 break;
             }
         }
         //Left
         for (int i = 0; i < posY; i++) {
-            if (!isAccessiblePosition(posX , i,piece.getColorWhite())){
+            if (!isAccessiblePosition(posX, i, colorPiece)) {
                 break;
             }
         }
+        return movePoints;
     }
 
     /**
      * Verify if the destination selected for the player is valid
+     *
      * @param xDest
      * @param yDest
      * @return true if move is possible, false if move is no possible
      */
     public boolean isMoveValid(int xDest, int yDest) {
-        for (Point availableMove : movePoints) {
-            if (availableMove.getX() == xDest && availableMove.getY() == yDest)
+        for (Position availableMove : movePoints) {
+            if (availableMove.getPosX() == xDest && availableMove.getPosY() == yDest)
                 return true;
         }
         return false;
@@ -62,6 +67,7 @@ public class LinedMove implements MovePiece {
 
     /**
      * Verify if the space of destination is free from piece of the same color
+     *
      * @param posX is a position analise of Chessboard
      * @param posY is a position analise of Chessboard
      * @return boolean which say is accessible Position
@@ -70,20 +76,16 @@ public class LinedMove implements MovePiece {
         boolean oppositeColor = !colorPiece;
 
         if (Chessboard.board[posX][posY] == null) {
-            movePoints.add(new Point(posX , posY));
+            movePoints.add(new Position(posX, posY));
             return true;
         }
         if (Chessboard.board[posX][posY].getColorWhite() != oppositeColor) {
-            movePoints.add(new Point(posX , posY ));
+            movePoints.add(new Position(posX, posY));
             return false;
         }
-        if (Chessboard.board[posX ][posY].getColorWhite() == colorPiece) {
+        if (Chessboard.board[posX][posY].getColorWhite() == colorPiece) {
             return false;
         }
         return false;
-    }
-
-    public ArrayList<Position> getValidMoves(Position position) {
-        return  null;
     }
 }
