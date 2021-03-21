@@ -10,40 +10,30 @@ public class LinedMove implements MovePiece {
     List<Position> movePoints = new ArrayList<Position>();
 
     @Override
-    public void move(int posX, int posY, Piece piece) {
-        if (isMoveValid(posX, posY)) {
-            piece.setPosY(posY);
-            piece.setPosX(posX);
-            movePoints = new ArrayList<Position>();
-        }
-    }
-
-    @Override
-    public List<Position> getValidMoves(Position position, boolean colorPiece) {
-        boolean oppositeColor = !colorPiece;
+    public List<Position> getPossibleMoves(Piece piece) {
         //Down
-        int posY = position.getPosY();
-        int posX = position.getPosX();
+        int posY = piece.getInitPosY();
+        int posX = piece.getInitPosX();
         for (int i = posX + 1; i < Chessboard.DIMENSION; i++) {
-            if (!isAccessiblePosition(i, posY, colorPiece)) {
+            if (!isAccessiblePosition(i, posY, piece.getColorWhite())) {
                 break;
             }
         }
         //Up
         for (int i = 0; i < posX; i++) {
-            if (!isAccessiblePosition(i, posY, colorPiece)) {
+            if (!isAccessiblePosition(i, posY, piece.getColorWhite())) {
                 break;
             }
         }
         //right
         for (int i = posY + 1; i < Chessboard.DIMENSION; i++) {
-            if (!isAccessiblePosition(posX, i, colorPiece)) {
+            if (!isAccessiblePosition(posX, i, piece.getColorWhite())) {
                 break;
             }
         }
         //Left
         for (int i = 0; i < posY; i++) {
-            if (!isAccessiblePosition(posX, i, colorPiece)) {
+            if (!isAccessiblePosition(posX, i, piece.getColorWhite())) {
                 break;
             }
         }

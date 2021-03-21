@@ -10,41 +10,32 @@ public class DiagonalsMove implements MovePiece {
     List<Position> movePoints = new ArrayList<Position>();
 
     @Override
-    public void move(int posX, int posY, Piece piece) {
-        if (isMoveValid(posX, posY)) {
-            piece.setPosY(posY);
-            piece.setPosX(posX);
-            movePoints = new ArrayList<Position>();
-        }
-    }
-
-    @Override
-    public List<Position> getValidMoves(Position position, boolean colorPiece) {
-        int posX = position.getPosX();
-        int posY = position.getPosY();
+    public List<Position> getPossibleMoves(Piece piece) {
+        int posX = piece.getInitPosX();
+        int posY = piece.getInitPosY();
         int numberMax = Math.max(posX, posY);
         int numberMin = Math.min(posX, posY);
         //southeast (SE)
         for (int i = 1; numberMax + i < Chessboard.DIMENSION; i++) {
-            if (!isAccessiblePosition(posX + i, posY + i, colorPiece)) {
+            if (!isAccessiblePosition(posX + i, posY + i, piece.getColorWhite())) {
                 break;
             }
         }
         //northwest (NW).
         for (int i = 1; numberMin - i >= 0; i++) {
-            if (!isAccessiblePosition(posX - i, posY - i, colorPiece)) {
+            if (!isAccessiblePosition(posX - i, posY - i, piece.getColorWhite())) {
                 break;
             }
         }
         //southwest (SW)
         for (int i = 1; posX + i < Chessboard.DIMENSION && posY - i >= 0; i++) {
-            if (!isAccessiblePosition(posX + i, posY - i, colorPiece)) {
+            if (!isAccessiblePosition(posX + i, posY - i, piece.getColorWhite())) {
                 break;
             }
         }
         //northeast (NE)
         for (int i = 1; posY + i < Chessboard.DIMENSION && posX - i >= 0; i++) {
-            if (!isAccessiblePosition(posX - i, posY + i, colorPiece)) {
+            if (!isAccessiblePosition(posX - i, posY + i, piece.getColorWhite())) {
                 break;
             }
         }

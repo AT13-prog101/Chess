@@ -10,37 +10,25 @@ public class KingMove implements MovePiece {
     private List<Position> movePoints = new ArrayList<Position>();
 
     /**
-     * @param posX  Destination X
-     * @param posY  Destination Y
-     * @param piece Piece Knight
-     */
-    public void move(int posX, int posY, Piece piece) {
-        //possibleMoves(piece);
-        if (isMoveValid(posX, posY)) {
-            piece.setPosY(posY);
-            piece.setPosX(posX);
-        }
-    }
-
-    /**
      * Return a List of Points with all possible moves of Knight
      *
-     * @param colorPiece the Knight piece
+     * @param piece the Knight piece
      * @return movePoints List of Points of moves
      */
-    public List<Position> getValidMoves(Position position, boolean colorPiece) {
+    @Override
+    public List<Position> getPossibleMoves(Piece piece) {
 
         int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
         int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
 
-        int xActPos = position.getPosX();
-        int yActPos = position.getPosY();
+        int xActPos = piece.getInitPosX();
+        int yActPos = piece.getInitPosY();
 
         for (int i = 0; i < xPossiblePos.length; i++) {
             int xPosition = xActPos + xPossiblePos[i];
             int yPosition = yActPos + yPossiblePos[i];
             if (0 <= xPosition && 0 <= yPosition && xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
-                if (isPositionAvailable(Chessboard.board[xPosition][yPosition], colorPiece)) {
+                if (isPositionAvailable(Chessboard.board[xPosition][yPosition], piece.getColorWhite())) {
                     movePoints.add(new Position(xPosition, yPosition));
                 }
             }
