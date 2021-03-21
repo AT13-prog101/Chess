@@ -71,12 +71,5 @@ public class DiagonalsMove implements MovePiece {
         }
         return false;
     }
-
-    public ArrayList<Position> getValidMoves(Position position) {
-        return  null;
-    }
-    public ArrayList<Position> getPossibleMoves(Piece piece) {
-        return  null;
-    }
 }
 
