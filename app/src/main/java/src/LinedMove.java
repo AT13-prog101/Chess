@@ -80,4 +80,7 @@ public class LinedMove implements MovePiece {
     public ArrayList<Position> getPossibleMoves(Piece piece) {
         return  null;
     }
+    public ArrayList<Position> getPossibleMoves(Piece piece) {
+        return  null;
+    }
 }
