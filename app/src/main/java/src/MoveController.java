@@ -28,8 +28,10 @@ public class MoveController {
                 if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
                     //save reference of source piece
                     Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
-                    if (pieceToMove.getFigure() == 'K') {
-                        game.setGameFinished(true);
+                    if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
+                        if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
+                            game.setGameFinished(true);
+                        }
                     }
                     //change piece's position data
                     pieceToMove.updatePosition(target.getPosX(), target.getPosY());
