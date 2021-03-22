@@ -1,7 +1,5 @@
 package src;
 
-import java.security.spec.ECField;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -13,7 +11,6 @@ public class Game {
     private final boolean PLAYER_WHITE = true;
     private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
-    private MoveController moveController = new MoveController(this);
     Scanner sc;
     /**
      * Game represents a match between 2 players and controls the cycle of turns
@@ -30,67 +27,46 @@ public class Game {
      */
     public void gameInit() {
         chessboard.printBoard();
-        sc = new Scanner(System.in);
-        while(gameFinished == false) {
-            doGameCycle();
+        while (!gameFinished) {
+            if (chessboard.kingTakenBy() != null) {
+                gameFinished = true;
+                System.out.println("Game finished\nWinner: " + chessboard.kingTakenBy().getName());
+            }
+            playerTurn(playerWhite);
+            playerTurn(playerBlack);
         }
-        System.out.println("Game finished");
     }
-
-    /**
-     * Iterates the turns
-     */
-    public void doGameCycle() {
-        if(!chessboard.isCheckmate()) {
-            if(turn == true) {
-                try {
-                    Position sourcePosition = inputSourceWhite(sc);
-                    printValidMoves(moveController.getValidMoves(sourcePosition, playerWhite));
-                    Position targetPosition = inputTargetWhite(sc);
-                    moveController.makeAMove(targetPosition, playerWhite);
-                    this.turn = false;
-                    chessboard.printBoard();
-                } catch (Exception e) {
-                    System.out.println("Wrong input");
-                }
+    public void playerTurn(Player player) {
+        boolean hasMoved = false;
+        while(hasMoved == false) {
+            if (player.isWhite) {
+                System.out.println("White turn: make a Move");
+            } else{
+                System.out.println("Black turn: make a Move");
+            }
+            Scanner sc = new Scanner(System.in);
+            String input = sc.nextLine();
+            PositionValidator positionValidator = new PositionValidator(input);
+            Position toGetpossibles = positionValidator.getPositionToGetPossibles();
+            Position sourceMove = positionValidator.getSource();
+            Position targetMove = positionValidator.getTarget();
+            if(toGetpossibles != null && chessboard.thereIsPiece(toGetpossibles)) {
+                chessboard.printValidMoves(chessboard.getValidMoves(toGetpossibles, player));
             } else {
-                try {
-                    Position sourcePosition = inputSourceBlack(sc);
-                    printValidMoves(moveController.getValidMoves(sourcePosition, playerBlack));
-                    Position targetPosition = inputTargetBlack(sc);
-                    moveController.makeAMove(targetPosition, playerBlack);
-                    this.turn = true;
-                    chessboard.printBoard();
-                } catch (Exception e) {
-                    System.out.println("Wrong input");
+                if (sourceMove != null && targetMove != null && chessboard.thereIsPiece(sourceMove)) {
+                    boolean moved = chessboard.movePiece(sourceMove, targetMove, player);
+                    if (moved == true) {
+                        chessboard.printBoard();
+                        hasMoved = true;
+                    } else {
+                        System.out.println("Invalid Input. Try again");
+                    }
+                }
+                else {
+                    System.out.println("Invalid Input. Try again");
                 }
             }
         }
-    }
-    public void printValidMoves(List<Position> validMoves) {
-        for (Position pos : validMoves) {
-            System.out.println(pos.getCharAlg() + " ");
-        }
-    }
-    public Position inputSourceBlack(Scanner sc) {
-        System.out.println("Black turn: Introduce Source position");
-        Position pos = new Position(sc.nextLine());
-        return pos;
-    }
-    public Position inputTargetBlack(Scanner sc) {
-        System.out.println("Black turn: Introduce Target position:");
-        Position pos = new Position(sc.nextLine());
-        return pos;
-    }
-    public Position inputSourceWhite(Scanner sc) {
-        System.out.println("White turn: Introduce Source position");
-        Position pos = new Position(sc.nextLine());
-        return pos;
-    }
-    public Position inputTargetWhite(Scanner sc) {
-        System.out.println("White turn: Introduce Target position");
-        Position pos = new Position(sc.nextLine());
-        return pos;
     }
 
     public void setGameFinished(boolean gameFinished) {

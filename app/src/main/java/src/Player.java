@@ -15,4 +15,7 @@ public class Player {
     public boolean isWhite() {
         return isWhite;
     }
+    public String getName() {
+        return name;
+    }
 }

@@ -11,7 +11,9 @@ plugins {
     id 'application'
     id 'jacoco'
 }
-
+run{
+    standardInput = System.in
+}
 repositories {
     // Use JCenter for resolving dependencies.
     mavenCentral()
