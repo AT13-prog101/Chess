@@ -25,7 +25,9 @@ public class MoveController {
         //Search the target position in the list of valid moves of the piece to move
             for (int i = 0; i < validMoves.size(); i++) {
                 Position pos = validMoves.get(i);
-                if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
+                //if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
+                if (target.equals(pos)) {
+                    System.out.println("XXX");
                     //save reference of source piece
                     Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
                     if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
