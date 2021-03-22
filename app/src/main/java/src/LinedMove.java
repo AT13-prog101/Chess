@@ -1,7 +1,6 @@
 package src;
 
 import src.Pieces.Piece;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class LinedMove implements MovePiece {
             }
         }
         //Up
-        for (int i = 0; i < posX; i++) {
+        for (int i = posX-1; i > 0; i--) {
             if (!isAccessiblePosition(i, posY, piece.getColorWhite())) {
                 break;
             }
@@ -31,7 +30,7 @@ public class LinedMove implements MovePiece {
             }
         }
         //Left
-        for (int i = 0; i < posY; i++) {
+        for (int i = posY-1; i>0; i--) {
             if (!isAccessiblePosition(posX, i, piece.getColorWhite())) {
                 break;
             }
@@ -61,14 +60,14 @@ public class LinedMove implements MovePiece {
      * @param posY is a position analise of Chessboard
      * @return boolean which say is accessible Position
      */
-    public boolean isAccessiblePosition(int posX, int posY, boolean colorPiece) {
+    public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
         boolean oppositeColor = !colorPiece;
 
         if (Chessboard.board[posX][posY] == null) {
             movePoints.add(new Position(posX, posY));
             return true;
         }
-        if (Chessboard.board[posX][posY].getColorWhite() != oppositeColor) {
+        if (Chessboard.board[posX][posY].getColorWhite() != colorPiece) {
             movePoints.add(new Position(posX, posY));
             return false;
         }
