@@ -5,38 +5,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PawnMove implements MovePiece{
-    private List<Position> movePositions = new ArrayList<>();
-
     /**
      * Return a List of Positions with all possible moves of Pawn
      * @param piece the Pawn piece
      * @return movePoints List of Points of moves
      */
     public List<Position> getPossibleMoves(Piece piece) {
+        List<Position> movePositions = new ArrayList<>();
         int oneMove = piece.getInitPosY() + 1;
         int doubleMove = piece.getInitPosY() + 2;
         int xDiagonalMLeft = piece.getInitPosX() - 1;
         int xDiagonalMRight = piece.getInitPosX() + 1;
-        int yDiagonalM = piece.getInitPosY() -1;
         if(piece.getColorWhite()) {
             oneMove = piece.getInitPosY() -1;
             doubleMove = piece.getInitPosY() -2;
-            yDiagonalM = piece.getInitPosY() + 1;
         }
         if(!piece.isMoved()) {
-            if(isSpaceEmpty(Chessboard.board[piece.getInitPosX()][doubleMove]))
+            if(isSpaceEmpty(Chessboard.board[doubleMove][piece.getInitPosX()]))
                 movePositions.add(new Position(piece.getInitPosX(), doubleMove));
         }
-        if(isSpaceEmpty(Chessboard.board[piece.getInitPosX()][oneMove])) {
-            if(0 <= (piece.getInitPosY() + oneMove) && (piece.getInitPosY() + oneMove) < Chessboard.DIMENSION)  {
+        if(isSpaceEmpty(Chessboard.board[oneMove][piece.getInitPosX()])) {
+            if(0 <= oneMove && oneMove < Chessboard.DIMENSION)  {
                 movePositions.add(new Position(piece.getInitPosX(), oneMove));
             }
         }
-        if(isSpaceWithEnemy(Chessboard.board[xDiagonalMLeft][yDiagonalM], piece.getColorWhite())) {
-            movePositions.add(new Position(xDiagonalMLeft, yDiagonalM));
+        if(0 <= oneMove && oneMove < Chessboard.DIMENSION && 0 <= xDiagonalMLeft && xDiagonalMLeft < Chessboard.DIMENSION) {
+            if(isSpaceWithEnemy(Chessboard.board[oneMove][xDiagonalMLeft], piece.getColorWhite())) {
+                movePositions.add(new Position(xDiagonalMLeft, oneMove));
+            }
         }
-        if(isSpaceWithEnemy(Chessboard.board[xDiagonalMRight][yDiagonalM], piece.getColorWhite())) {
-            movePositions.add(new Position(xDiagonalMRight, yDiagonalM));
+        if(0 <= oneMove && oneMove < Chessboard.DIMENSION && 0 <= xDiagonalMRight && xDiagonalMRight < Chessboard.DIMENSION) {
+            if(isSpaceWithEnemy(Chessboard.board[oneMove][xDiagonalMRight], piece.getColorWhite())) {
+                movePositions.add(new Position(xDiagonalMRight, oneMove));
+            }
         }
         return movePositions;
     }
@@ -57,11 +58,8 @@ public class PawnMove implements MovePiece{
      * @return true if there is an enemy, false if not
      */
     private boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if(piece.getColorWhite() == isWhite)
+        if(piece != null && piece.getColorWhite() != isWhite)
             return true;
         return false;
-    }
-    public ArrayList<Position> getValidMoves(Position position) {
-        return  null;
     }
 }

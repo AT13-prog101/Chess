@@ -75,6 +75,11 @@ public abstract class Piece {
         return color;
     }
 
+    public void updatePosition(int x, int y) {
+        this.initPosX = x;
+        this.initPosY = y;
+        this.isMoved = true;
+    }
     public List<Position> getValidMoves() {
         List<Position> validMoves = new ArrayList<Position>();
         for (MovePiece movePiece : moveTypes) {
