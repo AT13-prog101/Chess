@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KnightMove implements MovePiece{
-    private List<Position> movePositions = new ArrayList<>();
 
     /**
      * Return a List of Positions with all possible moves of Knight
@@ -15,7 +14,7 @@ public class KnightMove implements MovePiece{
      */
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
-        movePositions = new ArrayList<>();
+        List<Position> movePositions = new ArrayList<>();
         int[] xKnightMoves = {2, 1, -1, -2, -2, -1, 1, 2};
         int[] yKnightMoves = {-1, -2, -2, -1, 1, 2, 2, 1};
 
@@ -25,8 +24,9 @@ public class KnightMove implements MovePiece{
         for(int i = 0; i < xKnightMoves.length ; i++) {
             int xPosition = xActPos + xKnightMoves[i];
             int yPosition = yActPos + yKnightMoves[i];
-            if (0 <= xPosition && 0 <= yPosition && xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
-                if(isSpaceEmpty(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
+            if ( isInLimits(xPosition) && isInLimits(yPosition)) {
+                if(isSpaceEmpty(Chessboard.board[yPosition][xPosition]) ||
+                isSpaceWithEnemy(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
                     movePositions.add(new Position(xPosition, yPosition));
                 }
             }
@@ -37,24 +37,37 @@ public class KnightMove implements MovePiece{
     /**
      *  Verify if the space of destination is free from piece of the same color or is empty.
      * @param piece is the piece in the possible position.
-     * @param isWhite is the color of the Knight that is moving
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
-    private boolean isSpaceEmpty(Piece piece, boolean isWhite) {
-        if(piece == null || piece.getColorWhite() != isWhite)
+    public boolean isSpaceEmpty(Piece piece) {
+        if(piece == null)
             return true;
         return false;
     }
 
     /**
-     *  Verify is destiny space is occupied with Enemy piece
-     * @param piece Knight piece
-     * @param isWhite Knight color
-     * @return true if space with enemy piece, false if not
+     *  Verify if Destiny position has an enemy
+     * @param piece
+     * @param isWhite
+     * @return
      */
     public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if(piece.getColorWhite() == isWhite)
+        if(piece.getColorWhite() != isWhite)
             return true;
+        else
+            return false;
+    }
+
+    /**
+     *  Verify is the Position is inside the Limits of the Chessboard
+     * @param position
+     * @return true if its in the limits, false if not
+     */
+    @Override
+    public boolean isInLimits(int position) {
+        if(0 <= position && position < Chessboard.DIMENSION) {
+            return true;
+        }
         return false;
     }
 }
