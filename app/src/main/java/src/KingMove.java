@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KingMove implements MovePiece {
-    private List<Position> movePoints = new ArrayList<Position>();
+    private List<Position> movePoints;
 
     /**
      * Return a List of Points with all possible moves of Knight
@@ -17,7 +17,7 @@ public class KingMove implements MovePiece {
      */
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
-
+        movePoints = new ArrayList<Position>();
         int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
         int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
 
