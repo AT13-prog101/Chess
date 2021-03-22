@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagonalsMove implements MovePiece {
-    List<Position> movePoints = new ArrayList<Position>();
+    List<Position> movePoints;
 
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
+        movePoints = new ArrayList<Position>();
         int posX = piece.getInitPosX();
         int posY = piece.getInitPosY();
         int numberMax = Math.max(posX, posY);
