@@ -12,35 +12,36 @@ public class Castling implements MovePiece{
         List<Position> movePositions = new ArrayList<>();
         int xPosQ = 0;
         int xPosK = Chessboard.DIMENSION;
+        int limitQCastling = 3;
+        int LimitKCastling = 2;
 
         if(piece.getColorWhite()) {
 
         }
         if(!piece.isMoved()) {
-            //Castling King
+
             int checkEmpty = 0;
             if(!isHaveMoved(Chessboard.board[piece.getInitPosY()][xPosK])) {
-                for(int i = 1; i <= 2; i++) {
+                for(int i = 1; i <= LimitKCastling; i++) {
                     if(!isSpaceEmpty(Chessboard.board[piece.getInitPosY()][xPosK - i])) {
                         break;
                     }
                     checkEmpty++;
                 }
-                if(checkEmpty == 2)
+                if(checkEmpty == LimitKCastling)
                     movePositions.add(new Position(xPosK - 1, piece.getInitPosY()));
             }
 
-            //Castling Queen
             if(!isHaveMoved(Chessboard.board[piece.getInitPosY()][xPosQ])) {
                 checkEmpty = 0;
-                for(int i = 1; i <= 3; i++) {
+                for(int i = 1; i <= limitQCastling; i++) {
                     if(!isSpaceEmpty(Chessboard.board[piece.getInitPosY()][xPosQ + i])) {
                         break;
                     }
                     checkEmpty++;
                 }
-                if(checkEmpty == 3)
-                    movePositions.add(new Position(xPosQ + 2, piece.getInitPosY()));
+                if(checkEmpty == limitQCastling)
+                    movePositions.add(new Position(xPosQ + LimitKCastling, piece.getInitPosY()));
             }
         }
         return movePositions;
