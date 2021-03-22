@@ -1,6 +1,5 @@
 package src;
 import src.Pieces.Piece;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,21 +54,25 @@ public class DiagonalsMove implements MovePiece {
      * @param posY is a position analise of Chessboard
      * @return boolean which say is accessible Position
      */
-    public boolean isAccessiblePosition(int posX, int posY, boolean colorPiece) {
+    public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
         boolean oppositeColor = !colorPiece;
 
         if (Chessboard.board[posX][posY] == null) {
             movePoints.add(new Position(posX, posY));
             return true;
         }
-        if (Chessboard.board[posX][posY].getColorWhite() != oppositeColor) {
+        if (Chessboard.board[posX][posY].getColorWhite() != colorPiece) {
+            System.out.println(Chessboard.board[posX][posY].getColorWhite()+"sss"+colorPiece);
+            System.out.println(posX+"XXXX"+posY);
             movePoints.add(new Position(posX, posY));
             return false;
         }
         if (Chessboard.board[posX][posY].getColorWhite() == colorPiece) {
+            System.out.println("YYY");
             return false;
         }
         return false;
     }
 }
+
 
