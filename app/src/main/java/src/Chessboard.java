@@ -9,7 +9,10 @@ public class Chessboard {
     public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
-    boolean turn;
+    Position target;
+    Position source;
+    Player player;
+    List<Position> validMoves;
 
     /**
      * Chessboard initializes the pieces from its Team instances
@@ -48,5 +51,14 @@ public class Chessboard {
      */
     public boolean isCheckmate () {
         return false;
+    }
+    /**
+     *
+     */
+    void moveAPiece(Position source,Position target){
+        Piece pieceToMove =Chessboard.board[source.getPosY()][source.getPosX()];
+        pieceToMove.updatePosition(target.getPosX(), target.getPosY());
+        Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
+        Chessboard.board[source.getPosY()][source.getPosX()] = null;
     }
 }

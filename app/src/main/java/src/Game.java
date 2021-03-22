@@ -47,7 +47,8 @@ public class Game {
                     Position sourcePosition = inputSourceWhite(sc);
                     printValidMoves(moveController.getValidMoves(sourcePosition, playerWhite));
                     Position targetPosition = inputTargetWhite(sc);
-                    moveController.makeAMove(targetPosition, playerWhite);
+                    moveController.validateAMove(targetPosition, playerWhite);
+                    chessboard.moveAPiece(sourcePosition,targetPosition);
                     this.turn = false;
                     chessboard.printBoard();
                 } catch (Exception e) {
@@ -58,7 +59,7 @@ public class Game {
                     Position sourcePosition = inputSourceBlack(sc);
                     printValidMoves(moveController.getValidMoves(sourcePosition, playerBlack));
                     Position targetPosition = inputTargetBlack(sc);
-                    moveController.makeAMove(targetPosition, playerBlack);
+                    moveController.validateAMove(targetPosition, playerBlack);
                     this.turn = true;
                     chessboard.printBoard();
                 } catch (Exception e) {

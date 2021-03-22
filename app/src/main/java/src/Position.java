@@ -49,4 +49,5 @@ public class Position {
         return posX == position.posX && posY == position.posY && Objects.equals(charAlg, position.charAlg);
     }
 
+
 }
