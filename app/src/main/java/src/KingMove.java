@@ -35,21 +35,6 @@ public class KingMove implements MovePiece {
         return movePoints;
     }
 
-    @Override
-    public boolean isInLimits(int position) {
-        return false;
-    }
-
-    @Override
-    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        return false;
-    }
-
-    @Override
-    public boolean isSpaceEmpty(Piece piece) {
-        return false;
-    }
-
     /**
      * Verify if the destination selected for the player is valid
      *

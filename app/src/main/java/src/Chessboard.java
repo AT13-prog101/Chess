@@ -102,4 +102,11 @@ public class Chessboard {
     public boolean isCheckmate () {
         return false;
     }
+
+    /**
+     * setPiece with a position and piece
+     */
+    public static void setPiece(Position position, Piece piece) {
+        Chessboard.board[position.getPosX()][position.getPosY()] = piece;
+    }
 }
