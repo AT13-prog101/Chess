@@ -18,14 +18,14 @@ public class BishopTest {
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false,3,3));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 7, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 6, 1));
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false,2,3));
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, true,5,6));
         /**
          *   ---------------------------------------
-         * 8 |    |    |    |    |    |    |    | WK |
+         * 8 |    |    |    |    |    |    |    |    |
          *   |---------------------------------------
-         * 7 |    |    |    |    |    |    |    |    |
+         * 7 |    |    |    |    |    |    | WK |    |
          *   |---------------------------------------
          * 6 |    |    |    |    |    |    |    |    |
          *   |---------------------------------------
@@ -42,14 +42,30 @@ public class BishopTest {
          *     a    b    c    d    e    f    g    h
          */
     }
+
     @Test
-    public void getValidMovesBishop_d4_eightValidMoves() {
+    public void getValidMovesBishop_a8_threeValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 0, 0));
+        Piece bishop = Chessboard.board[0][0];
+        List<Position> validMoves = bishop.getValidMoves();
+        String expected = "b7 c6 d5 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValidMovesBishop_d4_sevenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 3, 4));
         Piece bishop = Chessboard.board[4][3];
         List<Position> validMoves = bishop.getValidMoves();
-        String expected = "e3 c5 e5 f6 g7 c3 b2 a1 ";
+        String expected = "e3 c5 e5 f6 c3 b2 a1 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";

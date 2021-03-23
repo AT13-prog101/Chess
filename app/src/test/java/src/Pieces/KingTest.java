@@ -38,7 +38,7 @@ public class KingTest {
         chessboardScenario();
         Piece king = Chessboard.board[4][3];
         List<Position> validMoves = king.getValidMoves();
-        String expected = "e5 c5 d5 c4 e4 d3 " + "";
+        String expected = "e5 c5 d5 c4 e4 d3 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
@@ -54,7 +54,7 @@ public class KingTest {
         Piece king = Chessboard.board[0][7];
 
         List<Position> validMoves = king.getValidMoves();
-        String expected = "g7 g8 h7 " + "";
+        String expected = "g7 g8 h7 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
@@ -70,7 +70,7 @@ public class KingTest {
         Piece king = Chessboard.board[0][0];
 
         List<Position> validMoves = king.getValidMoves();
-        String expected = "b7 b8 a7 " + "";
+        String expected = "b7 b8 a7 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
