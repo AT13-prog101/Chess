@@ -106,7 +106,7 @@ public class Chessboard {
     /**
      * setPiece with a position and piece
      */
-    public static void setPiece(Position position, Piece piece) {
-        Chessboard.board[position.getPosX()][position.getPosY()] = piece;
+    public static void setPiece(Piece piece) {
+        Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
     }
 }
