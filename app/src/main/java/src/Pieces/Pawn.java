@@ -8,6 +8,7 @@ public class Pawn extends Piece{
     private final String WHITE_PAWN_DIR = "src/main/resources/WhitePawn.png";
     public Pawn(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
+<<<<<<< HEAD
         if (white == true) {
             setColor('W');
             setImage(WHITE_PAWN_DIR);
@@ -16,6 +17,9 @@ public class Pawn extends Piece{
             setColor('B');
             setImage(BLACK_PAWN_DIR);
         }
+=======
+
+>>>>>>> dev
         addMoveType(new PawnMove());
     }
     public char getFigure() {

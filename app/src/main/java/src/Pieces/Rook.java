@@ -8,6 +8,7 @@ public class Rook extends Piece{
     private final String WHITE_ROOK_DIR = "src/main/resources/WhiteRook.png";
     public Rook(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
+<<<<<<< HEAD
         if (white == true) {
             setColor('W');
             setImage(WHITE_ROOK_DIR);
@@ -16,6 +17,8 @@ public class Rook extends Piece{
             setColor('B');
             setImage(BLACK_ROOK_DIR);
         }
+=======
+>>>>>>> dev
         addMoveType(new LinedMove());
     }
     public char getFigure() {

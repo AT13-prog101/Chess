@@ -153,4 +153,11 @@ public class Chessboard extends JFrame {
     public boolean isCheckmate () {
         return false;
     }
+
+    /**
+     * setPiece with a position and piece
+     */
+    public static void setPiece(Piece piece) {
+        Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
+    }
 }
