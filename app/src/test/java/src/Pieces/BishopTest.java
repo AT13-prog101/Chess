@@ -7,7 +7,17 @@ import static org.junit.Assert.*;
 public class BishopTest {
 
     @Test
-    public void getFigureKing_choseKing_B() {
+    public void bishopIsWhite_inputTrue_W() {
+        int inicialPocionX = 4;
+        int inicialPocionY = 5;
+        Bishop bishop = new Bishop(true, inicialPocionX, inicialPocionY);
+        char actual = bishop.getColor();
+        char expected = 'W';
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getFigureKing_choseBishop_B() {
         int inicialPocionX = 7;
         int inicialPocionY = 0;
         Bishop bishop = new Bishop(true, inicialPocionX, inicialPocionY);
