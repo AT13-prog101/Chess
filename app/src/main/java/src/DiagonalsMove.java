@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagonalsMove implements MovePiece {
-    List<Position> movePoints = new ArrayList<Position>();
+    List<Position> movePoints;
 
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
+        movePoints = new ArrayList<Position>();
         int posX = piece.getInitPosX();
         int posY = piece.getInitPosY();
         int numberMax = Math.max(posX, posY);
@@ -55,15 +56,15 @@ public class DiagonalsMove implements MovePiece {
      * @param posY is a position analise of Chessboard
      * @return boolean which say is accessible Position
      */
-    public boolean isAccessiblePosition(int posX, int posY, boolean colorPiece) {
+    public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
         boolean oppositeColor = !colorPiece;
 
         if (Chessboard.board[posX][posY] == null) {
-            movePoints.add(new Position(posX, posY));
+            movePoints.add(new Position(posY, posX));
             return true;
         }
-        if (Chessboard.board[posX][posY].getColorWhite() != oppositeColor) {
-            movePoints.add(new Position(posX, posY));
+        if (Chessboard.board[posX][posY].getColorWhite() != colorPiece) {
+            movePoints.add(new Position(posY, posX));
             return false;
         }
         if (Chessboard.board[posX][posY].getColorWhite() == colorPiece) {
