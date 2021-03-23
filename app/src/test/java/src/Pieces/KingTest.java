@@ -8,16 +8,17 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class KingTest {
+
     private void chessboardScenario() {
         Chessboard chessboard = new Chessboard();
         int dimensionBoard = 8;
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        chessboard.board[4][4] = getPieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4);
-        chessboard.board[5][4] = getPieceFactory.getPiece(TypePiece.HORSE, false, 5, 4);
-        chessboard.board[5][2] = getPieceFactory.getPiece(TypePiece.PAWN, false, 2, 5);
-        chessboard.board[3][2] = getPieceFactory.getPiece(TypePiece.ROOK, true, 2, 3);
-        chessboard.board[4][3] = getPieceFactory.getPiece(TypePiece.KING, false, 3, 4);
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, false, 4, 5));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false, 2, 5));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, true, 2, 3));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, false, 3, 4));
 
         /**
          * 8 |
