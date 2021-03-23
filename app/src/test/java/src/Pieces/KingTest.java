@@ -5,6 +5,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class KingTest {
+    
+    @Test
+    public void kingIsBlack_inputTrue_B() {
+        int inicialPocionX = 4;
+        int inicialPocionY = 4;
+        King king = new King(false, inicialPocionX, inicialPocionY);
+        char actual = king.getColor();
+        char expected = 'B';
+        assertEquals(expected, actual);
+    }
 
     @Test
     public void kingIsWhite_inputTrue_W() {
