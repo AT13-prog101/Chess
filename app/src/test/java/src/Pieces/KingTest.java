@@ -79,6 +79,22 @@ public class KingTest {
     }
 
     @Test
+    public void getValidMovesKing_h1_threeValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(new Position(7,7),getPieceFactory.getPiece("King", true, 7, 7));
+        Piece king = Chessboard.board[7][7];
+
+        List<Position> validMoves = king.getValidMoves();
+        String expected = "g2 h2 g1 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void kingIsBlack_inputTrue_B() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
