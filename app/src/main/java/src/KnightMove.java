@@ -1,6 +1,5 @@
 package src;
 
-import org.checkerframework.checker.units.qual.A;
 import src.Pieces.Piece;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,8 @@ public class KnightMove implements MovePiece{
         int[] xKnightMoves = {2, 1, -1, -2, -2, -1, 1, 2};
         int[] yKnightMoves = {-1, -2, -2, -1, 1, 2, 2, 1};
 
-        int xActPos = piece.getInitPosX();
-        int yActPos = piece.getInitPosY();
+        int xActPos = piece.getPosX();
+        int yActPos = piece.getPosY();
 
         for(int i = 0; i < xKnightMoves.length ; i++) {
             int xPosition = xActPos + xKnightMoves[i];

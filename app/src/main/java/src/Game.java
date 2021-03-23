@@ -30,7 +30,8 @@ public class Game {
         while (!gameFinished) {
             if (chessboard.kingTakenBy() != null) {
                 gameFinished = true;
-                System.out.println("Game finished\nWinner: " + chessboard.kingTakenBy().getName());
+                System.out.println("Game finished\nWinner: " + chessboard.kingTakenBy().getColor());
+                break;
             }
             playerTurn(playerWhite);
             playerTurn(playerBlack);
@@ -39,7 +40,7 @@ public class Game {
     public void playerTurn(Player player) {
         boolean hasMoved = false;
         while(hasMoved == false) {
-            if (player.isWhite) {
+            if (player.isWhite()) {
                 System.out.println("White turn: make a Move");
             } else{
                 System.out.println("Black turn: make a Move");

@@ -73,7 +73,7 @@ public class Chessboard {
     public List<Position> getValidMoves(Position source, Player player) {
         List<Position> validMoves = new ArrayList<Position>();
         Piece piece = board[source.getPosY()][source.getPosX()];
-        if (player.isWhite == piece.getColorWhite()) {
+        if (player.isWhite() == piece.getColorWhite()) {
             validMoves = piece.getValidMoves();
             return validMoves;
         }

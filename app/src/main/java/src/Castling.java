@@ -21,27 +21,27 @@ public class Castling implements MovePiece{
         if(!piece.isMoved()) {
 
             int checkEmpty = 0;
-            if(!isHaveMoved(Chessboard.board[piece.getInitPosY()][xPosK])) {
+            if(!isHaveMoved(Chessboard.board[piece.getPosY()][xPosK])) {
                 for(int i = 1; i <= LimitKCastling; i++) {
-                    if(!isSpaceEmpty(Chessboard.board[piece.getInitPosY()][xPosK - i])) {
+                    if(!isSpaceEmpty(Chessboard.board[piece.getPosY()][xPosK - i])) {
                         break;
                     }
                     checkEmpty++;
                 }
                 if(checkEmpty == LimitKCastling)
-                    movePositions.add(new Position(xPosK - 1, piece.getInitPosY()));
+                    movePositions.add(new Position(xPosK - 1, piece.getPosY()));
             }
 
-            if(!isHaveMoved(Chessboard.board[piece.getInitPosY()][xPosQ])) {
+            if(!isHaveMoved(Chessboard.board[piece.getPosY()][xPosQ])) {
                 checkEmpty = 0;
                 for(int i = 1; i <= limitQCastling; i++) {
-                    if(!isSpaceEmpty(Chessboard.board[piece.getInitPosY()][xPosQ + i])) {
+                    if(!isSpaceEmpty(Chessboard.board[piece.getPosY()][xPosQ + i])) {
                         break;
                     }
                     checkEmpty++;
                 }
                 if(checkEmpty == limitQCastling)
-                    movePositions.add(new Position(xPosQ + LimitKCastling, piece.getInitPosY()));
+                    movePositions.add(new Position(xPosQ + LimitKCastling, piece.getPosY()));
             }
         }
         return movePositions;

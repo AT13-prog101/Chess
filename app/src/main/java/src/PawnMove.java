@@ -13,22 +13,22 @@ public class PawnMove implements MovePiece{
      */
     public List<Position> getPossibleMoves(Piece piece) {
         List<Position> movePositions = new ArrayList<>();
-        int yOneMove = piece.getInitPosY() + 1;
-        int yDoubleMove = piece.getInitPosY() + 2;
-        int xDiagonalMLeft = piece.getInitPosX() - 1;
-        int xDiagonalMRight = piece.getInitPosX() + 1;
+        int yOneMove = piece.getPosY() + 1;
+        int yDoubleMove = piece.getPosY() + 2;
+        int xDiagonalMLeft = piece.getPosX() - 1;
+        int xDiagonalMRight = piece.getPosX() + 1;
 
         if(piece.getColorWhite()) {
-            yOneMove =  piece.getInitPosY() - 1;
-            yDoubleMove = piece.getInitPosY() - 2;
+            yOneMove =  piece.getPosY() - 1;
+            yDoubleMove = piece.getPosY() - 2;
         }
         if(!piece.isMoved()) {
-            if(isSpaceEmpty(Chessboard.board[yDoubleMove][piece.getInitPosX()]))
-                movePositions.add(new Position(piece.getInitPosX(), yDoubleMove));
+            if(isSpaceEmpty(Chessboard.board[yDoubleMove][piece.getPosX()]))
+                movePositions.add(new Position(piece.getPosX(), yDoubleMove));
         }
         if( isInLimits(yOneMove)){
-            if(isSpaceEmpty(Chessboard.board[yOneMove][piece.getInitPosX()])) {
-                movePositions.add(new Position(piece.getInitPosX(), yOneMove));
+            if(isSpaceEmpty(Chessboard.board[yOneMove][piece.getPosX()])) {
+                movePositions.add(new Position(piece.getPosX(), yOneMove));
             }
             if(isInLimits(xDiagonalMLeft)) {
                 if(isSpaceWithEnemy(Chessboard.board[yOneMove][xDiagonalMLeft], piece.getColorWhite())) {

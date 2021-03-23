@@ -30,7 +30,7 @@ public class GetPieceFactoryTest {
         String name = "Pawn";
         Piece pawn = getPieceFactory.getPiece(name, true, 7, 7);
         int expected = 7;
-        int actual = pawn.getInitPosX();
+        int actual = pawn.getPosX();
         assertEquals(expected, actual);
     }
 }

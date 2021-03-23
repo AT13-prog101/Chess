@@ -1,6 +1,6 @@
 package src;
 import src.Pieces.Piece;
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +10,8 @@ public class DiagonalsMove implements MovePiece {
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
         movePoints = new ArrayList<Position>();
-        int posX = piece.getInitPosX();
-        int posY = piece.getInitPosY();
+        int posX = piece.getPosX();
+        int posY = piece.getPosY();
         int numberMax = Math.max(posX, posY);
         int numberMin = Math.min(posX, posY);
         //southeast (SE)
@@ -70,6 +70,20 @@ public class DiagonalsMove implements MovePiece {
         if (Chessboard.board[posX][posY].getColorWhite() == colorPiece) {
             return false;
         }
+        return false;
+    }
+    @Override
+    public boolean isInLimits(int position) {
+        return false;
+    }
+
+    @Override
+    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
+        return false;
+    }
+
+    @Override
+    public boolean isSpaceEmpty(Piece piece) {
         return false;
     }
 }

@@ -10,18 +10,18 @@ public abstract class Piece {
     private char color;
     private boolean isWhite;
     private char figure;
-    private int initPosX;
-    private int initPosY;
+    private int posX;
+    private int posY;
     private boolean isCaptured;
     private boolean isMoved;
     private List<MovePiece> moveTypes = new ArrayList<MovePiece>();
 
-    public Piece(boolean white, int initPosX, int initPosY) {
+    public Piece(boolean white, int posX, int posY) {
         this.color = color;
         this.isWhite = white;
         this.isCaptured = false;
-        this.initPosX = initPosX;
-        this.initPosY = initPosY;
+        this.posX = posX;
+        this.posY = posY;
         this.isMoved = false;
     }
 
@@ -33,23 +33,23 @@ public abstract class Piece {
         return this.isCaptured;
     }
 
-    public int getInitPosX() {
-        return initPosX;
+    public int getPosX() {
+        return posX;
     }
 
-    public int getInitPosY() {
-        return initPosY;
+    public int getPosY() {
+        return posY;
     }
     public char getFigure() {
         return this.figure;
     }
 
     public void setPosX(int posX) {
-        this.initPosX = posX;
+        this.posX = posX;
     }
 
     public void setPosY(int posY) {
-        this.initPosY = posY;
+        this.posY = posY;
     }
 
     public boolean isMoved() {
@@ -76,8 +76,8 @@ public abstract class Piece {
     }
 
     public void updatePosition(int x, int y) {
-        this.initPosX = x;
-        this.initPosY = y;
+        this.posX = x;
+        this.posY = y;
         this.isMoved = true;
     }
     public List<Position> getValidMoves() {
