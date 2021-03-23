@@ -136,8 +136,10 @@ public class Chessboard extends JFrame {
      * Prints on console the valid moves a piece can make
      */
     public void printValidMoves(List<Position> validMoves) {
-        for (Position pos : validMoves) {
-            System.out.println(pos.getCharAlg() + " ");
+        if (validMoves != null) {
+            for (Position pos : validMoves) {
+                System.out.println(pos.getCharAlg() + " ");
+            }
         }
     }
     public boolean thereIsPiece (Position position) {
