@@ -93,6 +93,21 @@ public class KingTest {
         }
         assertEquals(expected, actual);
     }
+    @Test
+    public void getValidMovesKing_a1_threeValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(new Position(7,0),getPieceFactory.getPiece("King", true, 0, 7));
+        Piece king = Chessboard.board[7][0];
+
+        List<Position> validMoves = king.getValidMoves();
+        String expected = "b2 a2 b1 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
 
     @Test
     public void kingIsBlack_inputTrue_B() {
