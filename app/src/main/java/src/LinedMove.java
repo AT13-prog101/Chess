@@ -9,8 +9,8 @@ public class LinedMove implements MovePiece {
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
         List<Position> movePositions = new ArrayList<>();
-        int xPos = piece.getInitPosX();
-        int yPos = piece.getInitPosY();
+        int xPos = piece.getPosX();
+        int yPos = piece.getPosY();
 
         for( int i = xPos + 1; i < Chessboard.DIMENSION; i++) {
             if(isSpaceEmpty(Chessboard.board[yPos][i])) {

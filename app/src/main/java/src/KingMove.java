@@ -2,7 +2,6 @@ package src;
 
 import src.Pieces.Piece;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +20,8 @@ public class KingMove implements MovePiece {
         int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
         int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
 
-        int xActPos = piece.getInitPosX();
-        int yActPos = piece.getInitPosY();
+        int xActPos = piece.getPosX();
+        int yActPos = piece.getPosY();
 
         for (int i = 0; i < xPossiblePos.length; i++) {
             int xPosition = xActPos + xPossiblePos[i];
@@ -61,6 +60,21 @@ public class KingMove implements MovePiece {
     public boolean isPositionAvailable(Piece piece, boolean colorMoving) {
         if (piece == null || piece.getColorWhite() != colorMoving)
             return true;
+        return false;
+    }
+
+    @Override
+    public boolean isSpaceEmpty(Piece piece) {
+        return false;
+    }
+
+    @Override
+    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
+        return false;
+    }
+
+    @Override
+    public boolean isInLimits(int position) {
         return false;
     }
 }

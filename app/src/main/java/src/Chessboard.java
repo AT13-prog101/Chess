@@ -28,21 +28,22 @@ public class Chessboard {
      * Prints the board in console
      */
     public void printBoard() {
+        System.out.println("   ---------------------------------------");
         for (int row = 0; row < DIMENSION; row++) {
-            System.out.print(DIMENSION - row + " | ");
+            System.out.print(DIMENSION - row + " |");
             for (int col = 0; col < DIMENSION; col++) {
                 if (board[row][col] != null) {
                     Piece piece = board[row][col];
-                    String figure = String.valueOf(piece.getColor()) + String.valueOf(piece.getFigure()) + " ";
+                    String figure = " " + String.valueOf(piece.getColor()) + String.valueOf(piece.getFigure()) + " |";
                     System.out.print(figure);
                 } else {
-                    System.out.print("  " + " ");
+                    System.out.print("    " + "|");
                 }
             }
             System.out.println("");
+            System.out.println("  |---------------------------------------");
         }
-        System.out.println("   -----------------------");
-        System.out.println("    a  b  c  d  e  f  g  h\n");
+        System.out.println("    a    b    c    d    e    f    g    h");
     }
     public boolean movePiece(Position source, Position target, Player player) {
         List<Position> validMoves = getValidMoves(source, player);
@@ -72,7 +73,7 @@ public class Chessboard {
     public List<Position> getValidMoves(Position source, Player player) {
         List<Position> validMoves = new ArrayList<Position>();
         Piece piece = board[source.getPosY()][source.getPosX()];
-        if (player.isWhite == piece.getColorWhite()) {
+        if (player.isWhite() == piece.getColorWhite()) {
             validMoves = piece.getValidMoves();
             return validMoves;
         }
