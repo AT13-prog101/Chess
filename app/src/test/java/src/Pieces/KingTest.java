@@ -2,6 +2,9 @@ package src.Pieces;
 
 import org.junit.Test;
 import src.*;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class KingTest {
@@ -28,6 +31,19 @@ public class KingTest {
          *    -----------------------
          *     a  b  c  d  e  f  g  h
          */
+
+    }
+    @Test
+    public void getValidMovesKing_d4_fiveValidMoves() {
+        chessboardScenario();
+        Piece king = Chessboard.board[4][3];
+        List<Position> validMoves = king.getValidMoves();
+        String expected = "e5 c5 d5 c4 e4 d3 " + "";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
     }
 
     @Test
