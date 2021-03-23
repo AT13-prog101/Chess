@@ -13,33 +13,33 @@ public class LinedMove implements MovePiece {
         int yPos = piece.getPosY();
 
         for( int i = xPos + 1; i < Chessboard.DIMENSION; i++) {
-            if(isSpaceEmpty(Chessboard.board[yPos][i])) {
+            if(isSpaceEmpty(Chessboard.board[yPos][i].getPiece())) {
                 movePositions.add(new Position(i, yPos));
-            }else if(isSpaceWithEnemy(Chessboard.board[yPos][i], piece.getColorWhite())) {
+            }else if(isSpaceWithEnemy(Chessboard.board[yPos][i].getPiece(), piece.getColorWhite())) {
                     movePositions.add(new Position(i, yPos));
                     break;
             }else break;
         }
         for( int i = xPos -1; i >= 0; i--) {
-            if(isSpaceEmpty(Chessboard.board[yPos][i])) {
+            if(isSpaceEmpty(Chessboard.board[yPos][i].getPiece())) {
                 movePositions.add(new Position(i, yPos));
-            }else if(isSpaceWithEnemy(Chessboard.board[yPos][i], piece.getColorWhite())) {
+            }else if(isSpaceWithEnemy(Chessboard.board[yPos][i].getPiece(), piece.getColorWhite())) {
                     movePositions.add(new Position(i, yPos));
                     break;
             }else break;
         }
         for( int i = yPos + 1; i < Chessboard.DIMENSION; i++) {
-            if(isSpaceEmpty(Chessboard.board[i][xPos])) {
+            if(isSpaceEmpty(Chessboard.board[i][xPos].getPiece())) {
                 movePositions.add(new Position(xPos, i));
-            }else if(isSpaceWithEnemy(Chessboard.board[i][xPos], piece.getColorWhite())) {
+            }else if(isSpaceWithEnemy(Chessboard.board[i][xPos].getPiece(), piece.getColorWhite())) {
                 movePositions.add(new Position(xPos, i));
                 break;
             }else break;
         }
         for( int i = yPos - 1; i >= 0; i--) {
-            if(isSpaceEmpty(Chessboard.board[i][xPos])) {
+            if(isSpaceEmpty(Chessboard.board[i][xPos].getPiece())) {
                 movePositions.add(new Position(xPos, i));
-            }else if(isSpaceWithEnemy(Chessboard.board[i][xPos], piece.getColorWhite())) {
+            }else if(isSpaceWithEnemy(Chessboard.board[i][xPos].getPiece(), piece.getColorWhite())) {
                 movePositions.add(new Position(xPos, i));
                 break;
             }else break;

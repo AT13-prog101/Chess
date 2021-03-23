@@ -12,7 +12,7 @@ public class Chessboard extends JFrame {
     private static final int SIZE_IMAGE = 80;
     private static final int SIZE_WINDOW_WIDTH = DIMENSION * SIZE_IMAGE;
     private static final int SIZE_WINDOW_HEIGHT = DIMENSION * SIZE_IMAGE;
-    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
+    public static BoardCell[][] board = new BoardCell[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
@@ -41,21 +41,23 @@ public class Chessboard extends JFrame {
      */
     public void addBoardCells() {
         boolean pieceWhite = true;
+        Position position;
+        BoardCell boardCell;
         for (int row = 0; row < DIMENSION; row++) {
             for (int col = 0; col < DIMENSION; col++) {
-                JLabel label = new JLabel();
-                label.setForeground(Color.WHITE);
-                label.setName("BoardCell");
-                label.setOpaque(true);
-                if(pieceWhite) {
-                    label.setBackground(Color.GRAY);
-                } else {
-                    label.setBackground(Color.darkGray);
+                position = new Position(col, row);
+                boardCell = new BoardCell(pieceWhite);
+                if (col == 0) {
+                    boardCell.setText(position.getAlgRow());
                 }
+                if (row == 7) {
+                    boardCell.setText(position.getAlgCol());
+                }
+                board[row][col] = boardCell;
+                add(boardCell);
                 if (col < 7) {
                     pieceWhite = !pieceWhite;
                 }
-                add(label);
             }
         }
     }
@@ -67,8 +69,8 @@ public class Chessboard extends JFrame {
         for (int row = 0; row < DIMENSION; row++) {
             System.out.print(DIMENSION - row + " |");
             for (int col = 0; col < DIMENSION; col++) {
-                if (board[row][col] != null) {
-                    Piece piece = board[row][col];
+                if (board[row][col].getPiece() != null) {
+                    Piece piece = board[row][col].getPiece();
                     String figure = " " + String.valueOf(piece.getColor()) + String.valueOf(piece.getFigure()) + " |";
                     System.out.print(figure);
                 } else {
@@ -85,15 +87,15 @@ public class Chessboard extends JFrame {
         for (int i = 0; i < validMoves.size(); i++) {
             Position pos = validMoves.get(i);
             if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
-                Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
-                if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
-                    if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
+                Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()].getPiece();
+                if (Chessboard.board[target.getPosY()][target.getPosX()].getPiece() != null) {
+                    if (Chessboard.board[target.getPosY()][target.getPosX()].getPiece().getFigure() == 'K') {
                         winner = player;
                     }
                 }
                 pieceToMove.updatePosition(target.getPosX(), target.getPosY());
-                Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
-                Chessboard.board[source.getPosY()][source.getPosX()] = null;
+                Chessboard.board[target.getPosY()][target.getPosX()].setPiece(pieceToMove);
+                Chessboard.board[source.getPosY()][source.getPosX()].setPiece(null);
                 return true;
             }
         }
@@ -107,7 +109,7 @@ public class Chessboard extends JFrame {
      */
     public List<Position> getValidMoves(Position source, Player player) {
         List<Position> validMoves = new ArrayList<Position>();
-        Piece piece = board[source.getPosY()][source.getPosX()];
+        Piece piece = board[source.getPosY()][source.getPosX()].getPiece();
         if (player.isWhite() == piece.getColorWhite()) {
             validMoves = piece.getValidMoves();
             return validMoves;
@@ -127,7 +129,7 @@ public class Chessboard extends JFrame {
         }
     }
     public boolean thereIsPiece (Position position) {
-        if (board[position.getPosY()][position.getPosX()] == null)
+        if (board[position.getPosY()][position.getPosX()].getPiece() == null)
             return false;
         return true;
     }
