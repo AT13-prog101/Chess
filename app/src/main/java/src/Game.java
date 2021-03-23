@@ -59,6 +59,7 @@ public class Game {
                     if (moved == true) {
                         chessboard.printBoard();
                         hasMoved = true;
+                        chessboard.updateChessboard();
                     } else {
                         System.out.println("Invalid Input. Try again");
                     }

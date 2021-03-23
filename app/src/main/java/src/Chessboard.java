@@ -43,6 +43,7 @@ public class Chessboard extends JFrame {
     public void updateChessboard() {
         for (int row = 0; row < DIMENSION; row++) {
             for (int col = 0; col < DIMENSION; col++) {
+                board[row][col].setIcon(null);
                 board[row][col].setIcon();
             }
         }
