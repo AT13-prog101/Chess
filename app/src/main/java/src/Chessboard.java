@@ -2,16 +2,21 @@ package src;
 
 import src.Pieces.Piece;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chessboard {
+public class Chessboard extends JFrame {
     public final static int DIMENSION = 8;
+    private static final int SIZE_IMAGE = 80;
+    private static final int SIZE_WINDOW_WIDTH = DIMENSION * SIZE_IMAGE;
+    private static final int SIZE_WINDOW_HEIGHT = DIMENSION * SIZE_IMAGE;
     public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
-    boolean turn;
+    private final boolean IS_PLAYER_WHITE = true;
 
     /**
      * Chessboard initializes the pieces from its Team instances
@@ -20,9 +25,39 @@ public class Chessboard {
         initializeChessboard();
     }
     public void initializeChessboard() {
-        boolean isWhite = true;
-        whiteTeam = new Team(isWhite);
-        blackTeam = new Team(!isWhite);
+        setSize(SIZE_WINDOW_WIDTH, SIZE_WINDOW_HEIGHT);
+        setTitle("AT13-CHESS");
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setFocusable(true);
+        setLayout(new GridLayout(DIMENSION, DIMENSION));
+        addBoardCells();
+        whiteTeam = new Team(IS_PLAYER_WHITE);
+        blackTeam = new Team(!IS_PLAYER_WHITE);
+    }
+    /**
+     * Creates BoardCells and adds them to the chessboard matrix
+     */
+    public void addBoardCells() {
+        boolean pieceWhite = true;
+        for (int row = 0; row < DIMENSION; row++) {
+            for (int col = 0; col < DIMENSION; col++) {
+                JLabel label = new JLabel();
+                label.setForeground(Color.WHITE);
+                label.setName("BoardCell");
+                label.setOpaque(true);
+                if(pieceWhite) {
+                    label.setBackground(Color.GRAY);
+                } else {
+                    label.setBackground(Color.darkGray);
+                }
+                if (col < 7) {
+                    pieceWhite = !pieceWhite;
+                }
+                add(label);
+            }
+        }
     }
     /**
      * Prints the board in console

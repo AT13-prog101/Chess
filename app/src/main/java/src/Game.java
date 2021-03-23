@@ -20,6 +20,7 @@ public class Game {
         chessboard = new Chessboard();
         playerWhite = new Player("Player1", PLAYER_WHITE);
         playerBlack = new Player("Player2", PLAYER_BLACK);
+        ChessboardUI chessboardUI = new ChessboardUI();
     }
 
     /**
