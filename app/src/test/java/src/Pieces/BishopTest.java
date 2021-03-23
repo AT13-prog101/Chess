@@ -43,7 +43,7 @@ public class BishopTest {
          */
     }
     @Test
-    public void getValidMovesBishop_d4_fiveValidMoves() {
+    public void getValidMovesBishop_d4_eightValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 3, 4));
