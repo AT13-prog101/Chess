@@ -110,7 +110,7 @@ public class KingTest {
     }
 
     @Test
-    public void kingIsBlack_inputTrue_B() {
+    public void kingIsBlack_inputFalse_B() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
         King king = new King(false, inicialPocionX, inicialPocionY);
