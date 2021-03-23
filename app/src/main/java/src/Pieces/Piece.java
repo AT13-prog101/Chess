@@ -3,10 +3,12 @@ package src.Pieces;
 import src.MovePiece;
 import src.Position;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Piece {
+    public ImageIcon image;
     private char color;
     private boolean isWhite;
     private char figure;
@@ -73,6 +75,13 @@ public abstract class Piece {
     }
     public char getColor() {
         return color;
+    }
+
+    public void setImage(String dir) {
+        this.image = new ImageIcon(dir);
+    }
+    public ImageIcon getImage() {
+        return image;
     }
 
     public void updatePosition(int x, int y) {

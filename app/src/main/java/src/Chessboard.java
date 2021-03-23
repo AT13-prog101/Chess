@@ -35,6 +35,17 @@ public class Chessboard extends JFrame {
         addBoardCells();
         whiteTeam = new Team(IS_PLAYER_WHITE);
         blackTeam = new Team(!IS_PLAYER_WHITE);
+        updateChessboard();
+    }
+    /**
+     * update Chessboard cellboards with images from pieces
+     */
+    public void updateChessboard() {
+        for (int row = 0; row < DIMENSION; row++) {
+            for (int col = 0; col < DIMENSION; col++) {
+                board[row][col].setIcon();
+            }
+        }
     }
     /**
      * Creates BoardCells and adds them to the chessboard matrix

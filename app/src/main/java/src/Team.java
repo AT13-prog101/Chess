@@ -30,7 +30,7 @@ public class Team {
             "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn",
             "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook"));
     ArrayList<String> blackPiecesOrder = new ArrayList<String>(Arrays.asList(
-            "Rook", "Horse", "Bishop", "King", "Queen", "Bishop", "Horse", "Rook",
+            "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook",
             "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"));
     /**
      * Class Team stores a set of pieces

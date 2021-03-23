@@ -4,14 +4,18 @@ import src.KingMove;
 
 public class King extends Piece {
     private char figure = 'K';
+    private final String BLACK_KING_DIR = "src/main/resources/BlackKing.png";
+    private final String WHITE_KING_DIR = "src/main/resources/WhiteKing.png";
     private boolean alive=true;
     public King(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
         if (white == true) {
             setColor('W');
+            setImage(WHITE_KING_DIR);
         } else
         {
             setColor('B');
+            setImage(BLACK_KING_DIR);
         }
         addMoveType(new KingMove());
     }

@@ -34,4 +34,10 @@ public class BoardCell extends JLabel {
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+
+    public void setIcon() {
+        if(piece != null) {
+            setIcon(piece.getImage());
+        }
+    }
 }
