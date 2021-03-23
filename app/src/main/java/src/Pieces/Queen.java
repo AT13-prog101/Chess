@@ -10,17 +10,11 @@ public class Queen extends Piece{
     private final String WHITE_QUEEN_DIR = "src/main/resources/WhiteQueen.png";
     public Queen(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
-<<<<<<< HEAD
         if (white == true) {
-            setColor('W');
             setImage(WHITE_QUEEN_DIR);
-        } else
-        {
-            setColor('B');
+        } else {
             setImage(BLACK_QUEEN_DIR);
         }
-=======
->>>>>>> dev
         addMoveType(new DiagonalsMove());
         addMoveType(new LinedMove());
     }

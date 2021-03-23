@@ -26,21 +26,12 @@ public class Team {
     int row1 = 1;
     int row6 = 6;
     int row7 = 7;
-<<<<<<< HEAD
-    List<String> whitePiecesOrder = new ArrayList<String>(Arrays.asList(
-            "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn",
-            "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook"));
-    ArrayList<String> blackPiecesOrder = new ArrayList<String>(Arrays.asList(
-            "Rook", "Horse", "Bishop", "Queen", "King", "Bishop", "Horse", "Rook",
-            "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn", "Pawn"));
-=======
     List<TypePiece> whitePiecesOrder = new ArrayList<TypePiece>(Arrays.asList(
            TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN,
             TypePiece.ROOK, TypePiece.HORSE, TypePiece.BISHOP, TypePiece.QUEEN, TypePiece.KING, TypePiece.BISHOP, TypePiece.HORSE, TypePiece.ROOK));
     ArrayList<TypePiece> blackPiecesOrder = new ArrayList<TypePiece>(Arrays.asList(
             TypePiece.ROOK, TypePiece.HORSE, TypePiece.BISHOP, TypePiece.KING,TypePiece.QUEEN , TypePiece.BISHOP, TypePiece.HORSE, TypePiece.ROOK,
             TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN));
->>>>>>> dev
     /**
      * Class Team stores a set of pieces
      */

@@ -16,6 +16,7 @@ public abstract class Piece {
     private int posY;
     private boolean isCaptured;
     private boolean isMoved;
+    private String dir;
     private List<MovePiece> moveTypes = new ArrayList<MovePiece>();
 
     public Piece(boolean white, int posX, int posY) {
@@ -24,7 +25,7 @@ public abstract class Piece {
         this.posX = posX;
         this.posY = posY;
         this.isMoved = false;
-        this.color=white? 'W':'B';
+        this.color = white? 'W':'B';
     }
 
     public void setCaptured(boolean isCaptured) {

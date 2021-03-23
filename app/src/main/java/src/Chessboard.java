@@ -158,6 +158,6 @@ public class Chessboard extends JFrame {
      * setPiece with a position and piece
      */
     public static void setPiece(Piece piece) {
-        Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
+        Chessboard.board[piece.getPosY()][piece.getPosX()].setPiece(piece);
     }
 }

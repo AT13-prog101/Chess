@@ -8,17 +8,12 @@ public class Horse extends Piece{
     private final String WHITE_KNIGHT_DIR = "src/main/resources/WhiteKnight.png";
     public Horse(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
-<<<<<<< HEAD
         if (white == true) {
-            setColor('W');
             setImage(WHITE_KNIGHT_DIR);
         } else
         {
-            setColor('B');
             setImage(BLACK_KNIGHT_DIR);
         }
-=======
->>>>>>> dev
         addMoveType(new KnightMove());
     }
     public char getFigure() {
