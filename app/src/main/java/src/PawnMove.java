@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PawnMove implements MovePiece{
+
     /**
      * Return a List of Positions with all possible moves of Pawn
      * @param piece the Pawn piece
@@ -12,31 +13,32 @@ public class PawnMove implements MovePiece{
      */
     public List<Position> getPossibleMoves(Piece piece) {
         List<Position> movePositions = new ArrayList<>();
-        int oneMove = piece.getInitPosY() + 1;
-        int doubleMove = piece.getInitPosY() + 2;
+        int yOneMove = piece.getInitPosY() + 1;
+        int yDoubleMove = piece.getInitPosY() + 2;
         int xDiagonalMLeft = piece.getInitPosX() - 1;
         int xDiagonalMRight = piece.getInitPosX() + 1;
+
         if(piece.getColorWhite()) {
-            oneMove = piece.getInitPosY() -1;
-            doubleMove = piece.getInitPosY() -2;
+            yOneMove =  piece.getInitPosY() - 1;
+            yDoubleMove = piece.getInitPosY() - 2;
         }
         if(!piece.isMoved()) {
-            if(isSpaceEmpty(Chessboard.board[doubleMove][piece.getInitPosX()]))
-                movePositions.add(new Position(piece.getInitPosX(), doubleMove));
+            if(isSpaceEmpty(Chessboard.board[yDoubleMove][piece.getInitPosX()]))
+                movePositions.add(new Position(piece.getInitPosX(), yDoubleMove));
         }
-        if(isSpaceEmpty(Chessboard.board[oneMove][piece.getInitPosX()])) {
-            if(0 <= oneMove && oneMove < Chessboard.DIMENSION)  {
-                movePositions.add(new Position(piece.getInitPosX(), oneMove));
+        if( isInLimits(yOneMove)){
+            if(isSpaceEmpty(Chessboard.board[yOneMove][piece.getInitPosX()])) {
+                movePositions.add(new Position(piece.getInitPosX(), yOneMove));
             }
-        }
-        if(0 <= oneMove && oneMove < Chessboard.DIMENSION && 0 <= xDiagonalMLeft && xDiagonalMLeft < Chessboard.DIMENSION) {
-            if(isSpaceWithEnemy(Chessboard.board[oneMove][xDiagonalMLeft], piece.getColorWhite())) {
-                movePositions.add(new Position(xDiagonalMLeft, oneMove));
+            if(isInLimits(xDiagonalMLeft)) {
+                if(isSpaceWithEnemy(Chessboard.board[yOneMove][xDiagonalMLeft], piece.getColorWhite())) {
+                    movePositions.add(new Position(xDiagonalMLeft, yOneMove));
+                }
             }
-        }
-        if(0 <= oneMove && oneMove < Chessboard.DIMENSION && 0 <= xDiagonalMRight && xDiagonalMRight < Chessboard.DIMENSION) {
-            if(isSpaceWithEnemy(Chessboard.board[oneMove][xDiagonalMRight], piece.getColorWhite())) {
-                movePositions.add(new Position(xDiagonalMRight, oneMove));
+            if(isInLimits(xDiagonalMRight)) {
+                if(isSpaceWithEnemy(Chessboard.board[yOneMove][xDiagonalMRight], piece.getColorWhite())) {
+                    movePositions.add(new Position(xDiagonalMRight, yOneMove));
+                }
             }
         }
         return movePositions;
@@ -47,19 +49,35 @@ public class PawnMove implements MovePiece{
      * @param piece is the piece in the possible position.
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
-    private boolean isSpaceEmpty(Piece piece) {
-        return piece == null;
+    public boolean isSpaceEmpty(Piece piece) {
+        if(piece == null)
+            return true;
+        return false;
     }
 
     /**
-     *  Verify if there are enemy pieces in diagonal of Pawn
-     * @param piece is the piece in the possible position
-     * @param isWhite the color of the Pawn
-     * @return true if there is an enemy, false if not
+     *  Verify if Destiny position has an enemy
+     * @param piece
+     * @param isWhite
+     * @return
      */
-    private boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
+    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
         if(piece != null && piece.getColorWhite() != isWhite)
             return true;
+        else
+            return false;
+    }
+
+    /**
+     *  Verify is the Position is inside the Limits of the Chessboard
+     * @param position
+     * @return true if its in the limits, false if not
+     */
+    @Override
+    public boolean isInLimits(int position) {
+        if(0 <= position && position < Chessboard.DIMENSION) {
+            return true;
+        }
         return false;
     }
 }
