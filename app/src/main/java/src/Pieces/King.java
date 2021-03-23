@@ -7,12 +7,6 @@ public class King extends Piece {
     private boolean alive=true;
     public King(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
-        if (white == true) {
-            setColor('W');
-        } else
-        {
-            setColor('B');
-        }
         addMoveType(new KingMove());
     }
 

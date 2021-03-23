@@ -7,12 +7,6 @@ public class Queen extends Piece{
     private char figure = 'Q';
     public Queen(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
-        if (white == true) {
-            setColor('W');
-        } else
-        {
-            setColor('B');
-        }
         addMoveType(new DiagonalsMove());
         addMoveType(new LinedMove());
     }

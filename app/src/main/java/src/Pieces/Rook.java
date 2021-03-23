@@ -6,12 +6,6 @@ public class Rook extends Piece{
     private char figure = 'R';
     public Rook(boolean white, int initPosX, int initPosY) {
         super(white, initPosX, initPosY);
-        if (white == true) {
-            setColor('W');
-        } else
-        {
-            setColor('B');
-        }
         addMoveType(new LinedMove());
     }
     public char getFigure() {
