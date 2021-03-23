@@ -43,6 +43,22 @@ public class BishopTest {
          */
     }
     @Test
+    public void getValidMovesBishop_h1_fiveValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 7, 7));
+        Piece bishop = Chessboard.board[7][7];
+        List<Position> validMoves = bishop.getValidMoves();
+        String expected = "g2 f3 e4 d5 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     public void getValidMovesBishop_a1_fiveValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
