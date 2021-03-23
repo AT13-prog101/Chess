@@ -17,12 +17,12 @@ public abstract class Piece {
     private List<MovePiece> moveTypes = new ArrayList<MovePiece>();
 
     public Piece(boolean white, int posX, int posY) {
-        this.color = color;
         this.isWhite = white;
         this.isCaptured = false;
         this.posX = posX;
         this.posY = posY;
         this.isMoved = false;
+        this.color=white? 'W':'B';
     }
 
     public void setCaptured(boolean isCaptured) {
@@ -68,9 +68,6 @@ public abstract class Piece {
         this.moveTypes.add(movePiece);
     }
 
-    public void setColor(char color) {
-        this.color = color;
-    }
     public char getColor() {
         return color;
     }

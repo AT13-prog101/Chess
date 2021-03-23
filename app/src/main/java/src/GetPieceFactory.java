@@ -11,20 +11,20 @@ public class GetPieceFactory {
      * Creates a Piece given the parameters name, isWhite, posX and posY
      *
      */
-    public Piece getPiece(String name, boolean isWhite, int posX, int posY) {
+    public Piece getPiece(TypePiece name, boolean isWhite, int posX, int posY) {
         Piece piece = null;
         switch (name) {
-            case "Rook": piece = new Rook(isWhite, posX, posY);
+            case ROOK: piece = new Rook(isWhite, posX, posY);
             break;
-            case "Bishop": piece = new Bishop(isWhite, posX, posY);
+            case BISHOP: piece = new Bishop(isWhite, posX, posY);
                 break;
-            case "Horse": piece = new Horse(isWhite, posX, posY);
+            case HORSE: piece = new Horse(isWhite, posX, posY);
                 break;
-            case "Queen": piece = new Queen(isWhite, posX, posY);
+            case QUEEN: piece = new Queen(isWhite, posX, posY);
                 break;
-            case "King": piece = new King(isWhite, posX, posY);
+            case KING: piece = new King(isWhite, posX, posY);
                 break;
-            case "Pawn": piece = new Pawn(isWhite, posX, posY);
+            case PAWN: piece = new Pawn(isWhite, posX, posY);
                 break;
         }
         return piece;

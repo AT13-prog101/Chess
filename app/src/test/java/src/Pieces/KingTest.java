@@ -13,11 +13,11 @@ public class KingTest {
         int dimensionBoard = 8;
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        chessboard.board[4][4] = getPieceFactory.getPiece("Bishop", true, 4, 4);
-        chessboard.board[5][4] = getPieceFactory.getPiece("Horse", false, 5, 4);
-        chessboard.board[5][2] = getPieceFactory.getPiece("Pawn", false, 2, 5);
-        chessboard.board[3][2] = getPieceFactory.getPiece("Rook", true, 2, 3);
-        chessboard.board[4][3] = getPieceFactory.getPiece("King", false, 3, 4);
+        chessboard.board[4][4] = getPieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4);
+        chessboard.board[5][4] = getPieceFactory.getPiece(TypePiece.HORSE, false, 5, 4);
+        chessboard.board[5][2] = getPieceFactory.getPiece(TypePiece.PAWN, false, 2, 5);
+        chessboard.board[3][2] = getPieceFactory.getPiece(TypePiece.ROOK, true, 2, 3);
+        chessboard.board[4][3] = getPieceFactory.getPiece(TypePiece.KING, false, 3, 4);
 
         /**
          * 8 |
@@ -50,7 +50,7 @@ public class KingTest {
     public void getValidMovesKing_h8_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece("King", true, 7, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 7, 0));
         Piece king = Chessboard.board[0][7];
 
         List<Position> validMoves = king.getValidMoves();
@@ -66,7 +66,7 @@ public class KingTest {
     public void getValidMovesKing_a8_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece("King", true, 0, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 0, 0));
         Piece king = Chessboard.board[0][0];
 
         List<Position> validMoves = king.getValidMoves();
@@ -82,7 +82,7 @@ public class KingTest {
     public void getValidMovesKing_h1_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece("King", true, 7, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 7, 7));
         Piece king = Chessboard.board[7][7];
 
         List<Position> validMoves = king.getValidMoves();
@@ -97,7 +97,7 @@ public class KingTest {
     public void getValidMovesKing_a1_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece("King", true, 0, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 0, 7));
         Piece king = Chessboard.board[7][0];
 
         List<Position> validMoves = king.getValidMoves();
