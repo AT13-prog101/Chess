@@ -14,11 +14,11 @@ public class KingTest {
         int dimensionBoard = 8;
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, false, 4, 5));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false, 2, 5));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, true, 2, 3));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, false, 3, 4));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(4, 4)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, false, new Position(4, 5)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false, new Position(2, 5)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, true, new Position(2, 3)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, false, new Position(3, 4)));
 
         /**
          * 8 |
@@ -34,6 +34,7 @@ public class KingTest {
          */
 
     }
+
     @Test
     public void getValidMovesKing_d4_fiveValidMoves() {
         chessboardScenario();
@@ -51,7 +52,7 @@ public class KingTest {
     public void getValidMovesKing_h8_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 7, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 0)));
         Piece king = Chessboard.board[0][7];
 
         List<Position> validMoves = king.getValidMoves();
@@ -67,7 +68,7 @@ public class KingTest {
     public void getValidMovesKing_a8_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 0, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 0)));
         Piece king = Chessboard.board[0][0];
 
         List<Position> validMoves = king.getValidMoves();
@@ -83,7 +84,7 @@ public class KingTest {
     public void getValidMovesKing_h1_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 7, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 7)));
         Piece king = Chessboard.board[7][7];
 
         List<Position> validMoves = king.getValidMoves();
@@ -94,11 +95,12 @@ public class KingTest {
         }
         assertEquals(expected, actual);
     }
+
     @Test
     public void getValidMovesKing_a1_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 0, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 7)));
         Piece king = Chessboard.board[7][0];
 
         List<Position> validMoves = king.getValidMoves();
@@ -114,7 +116,7 @@ public class KingTest {
     public void kingIsBlack_inputFalse_B() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
-        King king = new King(false, inicialPocionX, inicialPocionY);
+        King king = new King(false, new Position(inicialPocionX, inicialPocionY));
         char actual = king.getColor();
         char expected = 'B';
         assertEquals(expected, actual);
@@ -124,7 +126,7 @@ public class KingTest {
     public void kingIsWhite_inputTrue_W() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
-        King king = new King(true, inicialPocionX, inicialPocionY);
+        King king = new King(true, new Position(inicialPocionX, inicialPocionY));
         char actual = king.getColor();
         char expected = 'W';
         assertEquals(expected, actual);
@@ -134,7 +136,7 @@ public class KingTest {
     public void getFigureKing_choseKing_K() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
-        King king = new King(true, inicialPocionX, inicialPocionY);
+        King king = new King(true, new Position(inicialPocionX, inicialPocionY));
         char actual = king.getFigure();
         char expected = 'K';
         assertEquals(expected, actual);
