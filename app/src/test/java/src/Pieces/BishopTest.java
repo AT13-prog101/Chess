@@ -140,7 +140,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getFigureKing_choseBishop_B() {
+    public void getFigureBishop_choseBishop_B() {
         int inicialPocionX = 7;
         int inicialPocionY = 0;
         Bishop bishop = new Bishop(true, new Position(inicialPocionX, inicialPocionY));

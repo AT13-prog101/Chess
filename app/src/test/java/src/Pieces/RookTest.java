@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class RookTest {
 
     @Test
-    public void getFigureKing_choseBishop_B() {
+    public void getFigureRook_choseRook_R() {
         int inicialPocionX = 7;
         int inicialPocionY = 0;
         Rook rook = new Rook(true, new Position(inicialPocionX, inicialPocionY));
