@@ -1,7 +1,8 @@
-package src;
+package src.PiecesMoves;
 
 import src.Pieces.Piece;
-import java.util.ArrayList;
+import src.Position;
+
 import java.util.List;
 
 public interface MovePiece {

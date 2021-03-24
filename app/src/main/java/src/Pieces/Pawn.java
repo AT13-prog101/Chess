@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.PawnMove;
+import src.PiecesMoves.PawnMove;
 import src.Position;
 
 public class Pawn extends Piece{

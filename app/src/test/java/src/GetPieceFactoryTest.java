@@ -10,25 +10,27 @@ public class GetPieceFactoryTest {
     public void getPawnFigurefromGetfactory() {
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         TypePiece name = TypePiece.PAWN;
-        Piece pawn = getPieceFactory.getPiece(name, true, 0, 0);
+        Piece pawn = getPieceFactory.getPiece(name, true, new Position(0, 0));
         char expected = 'P';
         char actual = pawn.getFigure();
         assertEquals(expected, actual);
     }
+
     @Test
     public void getQueenFigurefromGetfactory() {
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         TypePiece name = TypePiece.QUEEN;
-        Piece queen = getPieceFactory.getPiece(name, true, 6, 5);
+        Piece queen = getPieceFactory.getPiece(name, true, new Position(6, 5));
         char expected = 'Q';
         char actual = queen.getFigure();
         assertEquals(expected, actual);
     }
+
     @Test
     public void getPositionXFromPiecefromGetfactory() {
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         TypePiece name = TypePiece.PAWN;
-        Piece pawn = getPieceFactory.getPiece(name, true, 7, 7);
+        Piece pawn = getPieceFactory.getPiece(name, true, new Position(7, 7));
         int expected = 7;
         int actual = pawn.getPosX();
         assertEquals(expected, actual);

@@ -17,10 +17,10 @@ public class BishopTest {
         int dimensionBoard = 8;
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false,3,3));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, 6, 1));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false,2,3));
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, true,5,6));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(3, 3)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(6, 1)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false, new Position(2, 3)));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, true, new Position(5, 6)));
         /**
          *   ---------------------------------------
          * 8 |    |    |    |    |    |    |    |    |
@@ -42,11 +42,12 @@ public class BishopTest {
          *     a    b    c    d    e    f    g    h
          */
     }
+
     @Test
     public void getValidMovesBishop_h8_zeroValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 7, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(7, 0)));
         Piece bishop = Chessboard.board[0][7];
         List<Position> validMoves = bishop.getValidMoves();
         String expected = "";
@@ -56,11 +57,12 @@ public class BishopTest {
         }
         assertEquals(expected, actual);
     }
+
     @Test
     public void getValidMovesBishop_h1_fiveValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 7, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(7, 7)));
         Piece bishop = Chessboard.board[7][7];
         List<Position> validMoves = bishop.getValidMoves();
         String expected = "g2 f3 e4 d5 ";
@@ -76,7 +78,7 @@ public class BishopTest {
     public void getValidMovesBishop_a1_fiveValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 0, 7));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(0, 7)));
         Piece bishop = Chessboard.board[7][0];
         List<Position> validMoves = bishop.getValidMoves();
         String expected = "b2 c3 d4 e5 f6 ";
@@ -91,7 +93,7 @@ public class BishopTest {
     public void getValidMovesBishop_a8_threeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 0, 0));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(0, 0)));
         Piece bishop = Chessboard.board[0][0];
         List<Position> validMoves = bishop.getValidMoves();
         String expected = "b7 c6 d5 ";
@@ -106,7 +108,7 @@ public class BishopTest {
     public void getValidMovesBishop_d4_sevenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
-        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 3, 4));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(3, 4)));
         Piece bishop = Chessboard.board[4][3];
         List<Position> validMoves = bishop.getValidMoves();
         String expected = "e3 c5 e5 f6 c3 b2 a1 ";
@@ -121,7 +123,7 @@ public class BishopTest {
     public void bishopIsWhite_inputFalse_B() {
         int inicialPocionX = 6;
         int inicialPocionY = 0;
-        Bishop bishop = new Bishop(false, inicialPocionX, inicialPocionY);
+        Bishop bishop = new Bishop(false, new Position(inicialPocionX, inicialPocionY));
         char actual = bishop.getColor();
         char expected = 'B';
         assertEquals(expected, actual);
@@ -131,7 +133,7 @@ public class BishopTest {
     public void bishopIsWhite_inputTrue_W() {
         int inicialPocionX = 4;
         int inicialPocionY = 5;
-        Bishop bishop = new Bishop(true, inicialPocionX, inicialPocionY);
+        Bishop bishop = new Bishop(true, new Position(inicialPocionX, inicialPocionY));
         char actual = bishop.getColor();
         char expected = 'W';
         assertEquals(expected, actual);
@@ -141,7 +143,7 @@ public class BishopTest {
     public void getFigureKing_choseBishop_B() {
         int inicialPocionX = 7;
         int inicialPocionY = 0;
-        Bishop bishop = new Bishop(true, inicialPocionX, inicialPocionY);
+        Bishop bishop = new Bishop(true, new Position(inicialPocionX, inicialPocionY));
         char actual = bishop.getFigure();
         char expected = 'B';
         assertEquals(expected, actual);

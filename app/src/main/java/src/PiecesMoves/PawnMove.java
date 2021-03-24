@@ -1,6 +1,9 @@
-package src;
+package src.PiecesMoves;
 
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
