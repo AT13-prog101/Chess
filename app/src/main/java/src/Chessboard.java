@@ -105,9 +105,15 @@ public class Chessboard extends JFrame {
                         winner = player;
                     }
                 }
+<<<<<<< HEAD
                 pieceToMove.updatePosition(target.getPosX(), target.getPosY());
                 Chessboard.board[target.getPosY()][target.getPosX()].setPiece(pieceToMove);
                 Chessboard.board[source.getPosY()][source.getPosX()].setPiece(null);
+=======
+                pieceToMove.updatePosition(new Position(target.getPosX(), target.getPosY()));
+                Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
+                Chessboard.board[source.getPosY()][source.getPosX()] = null;
+>>>>>>> dev
                 return true;
             }
         }

@@ -1,5 +1,6 @@
 package src.Pieces;
 
+<<<<<<< HEAD
 import src.PiecesMoves.PawnMove;
 
 public class Pawn extends Piece{
@@ -13,6 +14,16 @@ public class Pawn extends Piece{
         } else {
             setImage(BLACK_PAWN_DIR);
         }
+=======
+import src.PawnMove;
+import src.Position;
+
+public class Pawn extends Piece{
+    private char figure = 'P';
+    public Pawn(boolean white, Position position) {
+        super(white, position);
+
+>>>>>>> dev
         addMoveType(new PawnMove());
     }
     public char getFigure() {

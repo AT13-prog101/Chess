@@ -8,16 +8,26 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class KingTest {
+
     private void chessboardScenario() {
         Chessboard chessboard = new Chessboard();
         int dimensionBoard = 8;
         chessboard.board = new Piece[dimensionBoard][dimensionBoard];
+<<<<<<< HEAD
         PieceFactory pieceFactory = new PieceFactory();
         chessboard.board[4][4] = pieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4);
         chessboard.board[5][4] = pieceFactory.getPiece(TypePiece.HORSE, false, 5, 4);
         chessboard.board[5][2] = pieceFactory.getPiece(TypePiece.PAWN, false, 2, 5);
         chessboard.board[3][2] = pieceFactory.getPiece(TypePiece.ROOK, true, 2, 3);
         chessboard.board[4][3] = pieceFactory.getPiece(TypePiece.KING, false, 3, 4);
+=======
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, 4, 4));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, false, 4, 5));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, false, 2, 5));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, true, 2, 3));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, false, 3, 4));
+>>>>>>> dev
 
         /**
          * 8 |
@@ -38,7 +48,7 @@ public class KingTest {
         chessboardScenario();
         Piece king = Chessboard.board[4][3];
         List<Position> validMoves = king.getValidMoves();
-        String expected = "e5 c5 d5 c4 e4 d3 " + "";
+        String expected = "e5 c5 d5 c4 e4 d3 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
@@ -54,7 +64,7 @@ public class KingTest {
         Piece king = Chessboard.board[0][7];
 
         List<Position> validMoves = king.getValidMoves();
-        String expected = "g7 g8 h7 " + "";
+        String expected = "g7 g8 h7 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
@@ -70,7 +80,7 @@ public class KingTest {
         Piece king = Chessboard.board[0][0];
 
         List<Position> validMoves = king.getValidMoves();
-        String expected = "b7 b8 a7 " + "";
+        String expected = "b7 b8 a7 ";
         String actual = "";
         for (Position pos : validMoves) {
             actual += String.valueOf(pos.getCharAlg()) + " ";
@@ -110,7 +120,7 @@ public class KingTest {
     }
 
     @Test
-    public void kingIsBlack_inputTrue_B() {
+    public void kingIsBlack_inputFalse_B() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
         King king = new King(false, inicialPocionX, inicialPocionY);

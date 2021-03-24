@@ -16,14 +16,18 @@ public abstract class Piece {
     private int posY;
     private boolean isCaptured;
     private boolean isMoved;
+<<<<<<< HEAD
     private String dir;
     private List<MoveType> moveTypes = new ArrayList<MoveType>();
+=======
+    private List<MovePiece> moveTypes = new ArrayList<>();
+>>>>>>> dev
 
-    public Piece(boolean white, int posX, int posY) {
+    public Piece(boolean white, Position position) {
         this.isWhite = white;
         this.isCaptured = false;
-        this.posX = posX;
-        this.posY = posY;
+        this.posX = position.getPosX();
+        this.posY = position.getPosY();
         this.isMoved = false;
         this.color = white? 'W':'B';
     }
@@ -43,16 +47,9 @@ public abstract class Piece {
     public int getPosY() {
         return posY;
     }
+
     public char getFigure() {
         return this.figure;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
     }
 
     public boolean isMoved() {
@@ -75,6 +72,7 @@ public abstract class Piece {
         return color;
     }
 
+<<<<<<< HEAD
     public void setImage(String dir) {
         this.image = new ImageIcon(dir);
     }
@@ -85,6 +83,11 @@ public abstract class Piece {
     public void updatePosition(int x, int y) {
         this.posX = x;
         this.posY = y;
+=======
+    public void updatePosition(Position position) {
+        this.posX = position.getPosX();
+        this.posY = position.getPosY();
+>>>>>>> dev
         this.isMoved = true;
     }
     public List<Position> getValidMoves() {

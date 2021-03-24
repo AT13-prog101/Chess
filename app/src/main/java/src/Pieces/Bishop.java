@@ -1,5 +1,6 @@
 package src.Pieces;
 
+<<<<<<< HEAD
 import src.PiecesMoves.DiagonalsMove;
 
 public class Bishop extends Piece{
@@ -14,6 +15,15 @@ public class Bishop extends Piece{
         {
             setImage(BLACK_BISHOP_DIR);
         }
+=======
+import src.DiagonalsMove;
+import src.Position;
+
+public class Bishop extends Piece{
+    private char figure = 'B';
+    public Bishop(boolean white, Position position) {
+        super(white, position);
+>>>>>>> dev
         addMoveType(new DiagonalsMove());
     }
     public char getFigure() {

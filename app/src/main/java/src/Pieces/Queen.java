@@ -1,5 +1,6 @@
 package src.Pieces;
 
+<<<<<<< HEAD
 import src.PiecesMoves.DiagonalsMove;
 import src.PiecesMoves.LinedMove;
 
@@ -14,6 +15,16 @@ public class Queen extends Piece{
         } else {
             setImage(BLACK_QUEEN_DIR);
         }
+=======
+import src.DiagonalsMove;
+import src.LinedMove;
+import src.Position;
+
+public class Queen extends Piece{
+    private char figure = 'Q';
+    public Queen(boolean white, Position position) {
+        super(white, position);
+>>>>>>> dev
         addMoveType(new DiagonalsMove());
         addMoveType(new LinedMove());
     }

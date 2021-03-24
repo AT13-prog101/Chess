@@ -1,5 +1,6 @@
 package src.Pieces;
 
+<<<<<<< HEAD
 import src.PiecesMoves.KnightMove;
 
 public class Horse extends Piece{
@@ -14,6 +15,15 @@ public class Horse extends Piece{
         {
             setImage(BLACK_KNIGHT_DIR);
         }
+=======
+import src.KnightMove;
+import src.Position;
+
+public class Horse extends Piece{
+    private char figure = 'H';
+    public Horse(boolean white, Position position) {
+        super(white, position);
+>>>>>>> dev
         addMoveType(new KnightMove());
     }
     public char getFigure() {
