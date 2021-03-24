@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.KingMove;
+import src.PieceMovements.KingMove;
 import src.Position;
 
 public class King extends Piece {

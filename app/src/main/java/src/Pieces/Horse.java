@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.KnightMove;
+import src.PieceMovements.KnightMove;
 import src.Position;
 
 public class Horse extends Piece{

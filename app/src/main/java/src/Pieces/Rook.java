@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.LinedMove;
+import src.PieceMovements.LinedMove;
 import src.Position;
 
 public class Rook extends Piece{
