@@ -1,62 +1,119 @@
-package src;
+package src.Pieces;
 
 import org.junit.Test;
+import src.Chessboard;
+import src.GetPieceFactory;
 import src.Pieces.Piece;
+import src.Position;
+import src.TypePiece;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class PawnMoveTest {
+
+    private void chessboardScenario() {
+        Chessboard chessboard = new Chessboard();
+        int dimensionBoard = 8;
+        chessboard.board = new Piece[dimensionBoard][dimensionBoard];
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        chessboard.board[2][4] = getPieceFactory.getPiece(TypePiece.PAWN, true, new Position(4,2));
+        chessboard.board[5][6] = getPieceFactory.getPiece(TypePiece.HORSE, false, new Position(6,5));
+        chessboard.board[5][4] = getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(4,5));
+        chessboard.board[4][1] = getPieceFactory.getPiece(TypePiece.BISHOP, false, new Position(1,4));
+        chessboard.board[6][2] = getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(2,6));
+    }
     /**
-     * PositionTraductor switches from one notation to the other.
-     *
-     *               ALGEBRAIC                         MATRIX
-     *      8| BR BH BB BQ BK BB BH BR      0| BR BH BB BQ BK BB BH BR
-     *      7| BP BP BP BP BP BP BP BP      1| BP BP BP BP BP BP BP BP
-     *      6|                              2|
-     *      5|                              3|
-     *      4|                          ==> 4|
-     *      3|                              5|
-     *      2| WP WP WP WP WP WP WP WP      6| WP WP WP WP WP WP WP WP
-     *      1| WR WH WB WQ WK WB WH WR      7| WR WH WB WQ WK WB WH WR
-     *        ------------------------         -----------------------
-     *         a  b  c  d  e  f  g  h          0  1  2  3  4  5  6  7
+     *      ---------------------------------------
+     * 8 |    |    |    |    |    |    |    |    |
+     *   |---------------------------------------
+     * 7 |    |    |    |    |    |    |    |    |
+     *   |---------------------------------------
+     * 6 |    |    |    |    | WP |    |    |    |
+     *   |---------------------------------------
+     * 5 |    |    |    |    |    |    |    |    |
+     *   |---------------------------------------
+     * 4 |    |    |    |    |    |    |    |    |
+     *   |---------------------------------------
+     * 3 |    |    |    |    | BB |    | BP |    |
+     *   |---------------------------------------
+     * 2 |    |    | BR |    |    | WP |    |    |
+     *   |---------------------------------------
+     * 1 |    | WP |    |    |    |    |    |    |
+     *   |---------------------------------------
+     *     a    b    c    d    e    f    g    h
      */
     @Test
-    public void getValidMovesPawnAtPos_6_1() {
-        Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][1];
+    public void getValidMovesInitialPawnAlone_e6_TwoMoves() {
+        chessboardScenario();
+        Piece pawn = Chessboard.board[2][4];
         List<Position> validMoves = pawn.getValidMoves();
-        String expected = "b4 b3" + " ";
+        String expected = "e8 e7 " + "";
         String actual = "";
         for (Position pos : validMoves) {
-            actual += String.valueOf(pos.getCharAlg()) + " ";
+            actual += (pos.getCharAlg()) + " ";
         }
         assertEquals(expected, actual);
     }
+
     @Test
-    public void getValidMovesPawnAtPos_6_2() {
-        Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][2];
+    public void getValidMovesInitialPawnOneEnemy_b1_twoMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, true, new Position(1,7)));
+        Piece pawn = Chessboard.board[7][1];
         List<Position> validMoves = pawn.getValidMoves();
-        String expected = "c4 c3" + " ";
+        String expected = "b3 b2 c2 " + "";
         String actual = "";
         for (Position pos : validMoves) {
-            actual += String.valueOf(pos.getCharAlg()) + " ";
+            actual += (pos.getCharAlg()) + " ";
         }
         assertEquals(expected, actual);
     }
+
     @Test
-    public void getValidMovesPawnAtPos_6_0() {
-        Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][0];
+    public void getValidMovesMovedPawnTwoEnemies_f2_treeMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, true, new Position(5,6)));
+        Piece pawn = Chessboard.board[6][5];
+        pawn.setIsMoved(true);
         List<Position> validMoves = pawn.getValidMoves();
-        String expected = "a4 a3" + " ";
+        String expected = "f3 e3 g3 " + "";
         String actual = "";
         for (Position pos : validMoves) {
-            actual += String.valueOf(pos.getCharAlg()) + " ";
+            actual += (pos.getCharAlg()) + " ";
         }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void pawnIsBlack_inputTrue_B() {
+        int initPosX = 4;
+        int initPosY = 4;
+        Pawn pawn = new Pawn(false, new Position(initPosX, initPosY));
+        char actual = pawn.getColor();
+        char expected = 'B';
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void pawnIsWhite_inputTrue_W() {
+        int initPosX = 4;
+        int initPosY = 4;
+        Pawn pawn = new Pawn(true, new Position(initPosX, initPosY));
+        char actual = pawn.getColor();
+        char expected = 'W';
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getFigurePawn_choseKing_K() {
+        int initPosX = 4;
+        int initPosY = 4;
+        Pawn pawn = new Pawn(true, new Position(initPosX, initPosY));
+        char actual = pawn.getFigure();
+        char expected = 'P';
         assertEquals(expected, actual);
     }
 }
