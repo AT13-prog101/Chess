@@ -1,11 +1,12 @@
 package src.Pieces;
 
 import src.DiagonalsMove;
+import src.Position;
 
 public class Bishop extends Piece{
     private char figure = 'B';
-    public Bishop(boolean white, int initPosX, int initPosY) {
-        super(white, initPosX, initPosY);
+    public Bishop(boolean white, Position position) {
+        super(white, position);
         addMoveType(new DiagonalsMove());
     }
     public char getFigure() {

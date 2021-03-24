@@ -56,7 +56,7 @@ public class Chessboard {
                         winner = player;
                     }
                 }
-                pieceToMove.updatePosition(target.getPosX(), target.getPosY());
+                pieceToMove.updatePosition(new Position(target.getPosX(), target.getPosY()));
                 Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
                 Chessboard.board[source.getPosY()][source.getPosX()] = null;
                 return true;

@@ -1,12 +1,13 @@
 package src.Pieces;
 
 import src.KingMove;
+import src.Position;
 
 public class King extends Piece {
     private char figure = 'K';
     private boolean alive=true;
-    public King(boolean white, int initPosX, int initPosY) {
-        super(white, initPosX, initPosY);
+    public King(boolean white, Position position) {
+        super(white, position);
         addMoveType(new KingMove());
     }
 

@@ -1,11 +1,12 @@
 package src.Pieces;
 
 import src.PawnMove;
+import src.Position;
 
 public class Pawn extends Piece{
     private char figure = 'P';
-    public Pawn(boolean white, int initPosX, int initPosY) {
-        super(white, initPosX, initPosY);
+    public Pawn(boolean white, Position position) {
+        super(white, position);
 
         addMoveType(new PawnMove());
     }
