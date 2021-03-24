@@ -51,7 +51,7 @@ public class Team {
         int arrayPos = 0;
         for (int row = rowSup; row <= rowInf; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), isWhite, col, row);
+                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), isWhite, new Position(col, row));
                 Chessboard.board[row][col] = piece;
                 arrayPos += 1;
             }
