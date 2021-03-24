@@ -1,7 +1,7 @@
 package src.Pieces;
 
-import src.PieceMovements.DiagonalsMove;
-import src.PieceMovements.LinedMove;
+import src.PiecesMoves.DiagonalsMove;
+import src.PiecesMoves.LinedMove;
 import src.Position;
 
 public class Queen extends Piece{

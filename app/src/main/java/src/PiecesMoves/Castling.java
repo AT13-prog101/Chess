@@ -1,4 +1,4 @@
-package src.PieceMovements;
+package src.PiecesMoves;
 
 import src.Chessboard;
 import src.Pieces.Piece;

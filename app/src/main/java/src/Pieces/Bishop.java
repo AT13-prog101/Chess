@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.PieceMovements.DiagonalsMove;
+import src.PiecesMoves.DiagonalsMove;
 import src.Position;
 
 public class Bishop extends Piece{
