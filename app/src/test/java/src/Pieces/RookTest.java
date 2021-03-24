@@ -40,7 +40,20 @@ public class RookTest {
          *     a    b    c    d    e    f    g    h
          */
     }
-    
+    @Test
+    public void getValidMovesBishopBlack_d5_eightValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(3, 3)));
+        Rook rook = (Rook) Chessboard.board[3][3];
+        List<Position> validMoves = rook.getValidMoves();
+        String expected = "e5 f5 g5 h5 d4 d3 d6 d7 d8 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
     @Test
     public void rookIsBlack_inputFalse_B() {
         int inicialPocionX = 8;
