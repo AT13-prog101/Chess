@@ -1,11 +1,12 @@
 package src;
 
 import src.Pieces.Piece;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class KingMove implements MovePiece {
-    private List<Position> movePoints;
+    private List<Position> movePositions;
 
     /**
      * Return a List of Points with all possible moves of Knight
@@ -15,7 +16,7 @@ public class KingMove implements MovePiece {
      */
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
-        movePoints = new ArrayList<Position>();
+        movePositions = new ArrayList<Position>();
         int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
         int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
 
@@ -25,55 +26,53 @@ public class KingMove implements MovePiece {
         for (int i = 0; i < xPossiblePos.length; i++) {
             int xPosition = xActPos + xPossiblePos[i];
             int yPosition = yActPos + yPossiblePos[i];
-            if (0 <= xPosition && 0 <= yPosition && xPosition < Chessboard.DIMENSION && yPosition < Chessboard.DIMENSION) {
-                if (isPositionAvailable(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
-                    movePoints.add(new Position(xPosition, yPosition));
+            if (isInLimits(xPosition) && isInLimits(yPosition)) {
+                if (isSpaceEmpty(Chessboard.board[yPosition][xPosition]) ||
+                        isSpaceWithEnemy(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
+                    movePositions.add(new Position(xPosition, yPosition));
                 }
             }
         }
-        return movePoints;
-    }
-
-    /**
-     * Verify if the destination selected for the player is valid
-     *
-     * @param xDest
-     * @param yDest
-     * @return true if move is possible, false if move is no possible
-     */
-    private boolean isMoveValid(int xDest, int yDest) {
-        for (Position availableMove : movePoints) {
-            if (availableMove.getPosX() == xDest && availableMove.getPosY() == yDest)
-                return true;
-        }
-        return false;
+        return movePositions;
     }
 
     /**
      * Verify if the space of destination is free from piece of the same color or is empty.
      *
-     * @param piece       is the piece in the possible position.
-     * @param colorMoving is the color of the King that is moving
+     * @param piece is the piece in the possible position.
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
-    public boolean isPositionAvailable(Piece piece, boolean colorMoving) {
-        if (piece == null || piece.getColorWhite() != colorMoving)
+    public boolean isSpaceEmpty(Piece piece) {
+        if (piece == null)
             return true;
         return false;
     }
 
-    @Override
-    public boolean isSpaceEmpty(Piece piece) {
-        return false;
-    }
-
-    @Override
+    /**
+     * Verify if Destiny position has an enemy
+     *
+     * @param piece
+     * @param isWhite
+     * @return
+     */
     public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        return false;
+        if (piece.getColorWhite() != isWhite)
+            return true;
+        else
+            return false;
     }
 
+    /**
+     * Verify is the Position is inside the Limits of the Chessboard
+     *
+     * @param position
+     * @return true if its in the limits, false if not
+     */
     @Override
     public boolean isInLimits(int position) {
+        if (0 <= position && position < Chessboard.DIMENSION) {
+            return true;
+        }
         return false;
     }
 }

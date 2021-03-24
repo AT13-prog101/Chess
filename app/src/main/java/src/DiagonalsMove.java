@@ -65,6 +65,7 @@ public class DiagonalsMove implements MovePiece {
      * @param piece is the piece in the possible position.
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
+    @Override
     public boolean isSpaceEmpty(Piece piece) {
         if(piece == null)
             return true;
@@ -77,6 +78,7 @@ public class DiagonalsMove implements MovePiece {
      * @param isWhite
      * @return
      */
+    @Override
     public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
         if(piece.getColorWhite() != isWhite)
             return true;
