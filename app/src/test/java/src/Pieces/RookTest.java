@@ -41,6 +41,21 @@ public class RookTest {
          */
     }
     @Test
+    public void getValidMovesBishopWhite_h1_fourteenValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(7, 7)));
+        Rook rook = (Rook) Chessboard.board[7][7];
+        List<Position> validMoves = rook.getValidMoves();
+        String expected = "g1 f1 e1 d1 c1 b1 a1 h2 h3 h4 h5 h6 h7 h8 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void getValidMovesBishopBlack_h8_elevenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
@@ -56,7 +71,7 @@ public class RookTest {
     }
 
     @Test
-    public void getValidMovesBishopBlack_a1_eightValidMoves() {
+    public void getValidMovesBishopBlack_a1_fourteenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false, new Position(0, 7)));
