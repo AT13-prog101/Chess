@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.DiagonalsMove;
+import src.PiecesMoves.DiagonalsMove;
 
 public class Bishop extends Piece{
     private char figure = 'B';

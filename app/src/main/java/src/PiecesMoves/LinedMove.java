@@ -1,10 +1,13 @@
-package src;
+package src.PiecesMoves;
 
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class LinedMove implements MovePiece {
+public class LinedMove implements MoveType {
 
     @Override
     public List<Position> getPossibleMoves(Piece piece) {
@@ -12,7 +15,7 @@ public class LinedMove implements MovePiece {
         int xPos = piece.getPosX();
         int yPos = piece.getPosY();
 
-        for( int i = xPos + 1; i < Chessboard.DIMENSION; i++) {
+        for(int i = xPos + 1; i < Chessboard.DIMENSION; i++) {
             if(isSpaceEmpty(Chessboard.board[yPos][i].getPiece())) {
                 movePositions.add(new Position(i, yPos));
             }else if(isSpaceWithEnemy(Chessboard.board[yPos][i].getPiece(), piece.getColorWhite())) {

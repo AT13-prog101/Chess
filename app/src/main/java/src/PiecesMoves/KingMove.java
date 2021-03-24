@@ -1,10 +1,13 @@
-package src;
+package src.PiecesMoves;
 
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class KingMove implements MovePiece {
+public class KingMove implements MoveType {
     private List<Position> movePoints;
 
     /**

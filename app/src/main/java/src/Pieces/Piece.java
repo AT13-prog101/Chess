@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.MovePiece;
+import src.PiecesMoves.MoveType;
 import src.Position;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public abstract class Piece {
     private boolean isCaptured;
     private boolean isMoved;
     private String dir;
-    private List<MovePiece> moveTypes = new ArrayList<MovePiece>();
+    private List<MoveType> moveTypes = new ArrayList<MoveType>();
 
     public Piece(boolean white, int posX, int posY) {
         this.isWhite = white;
@@ -67,8 +67,8 @@ public abstract class Piece {
         return this.isWhite;
     }
 
-    public void addMoveType(MovePiece movePiece) {
-        this.moveTypes.add(movePiece);
+    public void addMoveType(MoveType moveType) {
+        this.moveTypes.add(moveType);
     }
 
     public char getColor() {
@@ -89,8 +89,8 @@ public abstract class Piece {
     }
     public List<Position> getValidMoves() {
         List<Position> validMoves = new ArrayList<Position>();
-        for (MovePiece movePiece : moveTypes) {
-            validMoves.addAll(movePiece.getPossibleMoves(this));
+        for (MoveType moveType : moveTypes) {
+            validMoves.addAll(moveType.getPossibleMoves(this));
         }
         return validMoves;
     }

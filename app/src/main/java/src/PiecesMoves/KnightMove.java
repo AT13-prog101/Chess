@@ -1,10 +1,13 @@
-package src;
+package src.PiecesMoves;
 
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class KnightMove implements MovePiece{
+public class KnightMove implements MoveType {
 
     /**
      * Return a List of Positions with all possible moves of Knight

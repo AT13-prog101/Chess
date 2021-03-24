@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.PawnMove;
+import src.PiecesMoves.PawnMove;
 
 public class Pawn extends Piece{
     private char figure = 'P';

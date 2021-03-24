@@ -47,11 +47,11 @@ public class Team {
      */
 
     public void initializeTeam(int rowSup, int rowInf, List<TypePiece> piecesOrder, boolean isWhite) {
-        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        PieceFactory pieceFactory = new PieceFactory();
         int arrayPos = 0;
         for (int row = rowSup; row <= rowInf; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), isWhite, col, row);
+                Piece piece = pieceFactory.getPiece(piecesOrder.get(arrayPos), isWhite, col, row);
                 Chessboard.board[row][col].setPiece(piece);
                 arrayPos += 1;
             }

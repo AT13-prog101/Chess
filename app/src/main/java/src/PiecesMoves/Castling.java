@@ -1,11 +1,13 @@
-package src;
+package src.PiecesMoves;
 
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Castling implements MovePiece{
+public class Castling implements MoveType {
 
     @Override
     public List<Position> getPossibleMoves(Piece piece) {

@@ -1,8 +1,7 @@
 package src.Pieces;
 
-import com.sun.source.doctree.StartElementTree;
-import src.DiagonalsMove;
-import src.LinedMove;
+import src.PiecesMoves.DiagonalsMove;
+import src.PiecesMoves.LinedMove;
 
 public class Queen extends Piece{
     private char figure = 'Q';

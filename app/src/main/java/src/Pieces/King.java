@@ -1,6 +1,6 @@
 package src.Pieces;
 
-import src.KingMove;
+import src.PiecesMoves.KingMove;
 
 public class King extends Piece {
     private char figure = 'K';
