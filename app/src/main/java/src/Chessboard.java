@@ -22,9 +22,6 @@ public class Chessboard extends JFrame {
      * Chessboard initializes the pieces from its Team instances
      */
     public Chessboard() {
-        initializeChessboard();
-    }
-    public void initializeChessboard() {
         setSize(SIZE_WINDOW_WIDTH, SIZE_WINDOW_HEIGHT);
         setTitle("AT13-CHESS");
         setLocationRelativeTo(null);
@@ -33,6 +30,9 @@ public class Chessboard extends JFrame {
         setFocusable(true);
         setLayout(new GridLayout(DIMENSION, DIMENSION));
         addBoardCells();
+        initializeChessboard();
+    }
+    public void initializeChessboard() {
         whiteTeam = new Team(IS_PLAYER_WHITE);
         blackTeam = new Team(!IS_PLAYER_WHITE);
         updateChessboard();

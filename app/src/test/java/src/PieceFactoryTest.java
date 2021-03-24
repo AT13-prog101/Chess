@@ -10,7 +10,7 @@ public class PieceFactoryTest {
     public void getPawnFigurefromGetfactory() {
         PieceFactory pieceFactory = new PieceFactory();
         TypePiece name = TypePiece.PAWN;
-        Piece pawn = pieceFactory.getPiece(name, true, 0, 0);
+        Piece pawn = pieceFactory.getPiece(name, true, new Position(0, 0));
         char expected = 'P';
         char actual = pawn.getFigure();
         assertEquals(expected, actual);
@@ -19,7 +19,7 @@ public class PieceFactoryTest {
     public void getQueenFigurefromGetfactory() {
         PieceFactory pieceFactory = new PieceFactory();
         TypePiece name = TypePiece.QUEEN;
-        Piece queen = pieceFactory.getPiece(name, true, 6, 5);
+        Piece queen = pieceFactory.getPiece(name, true, new Position(6, 5));
         char expected = 'Q';
         char actual = queen.getFigure();
         assertEquals(expected, actual);
@@ -28,7 +28,7 @@ public class PieceFactoryTest {
     public void getPositionXFromPiecefromGetfactory() {
         PieceFactory pieceFactory = new PieceFactory();
         TypePiece name = TypePiece.PAWN;
-        Piece pawn = pieceFactory.getPiece(name, true, 7, 7);
+        Piece pawn = pieceFactory.getPiece(name, true, new Position(7, 7));
         int expected = 7;
         int actual = pawn.getPosX();
         assertEquals(expected, actual);

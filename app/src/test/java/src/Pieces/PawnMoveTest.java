@@ -1,7 +1,9 @@
-package src;
+package src.Pieces;
 
 import org.junit.Test;
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class PawnMoveTest {
     @Test
     public void getValidMovesPawnAtPos_6_1() {
         Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][1];
+        Piece pawn = Chessboard.board[6][1].getPiece();
         List<Position> validMoves = pawn.getValidMoves();
         String expected = "b4 b3" + " ";
         String actual = "";
@@ -38,7 +40,7 @@ public class PawnMoveTest {
     @Test
     public void getValidMovesPawnAtPos_6_2() {
         Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][2];
+        Piece pawn = Chessboard.board[6][2].getPiece();
         List<Position> validMoves = pawn.getValidMoves();
         String expected = "c4 c3" + " ";
         String actual = "";
@@ -50,7 +52,7 @@ public class PawnMoveTest {
     @Test
     public void getValidMovesPawnAtPos_6_0() {
         Chessboard chessboard = new Chessboard();
-        Piece pawn = Chessboard.board[6][0];
+        Piece pawn = Chessboard.board[6][0].getPiece();
         List<Position> validMoves = pawn.getValidMoves();
         String expected = "a4 a3" + " ";
         String actual = "";

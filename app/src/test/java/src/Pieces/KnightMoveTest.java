@@ -1,7 +1,9 @@
-package src;
+package src.Pieces;
 
 import org.junit.Test;
+import src.Chessboard;
 import src.Pieces.Piece;
+import src.Position;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class KnightMoveTest {
     @Test
     public void getValidMovesKnightAtPos_1_7() {
         Chessboard chessboard = new Chessboard();
-        Piece knight = Chessboard.board[7][1];
+        Piece knight = Chessboard.board[7][1].getPiece();
         List<Position> validMoves = knight.getValidMoves();
         String expected = "c3 a3" + " ";
         String actual = "";
