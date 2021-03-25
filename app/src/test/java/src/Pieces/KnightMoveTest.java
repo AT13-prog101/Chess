@@ -39,7 +39,7 @@ public class KnightMoveTest {
      *     a    b    c    d    e    f    g    h
      */
     @Test
-    public void getValidMovesKnightAlone_e6_eightMoves() {
+    public void getValidMovesKnightAlone_E6_EightMoves() {
         chessboardScenario();
         Piece knight = Chessboard.board[2][4];
         List<Position> validMoves = knight.getValidMoves();
@@ -52,7 +52,7 @@ public class KnightMoveTest {
     }
 
     @Test
-    public void getValidMovesKnightOneEnemy_h1_twoMoves() {
+    public void getValidMovesKnightOneEnemy_H1_TwoMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, true, new Position(7,7)));
@@ -67,7 +67,7 @@ public class KnightMoveTest {
     }
 
     @Test
-    public void getValidMovesKnightOneEnemyOneAlly_a1_oneMoves() {
+    public void getValidMovesKnightOneEnemyOneAlly_A1_OneMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, true, new Position(0,7)));
@@ -82,7 +82,7 @@ public class KnightMoveTest {
     }
 
     @Test
-    public void horseIsBlack_inputTrue_B() {
+    public void horseIsBlack_InputTrue_B() {
         int initPosX = 4;
         int initPosY = 4;
         Horse knight = new Horse(false, new Position(initPosX, initPosY));
@@ -91,7 +91,7 @@ public class KnightMoveTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void horseIsWhite_inputTrue_W() {
+    public void horseIsWhite_InputTrue_W() {
         int initPosX = 4;
         int initPosY = 4;
         Horse knight = new Horse(true, new Position(initPosX, initPosY));
@@ -101,7 +101,7 @@ public class KnightMoveTest {
     }
 
     @Test
-    public void getFigureHorse_choseKing_K() {
+    public void getFigureHorse_ChoseKing_K() {
         int initPosX = 4;
         int initPosY = 4;
         Horse knight = new Horse(true, new Position(initPosX, initPosY));
