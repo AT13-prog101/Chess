@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Objects;
+
 public class Position {
     private int posX;
     private int posY;
@@ -40,4 +42,11 @@ public class Position {
     public String getCharAlg() {
         return this.charAlg;
     }
+    @Override
+    public boolean equals(Object o) {
+        Position position = (Position) o;
+        return posX == position.posX && posY == position.posY && Objects.equals(charAlg, position.charAlg);
+    }
+
+
 }
