@@ -45,7 +45,7 @@ public class PawnMoveTest {
      *     a    b    c    d    e    f    g    h
      */
     @Test
-    public void getValidMovesInitialPawnAlone_e6_TwoMoves() {
+    public void getValidMovesInitialPawnAlone_E6_TwoMoves() {
         chessboardScenario();
         Piece pawn = Chessboard.board[2][4];
         List<Position> validMoves = pawn.getValidMoves();
@@ -58,7 +58,7 @@ public class PawnMoveTest {
     }
 
     @Test
-    public void getValidMovesInitialPawnOneEnemy_b1_twoMoves() {
+    public void getValidMovesInitialPawnOneEnemy_B1_TwoMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, true, new Position(1,7)));
@@ -73,7 +73,7 @@ public class PawnMoveTest {
     }
 
     @Test
-    public void getValidMovesMovedPawnTwoEnemies_f2_treeMoves() {
+    public void getValidMovesMovedPawnTwoEnemies_F2_TreeMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.PAWN, true, new Position(5,6)));
@@ -89,7 +89,7 @@ public class PawnMoveTest {
     }
 
     @Test
-    public void pawnIsBlack_inputTrue_B() {
+    public void pawnIsBlack_InputTrue_B() {
         int initPosX = 4;
         int initPosY = 4;
         Pawn pawn = new Pawn(false, new Position(initPosX, initPosY));
@@ -98,7 +98,7 @@ public class PawnMoveTest {
         assertEquals(expected, actual);
     }
     @Test
-    public void pawnIsWhite_inputTrue_W() {
+    public void pawnIsWhite_InputTrue_W() {
         int initPosX = 4;
         int initPosY = 4;
         Pawn pawn = new Pawn(true, new Position(initPosX, initPosY));
@@ -108,7 +108,7 @@ public class PawnMoveTest {
     }
 
     @Test
-    public void getFigurePawn_choseKing_K() {
+    public void getFigurePawn_ChoseKing_K() {
         int initPosX = 4;
         int initPosY = 4;
         Pawn pawn = new Pawn(true, new Position(initPosX, initPosY));
