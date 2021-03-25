@@ -36,7 +36,7 @@ public class KingTest {
     }
 
     @Test
-    public void getValidMovesKing_d4_fiveValidMoves() {
+    public void getValidMovesKing_D4_FiveValidMoves() {
         chessboardScenario();
         Piece king = Chessboard.board[4][3];
         List<Position> validMoves = king.getValidMoves();
@@ -49,7 +49,7 @@ public class KingTest {
     }
 
     @Test
-    public void getValidMovesKing_h8_threeValidMoves() {
+    public void getValidMovesKing_H8_ThreeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 0)));
@@ -65,7 +65,7 @@ public class KingTest {
     }
 
     @Test
-    public void getValidMovesKing_a8_threeValidMoves() {
+    public void getValidMovesKing_A8_ThreeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 0)));
@@ -81,7 +81,7 @@ public class KingTest {
     }
 
     @Test
-    public void getValidMovesKing_h1_threeValidMoves() {
+    public void getValidMovesKing_H1_ThreeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 7)));
@@ -97,7 +97,7 @@ public class KingTest {
     }
 
     @Test
-    public void getValidMovesKing_a1_threeValidMoves() {
+    public void getValidMovesKing_A1_ThreeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 7)));
@@ -113,7 +113,7 @@ public class KingTest {
     }
 
     @Test
-    public void kingIsBlack_inputFalse_B() {
+    public void kingIsBlack_InputFalse_B() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
         King king = new King(false, new Position(inicialPocionX, inicialPocionY));
@@ -123,7 +123,7 @@ public class KingTest {
     }
 
     @Test
-    public void kingIsWhite_inputTrue_W() {
+    public void kingIsWhite_InputTrue_W() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
         King king = new King(true, new Position(inicialPocionX, inicialPocionY));
@@ -133,7 +133,7 @@ public class KingTest {
     }
 
     @Test
-    public void getFigureKing_choseKing_K() {
+    public void getFigureKing_ChoseKing_K() {
         int inicialPocionX = 4;
         int inicialPocionY = 4;
         King king = new King(true, new Position(inicialPocionX, inicialPocionY));
