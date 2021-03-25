@@ -47,8 +47,24 @@ public class QueenTest {
          *     a    b    c    d    e    f    g    h
          */
     }
+
     @Test
-    public void getValidMovesQueen_A1_TwentyOneValidMoves() {
+    public void getValidMovesQueenBlack_H8_SixteenValidMoves() {
+        chessboardScenario();
+        GetPieceFactory getPieceFactory = new GetPieceFactory();
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, false, new Position(7,0)));
+        Piece queen = Chessboard.board[0][7];
+        List<Position> validMoves = queen.getValidMoves();
+        String expected = "g7 f6 e5 d4 c3 b2 a1 g8 f8 h7 h6 h5 h4 h3 h2 h1 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getValidMovesQueenBlack_A1_TwentyOneValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, false, new Position(0,7)));
@@ -63,7 +79,7 @@ public class QueenTest {
     }
 
     @Test
-    public void getValidMovesQueen_H1_FourteenValidMoves() {
+    public void getValidMovesQueenBlack_H1_FourteenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, false, new Position(7,7)));
@@ -78,7 +94,7 @@ public class QueenTest {
     }
 
     @Test
-    public void getValidMovesQueen_A8_FourteenValidMoves() {
+    public void getValidMovesQueenWhite_A8_FourteenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, true, new Position(0,0)));
