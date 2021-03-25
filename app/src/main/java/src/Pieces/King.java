@@ -11,18 +11,6 @@ public class King extends Piece {
         addMoveType(new KingMove());
     }
 
-    /**
-     *
-     * @return life of king
-     */
-    public boolean getLive(){return alive;}
-
-    /** Change status life of king
-     *
-     * @return void
-     */
-    public void setLive(boolean changeStatusLife){ this.alive=changeStatusLife;}
-
     /** Return figure of king
      *
      * @return char that is figure of king
