@@ -7,7 +7,16 @@ import static org.junit.Assert.*;
 
 public class QueenTest {
     @Test
-    public void queenIsWhite_inputTrue_W() {
+    public void kingIsBlack_InputFalse_B() {
+        int inicialPocionX = 4;
+        int inicialPocionY = 4;
+        Queen queen = new Queen(false, new Position(inicialPocionX, inicialPocionY));
+        char actual = queen.getColor();
+        char expected = 'B';
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void queenIsWhite_InputTrue_W() {
         int inicialPocionX = 5;
         int inicialPocionY = 6;
         Queen queen = new Queen(true, new Position(inicialPocionX, inicialPocionY));
