@@ -22,9 +22,9 @@ public class PositionValidator {
      */
     public PositionValidator(String input) {
         this.input = input;
+
         validateInput();
     }
-
     /**
      * Process a string to know if they contain one or two Positions and store them if valid
      */
