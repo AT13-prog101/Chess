@@ -6,6 +6,8 @@ import src.GetPieceFactory;
 import src.Position;
 import src.TypePiece;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class QueenTest {
@@ -23,6 +25,7 @@ public class QueenTest {
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, false, new Position(1, 4)));
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.ROOK, false, new Position("f4")));
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.HORSE, false, new Position("e8")));
+        Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.QUEEN, true, new Position("e4")));
         /**
          *    ---------------------------------------
          * 8 |    |    |    |    | BH |    |    |    |
@@ -33,7 +36,7 @@ public class QueenTest {
          *   |---------------------------------------
          * 5 |    |    |    | BB |    |    |    |    |
          *   |---------------------------------------
-         * 4 |    | BK |    |    |    | BR |    |    |
+         * 4 |    | BK |    |    | WQ | BR |    |    |
          *   |---------------------------------------
          * 3 |    |    |    | WP |    |    |    |    |
          *   |---------------------------------------
@@ -43,6 +46,19 @@ public class QueenTest {
          *   |---------------------------------------
          *     a    b    c    d    e    f    g    h
          */
+    }
+
+    @Test
+    public void getValidMovesQueen_E4_FifteenValidMoves() {
+        chessboardScenario();
+        Piece queen = Chessboard.board[4][4];
+        List<Position> validMoves = queen.getValidMoves();
+        String expected = "f3 g2 d5 f5 f4 d4 c4 b4 e3 e2 e1 e5 e6 e7 e8 ";
+        String actual = "";
+        for (Position pos : validMoves) {
+            actual += String.valueOf(pos.getCharAlg()) + " ";
+        }
+        assertEquals(expected, actual);
     }
 
     @Test
