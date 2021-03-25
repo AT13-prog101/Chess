@@ -30,7 +30,7 @@ public class Team {
            TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN,
             TypePiece.ROOK, TypePiece.HORSE, TypePiece.BISHOP, TypePiece.QUEEN, TypePiece.KING, TypePiece.BISHOP, TypePiece.HORSE, TypePiece.ROOK));
     ArrayList<TypePiece> blackPiecesOrder = new ArrayList<TypePiece>(Arrays.asList(
-            TypePiece.ROOK, TypePiece.HORSE, TypePiece.BISHOP, TypePiece.KING,TypePiece.QUEEN , TypePiece.BISHOP, TypePiece.HORSE, TypePiece.ROOK,
+            TypePiece.ROOK, TypePiece.HORSE, TypePiece.BISHOP, TypePiece.QUEEN,TypePiece.KING , TypePiece.BISHOP, TypePiece.HORSE, TypePiece.ROOK,
             TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN, TypePiece.PAWN));
     /**
      * Class Team stores a set of pieces

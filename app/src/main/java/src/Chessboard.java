@@ -47,9 +47,7 @@ public class Chessboard {
     }
     public boolean movePiece(Position source, Position target, Player player) {
         List<Position> validMoves = getValidMoves(source, player);
-        for (int i = 0; i < validMoves.size(); i++) {
-            Position pos = validMoves.get(i);
-            if (target.getPosY() == pos.getPosY() && target.getPosX() == pos.getPosX()) {
+            if (validMoves.contains(target)) {
                 Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
                 if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
                     if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
@@ -61,7 +59,6 @@ public class Chessboard {
                 Chessboard.board[source.getPosY()][source.getPosX()] = null;
                 return true;
             }
-        }
         return false;
     }
     public Player kingTakenBy() {
