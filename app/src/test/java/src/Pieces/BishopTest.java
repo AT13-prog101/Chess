@@ -44,7 +44,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getValidMovesBishop_h8_zeroValidMoves() {
+    public void getValidMovesBishop_H8_ZeroValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(7, 0)));
@@ -59,7 +59,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getValidMovesBishop_h1_fiveValidMoves() {
+    public void getValidMovesBishop_H1_FiveValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(7, 7)));
@@ -75,7 +75,7 @@ public class BishopTest {
 
 
     @Test
-    public void getValidMovesBishop_a1_fiveValidMoves() {
+    public void getValidMovesBishop_A1_FiveValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(0, 7)));
@@ -90,7 +90,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getValidMovesBishop_a8_threeValidMoves() {
+    public void getValidMovesBishop_A8_ThreeValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(0, 0)));
@@ -105,7 +105,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getValidMovesBishop_d4_sevenValidMoves() {
+    public void getValidMovesBishop_D4_SevenValidMoves() {
         chessboardScenario();
         GetPieceFactory getPieceFactory = new GetPieceFactory();
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.BISHOP, true, new Position(3, 4)));
@@ -120,7 +120,7 @@ public class BishopTest {
     }
 
     @Test
-    public void bishopIsBlack_inputFalse_B() {
+    public void bishopIsBlack_InputFalse_B() {
         int inicialPocionX = 6;
         int inicialPocionY = 0;
         Bishop bishop = new Bishop(false, new Position(inicialPocionX, inicialPocionY));
@@ -130,7 +130,7 @@ public class BishopTest {
     }
 
     @Test
-    public void bishopIsWhite_inputTrue_W() {
+    public void bishopIsWhite_InputTrue_W() {
         int inicialPocionX = 4;
         int inicialPocionY = 5;
         Bishop bishop = new Bishop(true, new Position(inicialPocionX, inicialPocionY));
@@ -140,7 +140,7 @@ public class BishopTest {
     }
 
     @Test
-    public void getFigureBishop_choseBishop_B() {
+    public void getFigureBishop_ChoseBishop_B() {
         int inicialPocionX = 7;
         int inicialPocionY = 0;
         Bishop bishop = new Bishop(true, new Position(inicialPocionX, inicialPocionY));
