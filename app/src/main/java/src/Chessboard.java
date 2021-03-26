@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Chessboard {
     public final static int DIMENSION = 8;
-    private static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
+    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
@@ -24,7 +24,7 @@ public class Chessboard {
      * Chessboard initializes the pieces from its Team instances
      */
     public Chessboard() {
-        initializeChessboard();
+
     }
     public void initializeChessboard() {
         boolean isWhite = true;
