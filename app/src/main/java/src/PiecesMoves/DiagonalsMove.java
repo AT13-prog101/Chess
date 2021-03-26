@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiagonalsMove implements MovePiece {
-    List<Position> movePoints;
+    private ArrayList<Position> movePoints;
 
     @Override
-    public List<Position> getPossibleMoves(Piece piece) {
+    public List<Position> getPossibleMoves(final Piece piece) {
         movePoints = new ArrayList<Position>();
         int posX = piece.getPosX();
         int posY = piece.getPosY();
@@ -45,13 +45,14 @@ public class DiagonalsMove implements MovePiece {
     }
 
     /**
-     * Verify if the space of destination is free from piece of the same color
+     * Verify if the space of destination is free from piece of the same color.
      *
-     * @param posX is a position analise of Chessboard
-     * @param posY is a position analise of Chessboard
-     * @return boolean which say is accessible Position
+     * @param posX       is a position analise of Chessboard.
+     * @param posY       is a position analise of Chessboard.
+     * @param colorPiece is a color piece.
+     * @return boolean which say is accessible Position.
      */
-    public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
+    public boolean isAccessiblePosition(final int posY, final int posX, final boolean colorPiece) {
 
         if (isSpaceEmpty(Chessboard.getPiece(new Position(posY, posX)))) {
             movePoints.add(new Position(posY, posX));
@@ -71,25 +72,26 @@ public class DiagonalsMove implements MovePiece {
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
     @Override
-    public boolean isSpaceEmpty(Piece piece) {
-        if (piece == null)
+    public boolean isSpaceEmpty(final Piece piece) {
+        if (piece == null) {
             return true;
+        }
         return false;
     }
 
     /**
-     * Verify if Destiny position has an enemy
+     * Verify if Destiny position has an enemy.
      *
      * @param piece
      * @param isWhite
      * @return
      */
     @Override
-    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if (piece.getColorWhite() != isWhite)
+    public boolean isSpaceWithEnemy(final Piece piece, final boolean isWhite) {
+        if (piece.getColorWhite() != isWhite) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     /**
@@ -99,11 +101,10 @@ public class DiagonalsMove implements MovePiece {
      * @return true if its in the limits, false if not
      */
     @Override
-    public boolean isInLimits(int position) {
+    public boolean isInLimits(final int position) {
         if (0 <= position && position < Chessboard.DIMENSION) {
             return true;
         }
         return false;
     }
 }
-
