@@ -2,6 +2,7 @@ package src.Pieces;
 
 import org.junit.Test;
 import src.*;
+import src.PiecesMoves.KingMove;
 
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class KingTest {
     public void getValidMovesKing_D4_FiveValidMoves() {
         chessboardScenario();
         Piece king = Chessboard.board[4][3];
-        List<Position> validMoves = king.getValidMoves();
+        KingMove kingMove = new KingMove();
+        List<Position> validMoves = kingMove.getPossibleMoves(king);
         String expected = "e5 c5 d5 c4 e4 d3 ";
         String actual = "";
         for (Position pos : validMoves) {
@@ -55,7 +57,8 @@ public class KingTest {
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 0)));
         Piece king = Chessboard.board[0][7];
 
-        List<Position> validMoves = king.getValidMoves();
+        KingMove kingMove = new KingMove();
+        List<Position> validMoves = kingMove.getPossibleMoves(king);
         String expected = "g7 g8 h7 ";
         String actual = "";
         for (Position pos : validMoves) {
@@ -71,7 +74,8 @@ public class KingTest {
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 0)));
         Piece king = Chessboard.board[0][0];
 
-        List<Position> validMoves = king.getValidMoves();
+        KingMove kingMove = new KingMove();
+        List<Position> validMoves = kingMove.getPossibleMoves(king);
         String expected = "b7 b8 a7 ";
         String actual = "";
         for (Position pos : validMoves) {
@@ -87,7 +91,8 @@ public class KingTest {
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(7, 7)));
         Piece king = Chessboard.board[7][7];
 
-        List<Position> validMoves = king.getValidMoves();
+        KingMove kingMove = new KingMove();
+        List<Position> validMoves = kingMove.getPossibleMoves(king);
         String expected = "g2 h2 g1 ";
         String actual = "";
         for (Position pos : validMoves) {
@@ -103,7 +108,8 @@ public class KingTest {
         Chessboard.setPiece(getPieceFactory.getPiece(TypePiece.KING, true, new Position(0, 7)));
         Piece king = Chessboard.board[7][0];
 
-        List<Position> validMoves = king.getValidMoves();
+        KingMove kingMove = new KingMove();
+        List<Position> validMoves = kingMove.getPossibleMoves(king);
         String expected = "b2 a2 b1 ";
         String actual = "";
         for (Position pos : validMoves) {

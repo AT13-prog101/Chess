@@ -10,6 +10,7 @@ public class King extends Piece {
     public King(boolean white, Position position) {
         super(white, position);
         addMoveType(new KingMove());
+        addMoveType(new Castling());
     }
 
     /** Return figure of king

@@ -13,7 +13,7 @@ public class Castling implements MovePiece{
     public List<Position> getPossibleMoves(Piece piece) {
         List<Position> movePositions = new ArrayList<>();
         int xPosQ = 0;
-        int xPosK = Chessboard.DIMENSION;
+        int xPosK = Chessboard.DIMENSION - 1;
         int limitQCastling = 3;
         int LimitKCastling = 2;
         if(!piece.isMoved()) {
@@ -90,6 +90,6 @@ public class Castling implements MovePiece{
      * @return true if has moved, false if not.
      */
     public boolean isHaveMoved(Piece piece) {
-        return piece.getColorWhite();
+        return piece.isMoved();
     }
 }

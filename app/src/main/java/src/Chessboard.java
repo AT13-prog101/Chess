@@ -12,7 +12,8 @@ public class Chessboard {
     private Team blackTeam;
     private Player winner;
     boolean turn;
-
+    private final int posXCastlingKingSide = 6;
+    private final int posXCastlingQueenSide = 2;
     /**
      * Chessboard initializes the pieces from its Team instances
      */
@@ -47,19 +48,26 @@ public class Chessboard {
     }
     public boolean movePiece(Position source, Position target, Player player) {
         List<Position> validMoves = getValidMoves(source, player);
-            if (validMoves.contains(target)) {
-                Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
-                if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
-                    if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
-                        winner = player;
-                    }
-                }
-                pieceToMove.updatePosition(new Position(target.getPosX(), target.getPosY()));
-                Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
-                Chessboard.board[source.getPosY()][source.getPosX()] = null;
-                return true;
+        if (validMoves.contains(target)) {
+            if (board[source.getPosY()][source.getPosX()].getFigure() == 'K') {
+                return checkCastlingMove(source, target, validMoves);
             }
+            Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
+            if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
+               if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
+                  winner = player;
+               }
+            }
+                moveFromSourceToTarget(source, target);
+                return true;
+        }
         return false;
+    }
+    public void moveFromSourceToTarget(Position source, Position target) {
+        Piece pieceToMove = board[source.getPosY()][source.getPosX()];
+        pieceToMove.updatePosition(new Position(target.getPosX(), target.getPosY()));
+        Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
+        Chessboard.board[source.getPosY()][source.getPosX()] = null;
     }
     public Player kingTakenBy() {
         return winner;
@@ -78,6 +86,26 @@ public class Chessboard {
             validMoves = null;
             return validMoves;
         }
+    }
+    public boolean checkCastlingMove(Position source, Position target, List<Position> validMoves) {
+        for (Position pos : validMoves) {
+            int posXCastling = DIMENSION;
+            if (pos.getPosX() == posXCastlingKingSide) {
+                posXCastling = posXCastlingKingSide;
+            } else {
+                if (pos.getPosX() == posXCastlingQueenSide) {
+                    posXCastling = posXCastlingQueenSide;
+                }
+            }
+            if (target.equals(pos) && posXCastling != DIMENSION) {
+                Position rookTarget = new Position(posXCastling - 1, pos.getPosY());
+                Position rookSource = new Position(posXCastling + 1, pos.getPosY());
+                moveFromSourceToTarget(source, target);
+                moveFromSourceToTarget(rookSource, rookTarget);
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
