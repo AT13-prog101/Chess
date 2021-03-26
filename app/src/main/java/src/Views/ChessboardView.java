@@ -34,7 +34,6 @@ public class ChessboardView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setFocusable(true);
         setVisible(true);
-        //setLayout(new GridLayout(Chessboard.DIMENSION, Chessboard.DIMENSION));
         setLayout(new BorderLayout());
 
         JPanel panelTop;
