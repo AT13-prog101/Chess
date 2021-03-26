@@ -118,12 +118,16 @@ public class Chessboard {
      */
     public List<Position> getValidMoves(final Position source, final Player player) {
         List<Position> validMoves = new ArrayList<Position>();
-        Piece piece = board[source.getPosY()][source.getPosX()];
-        if (player.isWhite() == piece.getColorWhite()) {
-            validMoves = piece.getValidMoves();
-            return validMoves;
-        } else {
-            validMoves = null;
+        try {
+            Piece piece = board[source.getPosY()][source.getPosX()];
+            if (player.isWhite() == piece.getColorWhite()) {
+                validMoves = piece.getValidMoves();
+                return validMoves;
+            } else {
+                validMoves = null;
+                return validMoves;
+            }
+        }catch (Exception e){
             return validMoves;
         }
     }
