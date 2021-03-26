@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LinedMove implements MovePiece {
-    List<Position> movePositions;
+    private List<Position> movePositions;
 
     @Override
-    public List<Position> getPossibleMoves(Piece piece) {
+    public List<Position> getPossibleMoves(final Piece piece) {
         movePositions = new ArrayList<>();
         int xPos = piece.getPosX();
         int yPos = piece.getPosY();
@@ -39,18 +39,18 @@ public class LinedMove implements MovePiece {
     }
 
     /**
-     * Verify if the space of destination is free from piece of the same color
+     * Verify if the space of destination is free from piece of the same color.
      *
-     * @param posX is a position analise of Chessboard
-     * @param posY is a position analise of Chessboard
-     * @return boolean which say is accessible Position
+     * @param posX is a position analise of Chessboard.
+     * @param posY is a position analise of Chessboard.
+     * @return boolean which say is accessible Position.
      */
-    public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
-        if (isSpaceEmpty(Chessboard.getPiece(new Position(posY,posX)))) {
+    public boolean isAccessiblePosition(final int posY, final int posX, final boolean colorPiece) {
+        if (isSpaceEmpty(Chessboard.getPiece(new Position(posY, posX)))) {
             movePositions.add(new Position(posY, posX));
             return true;
         }
-        if (isSpaceWithEnemy(Chessboard.getPiece(new Position(posY,posX)), colorPiece)) {
+        if (isSpaceWithEnemy(Chessboard.getPiece(new Position(posY, posX)), colorPiece)) {
             movePositions.add(new Position(posY, posX));
             return false;
         }
@@ -64,35 +64,36 @@ public class LinedMove implements MovePiece {
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
     @Override
-    public boolean isSpaceEmpty(Piece piece) {
-        if (piece == null)
+    public boolean isSpaceEmpty(final Piece piece) {
+        if (piece == null) {
             return true;
+        }
         return false;
     }
 
     /**
-     * Verify if Destiny position has an enemy
+     * Verify if Destiny position has an enemy.
      *
-     * @param piece
-     * @param isWhite
+     * @param piece   piece of enemy.
+     * @param isWhite is color a piece.
      * @return
      */
     @Override
-    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if (piece.getColorWhite() != isWhite)
+    public boolean isSpaceWithEnemy(final Piece piece, final boolean isWhite) {
+        if (piece.getColorWhite() != isWhite) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     /**
-     * Verify is the Position is inside the Limits of the Chessboard
+     * Verify is the Position is inside the Limits of the Chessboard.
      *
-     * @param position
-     * @return true if its in the limits, false if not
+     * @param position of piece.
+     * @return true if its in the limits, false if not.
      */
     @Override
-    public boolean isInLimits(int position) {
+    public boolean isInLimits(final int position) {
         if (0 <= position && position < Chessboard.DIMENSION) {
             return true;
         }
