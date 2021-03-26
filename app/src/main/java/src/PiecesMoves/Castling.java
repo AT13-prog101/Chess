@@ -15,7 +15,7 @@ public class Castling implements MovePiece {
         int xPosQ = 0;
         int xPosK = Chessboard.DIMENSION - 1;
         final int limitQCastling = 3;
-        int limitKCastling = 2;
+        final int limitKCastling = 2;
         if (!piece.isMoved()) {
 
             int checkEmpty = 0;
