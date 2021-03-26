@@ -11,7 +11,6 @@ public class Chessboard {
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
-    boolean turn;
     private final int posXCastlingKingSide = 6;
     private final int posXCastlingQueenSide = 2;
 
@@ -66,7 +65,6 @@ public class Chessboard {
                 if (board[source.getPosY()][source.getPosX()].getFigure() == 'K') {
                     return checkCastlingMove(source, target, validMoves);
                 }
-                Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
                 if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
                     if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
                         winner = player;
@@ -107,8 +105,7 @@ public class Chessboard {
         if (player.isWhite() == piece.getColorWhite()) {
             validMoves = piece.getValidMoves();
             return validMoves;
-        }
-        else {
+        } else {
             validMoves = null;
             return validMoves;
         }
@@ -160,17 +157,10 @@ public class Chessboard {
     /**
      * Checks if there is a piece in the chessboard in the given position
      */
-    public boolean thereIsPiece (Position position) {
+    public boolean thereIsPiece(Position position) {
         if (board[position.getPosY()][position.getPosX()] == null)
             return false;
         return true;
-    }
-
-    /**
-     * Checks if a king has been taken.
-     */
-    public boolean isCheckmate () {
-        return false;
     }
 
     /**
@@ -179,7 +169,8 @@ public class Chessboard {
     public static void setPiece(Piece piece) {
         Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
     }
-    public void resetChessBoard(){
+
+    public void resetChessBoard() {
         for (int row = 0; row < DIMENSION; row++) {
             for (int col = 0; col < DIMENSION; col++) {
                 board[row][col] = null;

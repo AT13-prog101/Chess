@@ -1,8 +1,4 @@
 package src;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Player {
     private String name;
     private boolean isWhite;
@@ -21,9 +17,6 @@ public class Player {
     }
     public boolean isWhite() {
         return isWhite;
-    }
-    public String getName() {
-        return name;
     }
     public String getColor() {
         return color;

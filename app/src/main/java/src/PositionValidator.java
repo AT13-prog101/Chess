@@ -1,11 +1,5 @@
 package src;
 
-import src.Pieces.Piece;
-
-import java.lang.annotation.Target;
-import java.nio.file.LinkPermission;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class PositionValidator {

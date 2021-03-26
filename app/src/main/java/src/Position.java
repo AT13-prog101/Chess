@@ -7,7 +7,7 @@ public class Position {
     private int posY;
     private String charAlg;
 
-    public Position(int posX, int posY){
+    public Position(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
         this.charAlg = PositionTraductor.getAlgebraicNotation(posX, posY);
@@ -21,6 +21,7 @@ public class Position {
 
     /**
      * Return Position X
+     *
      * @return posX
      */
     public int getPosX() {
@@ -29,6 +30,7 @@ public class Position {
 
     /**
      * Return Position Y
+     *
      * @return posY
      */
     public int getPosY() {
@@ -37,11 +39,13 @@ public class Position {
 
     /**
      * Return algebraic char
+     *
      * @return charAlg
      */
     public String getCharAlg() {
         return this.charAlg;
     }
+
     @Override
     public boolean equals(Object o) {
         Position position = (Position) o;

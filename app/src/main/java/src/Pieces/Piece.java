@@ -24,15 +24,6 @@ public abstract class Piece {
         this.isMoved = false;
         this.color=white? 'W':'B';
     }
-
-    public void setCaptured(boolean isCaptured) {
-        this.isCaptured = isCaptured;
-    }
-
-    public boolean isCaptured() {
-        return this.isCaptured;
-    }
-
     public int getPosX() {
         return posX;
     }
