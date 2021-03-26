@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Chessboard {
     public final static int DIMENSION = 8;
-    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
+    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
@@ -15,7 +15,7 @@ public class Chessboard {
     private final int posXCastlingKingSide = 6;
     private final int posXCastlingQueenSide = 2;
 
-    public static  Piece getPiece(Position position) {
+    public static Piece getPiece(Position position) {
         Piece piece = board[position.getPosY()][position.getPosX()];
         return piece;
     }
@@ -24,13 +24,15 @@ public class Chessboard {
      * Chessboard initializes the pieces from its Team instances
      */
     public Chessboard() {
-
+        initializeChessboard();
     }
+
     public void initializeChessboard() {
         boolean isWhite = true;
         whiteTeam = new Team(isWhite);
         blackTeam = new Team(!isWhite);
     }
+
     /**
      * Prints the board in console
      */
@@ -59,18 +61,22 @@ public class Chessboard {
      */
     public boolean movePiece(Position source, Position target, Player player) {
         List<Position> validMoves = getValidMoves(source, player);
-        if (validMoves.contains(target)) {
-            if (board[source.getPosY()][source.getPosX()].getFigure() == 'K') {
-                return checkCastlingMove(source, target, validMoves);
-            }
-            Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
-            if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
-               if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
-                  winner = player;
-               }
-            }
+        try {
+            if (validMoves.contains(target)) {
+                if (board[source.getPosY()][source.getPosX()].getFigure() == 'K') {
+                    return checkCastlingMove(source, target, validMoves);
+                }
+                Piece pieceToMove = Chessboard.board[source.getPosY()][source.getPosX()];
+                if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
+                    if (Chessboard.board[target.getPosY()][target.getPosX()].getFigure() == 'K') {
+                        winner = player;
+                    }
+                }
                 moveFromSourceToTarget(source, target);
                 return true;
+            }
+        } catch (Exception e) {
+            System.out.println("You can move only you piece, Play fair");
         }
         return false;
     }
@@ -91,6 +97,7 @@ public class Chessboard {
     public Player kingTakenBy() {
         return winner;
     }
+
     /**
      * Returns all the valid moves a piece from the given source position can make.
      */
@@ -141,8 +148,12 @@ public class Chessboard {
      * Prints on console the valid moves a piece can make
      */
     public void printValidMoves(List<Position> validMoves) {
-        for (Position pos : validMoves) {
-            System.out.println(pos.getCharAlg() + " ");
+        try {
+            for (Position pos : validMoves) {
+                System.out.println(pos.getCharAlg() + " ");
+            }
+        } catch (Exception e) {
+            System.out.println("That is not your piece");
         }
     }
 
@@ -154,6 +165,7 @@ public class Chessboard {
             return false;
         return true;
     }
+
     /**
      * Checks if a king has been taken.
      */
