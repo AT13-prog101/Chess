@@ -54,8 +54,8 @@ public class KingMove implements MovePiece {
     /**
      * Verify if Destiny position has an enemy.
      *
-     * @param piece
-     * @param isWhite
+     * @param piece piece of enemy.
+     * @param isWhite is color a piece.
      * @return
      */
     public boolean isSpaceWithEnemy(final Piece piece, final boolean isWhite) {
