@@ -89,8 +89,8 @@ public class LinedMove implements MovePiece {
     /**
      * Verify is the Position is inside the Limits of the Chessboard.
      *
-     * @param position
-     * @return true if its in the limits, false if not
+     * @param position of piece.
+     * @return true if its in the limits, false if not.
      */
     @Override
     public boolean isInLimits(final int position) {
