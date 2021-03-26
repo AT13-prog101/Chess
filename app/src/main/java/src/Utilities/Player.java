@@ -7,9 +7,14 @@ public class Player {
     private String COLOR_WHITE = "White";
     private String COLOR_BLACK = "Black";
 
-    public Player(String name, boolean isWhite) {
-        this.name = name;
-        this.isWhite = isWhite;
+    /**
+     * Constructor of Player class.
+     * @param namePlayer of Player.
+     * @param isWhitePlayer Color of Player.
+     */
+    public Player(final String namePlayer, final boolean isWhitePlayer) {
+        this.name = namePlayer;
+        this.isWhite = isWhitePlayer;
         if (isWhite) {
             this.color = COLOR_WHITE;
         } else {
@@ -17,10 +22,18 @@ public class Player {
         }
     }
 
+    /**
+     * Return if color of Player is White.
+     * @return true if white, false if not.
+     */
     public boolean isWhite() {
         return isWhite;
     }
 
+    /**
+     * Get color of Player.
+     * @return color Player.
+     */
     public String getColor() {
         return color;
     }

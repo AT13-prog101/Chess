@@ -11,12 +11,12 @@ public class Game {
     private final boolean PLAYER_WHITE = true;
     private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
-    Scanner sc;
-
+    private Scanner sc;
     /**
-     * Game represents a match between 2 players and controls the cycle of turns
+     * Game represents a match between 2 players and controls the cycle of turns.
+     * @param id of game.
      */
-    public Game(int id) {
+    public Game(final int id) {
         this.gameId = id;
         chessboard = new Chessboard();
         playerWhite = new Player("Player1", PLAYER_WHITE);
@@ -24,7 +24,7 @@ public class Game {
     }
 
     /**
-     * Initializes the game logic
+     * Initializes the game logic.
      */
     public void gameInit() {
         chessboard.printBoard();
@@ -39,9 +39,13 @@ public class Game {
         }
     }
 
-    public void playerTurn(Player player) {
+    /**
+     * Set player turn and player move.
+     * @param player player turn.
+     */
+    public void playerTurn(final Player player) {
         boolean hasMoved = false;
-        while (hasMoved == false) {
+        while (!hasMoved) {
             if (player.isWhite()) {
                 System.out.println("White turn: make a Move");
             } else {
@@ -61,7 +65,7 @@ public class Game {
             } else {
                 if (sourceMove != null && targetMove != null && chessboard.thereIsPiece(sourceMove)) {
                     boolean moved = chessboard.movePiece(sourceMove, targetMove, player);
-                    if (moved == true) {
+                    if (moved) {
                         chessboard.printBoard();
                         hasMoved = true;
                     } else {
@@ -74,6 +78,9 @@ public class Game {
         }
     }
 
+    /**
+     * Restart the game.
+     */
     public void restartGame() {
         chessboard.resetChessBoard();
         chessboard = new Chessboard();

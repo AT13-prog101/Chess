@@ -14,18 +14,26 @@ public class Chessboard {
     private final int posXCastlingKingSide = 6;
     private final int posXCastlingQueenSide = 2;
 
-    public static Piece getPiece(Position position) {
+    /**
+     * Get a piece in certain position
+     * @param position piece.
+     * @return the piece in the position.
+     */
+    public static Piece getPiece(final Position position) {
         Piece piece = board[position.getPosY()][position.getPosX()];
         return piece;
     }
 
     /**
-     * Chessboard initializes the pieces from its Team instances
+     * Chessboard initializes the pieces from its Team instances.
      */
     public Chessboard() {
         initializeChessboard();
     }
 
+    /**
+     * Initialized the Teams and White turn.
+     */
     public void initializeChessboard() {
         boolean isWhite = true;
         whiteTeam = new Team(isWhite);
@@ -33,7 +41,7 @@ public class Chessboard {
     }
 
     /**
-     * Prints the board in console
+     * Prints the board in console.
      */
     public void printBoard() {
         System.out.println("   ---------------------------------------");
@@ -56,9 +64,13 @@ public class Chessboard {
 
     /**
      * Checks if a piece can be moved in the board while checking if the move is
-     * castling or the king has been taken
+     * castling or the king has been taken.
+     * @param source position.
+     * @param target position.
+     * @param player active.
+     * @return true if piece can move, false if not.
      */
-    public boolean movePiece(Position source, Position target, Player player) {
+    public boolean movePiece(final Position source, final Position target, final Player player) {
         List<Position> validMoves = getValidMoves(source, player);
         try {
             if (validMoves.contains(target)) {
@@ -81,8 +93,10 @@ public class Chessboard {
 
     /**
      * Update the piece on the chessboard given a source and target position.
+     * @param source position.
+     * @param target position.
      */
-    public void moveFromSourceToTarget(Position source, Position target) {
+    public void moveFromSourceToTarget(final Position source, final Position target) {
         Piece pieceToMove = board[source.getPosY()][source.getPosX()];
         pieceToMove.updatePosition(new Position(target.getPosX(), target.getPosY()));
         Chessboard.board[target.getPosY()][target.getPosX()] = pieceToMove;
@@ -90,7 +104,7 @@ public class Chessboard {
     }
 
     /**
-     * Returns the player who made the move to take the king
+     * Returns the player who made the move to take the king.
      */
     public Player kingTakenBy() {
         return winner;
@@ -98,8 +112,11 @@ public class Chessboard {
 
     /**
      * Returns all the valid moves a piece from the given source position can make.
+     * @param source position.
+     * @param player active.
+     * @return all valid moves.
      */
-    public List<Position> getValidMoves(Position source, Player player) {
+    public List<Position> getValidMoves(final Position source, final Player player) {
         List<Position> validMoves = new ArrayList<Position>();
         Piece piece = board[source.getPosY()][source.getPosX()];
         if (player.isWhite() == piece.getColorWhite()) {
@@ -113,8 +130,12 @@ public class Chessboard {
 
     /**
      * Checks if a valid castling move has been made and makes the move.
+     * @param source position.
+     * @param target position.
+     * @param validMoves list of valid moves.
+     * @return true if can do Castling, false if cannot.
      */
-    public boolean checkCastlingMove(Position source, Position target, List<Position> validMoves) {
+    public boolean checkCastlingMove(final Position source, Position target, final List<Position> validMoves) {
         int posXCastling = DIMENSION;
         int posXRookSource = DIMENSION;
         int posXRookTarget = DIMENSION;
@@ -142,9 +163,10 @@ public class Chessboard {
     }
 
     /**
-     * Prints on console the valid moves a piece can make
+     * Prints on console the valid moves a piece can make.
+     * @param validMoves all possible moves.
      */
-    public void printValidMoves(List<Position> validMoves) {
+    public void printValidMoves(final List<Position> validMoves) {
         try {
             for (Position pos : validMoves) {
                 System.out.println(pos.getCharAlg() + " ");
@@ -155,21 +177,28 @@ public class Chessboard {
     }
 
     /**
-     * Checks if there is a piece in the chessboard in the given position
+     * Checks if there is a piece in the chessboard in the given position.
+     * @param position of possible piece.
+     * @return true if there is a piece, false if not.
      */
-    public boolean thereIsPiece(Position position) {
-        if (board[position.getPosY()][position.getPosX()] == null)
+    public boolean thereIsPiece(final Position position) {
+        if (board[position.getPosY()][position.getPosX()] == null) {
             return false;
+        }
         return true;
     }
 
     /**
-     * setPiece with a position and piece
+     * setPiece with a position and piece.
+     * @param piece to set.
      */
-    public static void setPiece(Piece piece) {
+    public static void setPiece(final Piece piece) {
         Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
     }
 
+    /**
+     * Reset the Chessboard.
+     */
     public void resetChessBoard() {
         for (int row = 0; row < DIMENSION; row++) {
             for (int col = 0; col < DIMENSION; col++) {
