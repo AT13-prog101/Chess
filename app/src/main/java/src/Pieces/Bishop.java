@@ -1,4 +1,3 @@
-
 package src.Pieces;
 
 import src.PiecesMoves.DiagonalsMove;
@@ -14,7 +13,7 @@ public class Bishop extends Piece {
         addMoveType(new DiagonalsMove());
     }
     /**
-     * Class to get the figure.
+     * @return figure Class to get the figure.
      */
     public char getFigure() {
         return this.figure;
