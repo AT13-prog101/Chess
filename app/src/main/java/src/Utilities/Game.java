@@ -25,7 +25,7 @@ public class Game {
         chessboard.initializeChessboard();
         playerWhite = new Player(whitePlayerName, PLAYER_WHITE);
         playerBlack = new Player(blackPlayerName, PLAYER_BLACK);
-        chessboardView = new ChessboardView(this);
+        chessboardView = new ChessboardView(this, whitePlayerName, blackPlayerName);
     }
     /**
      * Initializes the game logic.

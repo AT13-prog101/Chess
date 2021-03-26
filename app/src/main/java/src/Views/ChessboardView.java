@@ -25,7 +25,7 @@ public class ChessboardView extends JFrame {
     /**
      * Interface to display changes in the chessboard
      */
-    public ChessboardView(Game game) {
+    public ChessboardView(Game game, String whitePlayerName, String blackPlayerName) {
         this.game = game;
         setSize(830, 750);
         setTitle("AT13-CHESS");
@@ -39,7 +39,14 @@ public class ChessboardView extends JFrame {
         JPanel panelTop;
         panelTop = new JPanel();
         panelTop.setPreferredSize(new Dimension(820,40));
+        panelTop.setLayout(new FlowLayout(FlowLayout.LEFT));
         panelTop.setBackground(colorFrame);
+        JLabel labelBlackPlayer = new JLabel();
+        labelBlackPlayer.setPreferredSize(new Dimension(75,30));
+        labelBlackPlayer.setText(blackPlayerName);
+        labelBlackPlayer.setForeground(colorPositionLabels);
+        labelBlackPlayer.setFont(new Font("Verdana", Font.BOLD, 12));
+        panelTop.add(labelBlackPlayer);
 
         JPanel panelBottom;
         panelBottom = new JPanel();
@@ -50,6 +57,7 @@ public class ChessboardView extends JFrame {
         JPanel firstPlayer = new JPanel();
         colLabels.setPreferredSize(new Dimension(820, 30));
         firstPlayer.setPreferredSize(new Dimension(820, 40));
+        firstPlayer.setLayout(new FlowLayout(FlowLayout.LEFT));
         colLabels.setLayout(new FlowLayout(FlowLayout.LEFT));
         colLabels.setBackground(colorFrame);
         firstPlayer.setBackground(colorFrame);
@@ -59,6 +67,12 @@ public class ChessboardView extends JFrame {
         labelCorner.setPreferredSize(new Dimension(20,30));
         labelCorner.setForeground(colorPositionLabels);
         colLabels.add(labelCorner);
+        JLabel labelWhitePlayer = new JLabel();
+        labelWhitePlayer.setPreferredSize(new Dimension(75,30));
+        labelWhitePlayer.setText(whitePlayerName);
+        labelWhitePlayer.setForeground(colorPositionLabels);
+        labelWhitePlayer.setFont(new Font("Verdana", Font.BOLD, 12));
+        firstPlayer.add(labelWhitePlayer);
 
         JPanel panelLeft = new JPanel();
         panelLeft.setPreferredSize(new Dimension(30,640));
