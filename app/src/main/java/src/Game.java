@@ -47,6 +47,9 @@ public class Game {
             }
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
+            if(input.equals("Restart")){
+                gameInit();
+            }
             PositionValidator positionValidator = new PositionValidator(input);
             Position toGetpossibles = positionValidator.getPositionToGetPossibles();
             Position sourceMove = positionValidator.getSource();
