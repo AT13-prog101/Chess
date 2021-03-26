@@ -7,13 +7,19 @@ import java.util.List;
 
 public class Chessboard {
     public final static int DIMENSION = 8;
-    public static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
+    private static Piece[][] board = new Piece[DIMENSION][DIMENSION];;
     private Team whiteTeam;
     private Team blackTeam;
     private Player winner;
     boolean turn;
     private final int posXCastlingKingSide = 6;
     private final int posXCastlingQueenSide = 2;
+
+    public static  Piece getPiece(Position position) {
+        Piece piece = board[position.getPosY()][position.getPosX()];
+        return piece;
+    }
+
     /**
      * Chessboard initializes the pieces from its Team instances
      */

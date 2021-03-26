@@ -26,20 +26,20 @@ public class PawnMove implements MovePiece{
             yDoubleMove = piece.getPosY() - 2;
         }
         if(!piece.isMoved()) {
-            if(isSpaceEmpty(Chessboard.board[yDoubleMove][piece.getPosX()]))
+            if(isSpaceEmpty(Chessboard.getPiece(new Position(piece.getPosX(), yDoubleMove))))
                 movePositions.add(new Position(piece.getPosX(), yDoubleMove));
         }
         if( isInLimits(yOneMove)){
-            if(isSpaceEmpty(Chessboard.board[yOneMove][piece.getPosX()])) {
+            if(isSpaceEmpty(Chessboard.getPiece(new Position(piece.getPosX(), yOneMove)))) {
                 movePositions.add(new Position(piece.getPosX(), yOneMove));
             }
             if(isInLimits(xDiagonalMLeft)) {
-                if(isSpaceWithEnemy(Chessboard.board[yOneMove][xDiagonalMLeft], piece.getColorWhite())) {
+                if(isSpaceWithEnemy(Chessboard.getPiece(new Position(xDiagonalMLeft, yOneMove)), piece.getColorWhite())) {
                     movePositions.add(new Position(xDiagonalMLeft, yOneMove));
                 }
             }
             if(isInLimits(xDiagonalMRight)) {
-                if(isSpaceWithEnemy(Chessboard.board[yOneMove][xDiagonalMRight], piece.getColorWhite())) {
+                if(isSpaceWithEnemy(Chessboard.getPiece(new Position(xDiagonalMRight, yOneMove)), piece.getColorWhite())) {
                     movePositions.add(new Position(xDiagonalMRight, yOneMove));
                 }
             }
