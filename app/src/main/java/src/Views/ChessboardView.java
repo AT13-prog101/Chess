@@ -21,8 +21,6 @@ public class ChessboardView extends JFrame {
     private Game game;
     private Color colorFrame = new Color(96, 96, 96);
     private Color colorPositionLabels = new Color(224, 224, 224);
-    private final Color lightColor = new Color(255, 232, 208);
-    private final Color darkColor = new Color(196, 150, 105);
     private final int ASCII_CODE_LOWER_CASE_A = 97;
     private JPanel panelCentral;
 
@@ -103,23 +101,11 @@ public class ChessboardView extends JFrame {
         boolean lightColorCell = true;
         for (int row = 0; row < Chessboard.DIMENSION; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                JLabel cell = new JLabel();
-                cell.addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(MouseEvent e) {
-
-                    }
-                });
-                cell.setPreferredSize(new Dimension(80, 80));
-                if (lightColorCell) {
-                    cell.setBackground(lightColor);
-                } else {
-                    cell.setBackground(darkColor);
-                }
+                BoardCell cell = new BoardCell(lightColorCell, col, row);
                 lightColorCell = !lightColorCell;
                 if (col == Chessboard.DIMENSION - 1) {
                     lightColorCell = !lightColorCell;
                 }
-                cell.setOpaque(true);
                 board[row][col] = cell;
                 this.panelCentral.add(cell);
             }
