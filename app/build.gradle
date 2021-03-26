@@ -11,7 +11,9 @@ plugins {
     id 'application'
     id 'jacoco'
 }
-
+run{
+    standardInput = System.in
+}
 repositories {
     // Use JCenter for resolving dependencies.
     mavenCentral()
@@ -37,7 +39,7 @@ jacocoTestReport {
 
 application {
     // Define the main class for the application.
-    mainClass = 'src.App'
+    mainClass = 'src.Main'
 }
 check.dependsOn jacocoTestReport
 
