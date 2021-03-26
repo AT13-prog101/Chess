@@ -11,13 +11,13 @@ public class KingMove implements MovePiece {
     private List<Position> movePositions;
 
     /**
-     * Return a List of Points with all possible moves of Knight
+     * Return a List of Points with all possible moves of Knight.
      *
-     * @param piece the Knight piece
-     * @return movePoints List of Points of moves
+     * @param piece the Knight piece.
+     * @return movePoints List of Points of moves.
      */
     @Override
-    public List<Position> getPossibleMoves(Piece piece) {
+    public List<Position> getPossibleMoves(final Piece piece) {
         movePositions = new ArrayList<Position>();
         int[] xPossiblePos = {1, 1, -1, -1, 0, -1, 1, 0};
         int[] yPossiblePos = {1, -1, 1, -1, -1, 0, 0, 1};
@@ -44,34 +44,35 @@ public class KingMove implements MovePiece {
      * @param piece is the piece in the possible position.
      * @return true is space is empty or has a piece of different color, false if has piece of same color
      */
-    public boolean isSpaceEmpty(Piece piece) {
-        if (piece == null)
+    public boolean isSpaceEmpty(final Piece piece) {
+        if (piece == null) {
             return true;
+        }
         return false;
     }
 
     /**
-     * Verify if Destiny position has an enemy
+     * Verify if Destiny position has an enemy.
      *
      * @param piece
      * @param isWhite
      * @return
      */
-    public boolean isSpaceWithEnemy(Piece piece, boolean isWhite) {
-        if (piece.getColorWhite() != isWhite)
+    public boolean isSpaceWithEnemy(final Piece piece, final boolean isWhite) {
+        if (piece.getColorWhite() != isWhite) {
             return true;
-        else
-            return false;
+        }
+        return false;
     }
 
     /**
-     * Verify is the Position is inside the Limits of the Chessboard
+     * Verify is the Position is inside the Limits of the Chessboard.
      *
      * @param position
      * @return true if its in the limits, false if not
      */
     @Override
-    public boolean isInLimits(int position) {
+    public boolean isInLimits(final int position) {
         if (0 <= position && position < Chessboard.DIMENSION) {
             return true;
         }
