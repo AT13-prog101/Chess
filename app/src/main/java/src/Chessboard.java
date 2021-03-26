@@ -88,18 +88,24 @@ public class Chessboard {
         }
     }
     public boolean checkCastlingMove(Position source, Position target, List<Position> validMoves) {
+        int posXCastling = DIMENSION;
+        int posXRookSource = DIMENSION;
+        int posXRookTarget = DIMENSION;
         for (Position pos : validMoves) {
-            int posXCastling = DIMENSION;
             if (pos.getPosX() == posXCastlingKingSide) {
                 posXCastling = posXCastlingKingSide;
+                posXRookSource = DIMENSION - 1;
+                posXRookTarget = posXCastling - 1;
             } else {
                 if (pos.getPosX() == posXCastlingQueenSide) {
                     posXCastling = posXCastlingQueenSide;
+                    posXRookSource = 0;
+                    posXRookTarget = posXCastling + 1;
                 }
             }
             if (target.equals(pos) && posXCastling != DIMENSION) {
-                Position rookTarget = new Position(posXCastling - 1, pos.getPosY());
-                Position rookSource = new Position(posXCastling + 1, pos.getPosY());
+                Position rookTarget = new Position(posXRookTarget, pos.getPosY());
+                Position rookSource = new Position(posXRookSource, pos.getPosY());
                 moveFromSourceToTarget(source, target);
                 moveFromSourceToTarget(rookSource, rookTarget);
                 return true;
