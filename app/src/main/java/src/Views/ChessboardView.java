@@ -1,6 +1,7 @@
 package src.Views;
 
 
+import src.Pieces.Piece;
 import src.Utilities.Chessboard;
 import src.Utilities.Game;
 import src.Utilities.Position;
@@ -122,7 +123,13 @@ public class ChessboardView extends JFrame {
         }
     }
     public void showValidMoves(List<Position> validMoves) {
-
+        updateChessboardView();
+        for (Position pos : validMoves) {
+            Piece piece = Chessboard.getPiece(pos);
+            if (piece == null) {
+                boardView[pos.getPosY()][pos.getPosX()].setIcon(new ImageIcon("src/main/java/resources/Dot.png"));
+            }
+        }
     }
     public void setPositionSelected(Position position) {
         this.positionSelected = position;
