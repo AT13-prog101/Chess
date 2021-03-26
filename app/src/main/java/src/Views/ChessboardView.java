@@ -1,8 +1,9 @@
 package src.Views;
 
-import src.Chessboard;
-import src.Game;
-import src.Position;
+
+import src.Utilities.Chessboard;
+import src.Utilities.Game;
+import src.Utilities.Position;
 
 import javax.swing.*;
 import java.awt.*;

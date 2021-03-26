@@ -1,6 +1,7 @@
 package src.Views;
 
-import src.Position;
+
+import src.Utilities.Position;
 
 import javax.swing.*;
 import java.awt.*;
