@@ -4,7 +4,7 @@ import src.PiecesMoves.KnightMove;
 import src.Utilities.Position;
 
 public class Horse extends Piece {
-    private char figure = 'H';
+    private final char figure = 'H';
     /**
      *Class to start a Horse.
      */

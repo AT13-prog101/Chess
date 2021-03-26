@@ -5,7 +5,7 @@ import src.PiecesMoves.LinedMove;
 import src.Utilities.Position;
 
 public class Queen extends Piece {
-    private char figure = 'Q';
+    private final char figure = 'Q';
     /**
      *Class to start a Queen.
      */

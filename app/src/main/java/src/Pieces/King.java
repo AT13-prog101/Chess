@@ -5,8 +5,7 @@ import src.PiecesMoves.KingMove;
 import src.Utilities.Position;
 
 public class King extends Piece {
-    private char figure = 'K';
-    private boolean alive = true;
+    private final char figure = 'K';
     /**
      *Class to start a King.
      */

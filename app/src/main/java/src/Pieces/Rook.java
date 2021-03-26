@@ -4,7 +4,7 @@ import src.PiecesMoves.LinedMove;
 import src.Utilities.Position;
 
 public class Rook extends Piece {
-    private char figure = 'R';
+    private final char figure = 'R';
     /**
      *Class to start a bishop.
      */

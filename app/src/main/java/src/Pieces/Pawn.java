@@ -4,7 +4,7 @@ import src.PiecesMoves.PawnMove;
 import src.Utilities.Position;
 
 public class Pawn extends Piece {
-    private char figure = 'P';
+    private final char figure = 'P';
     /**
      *Class to start a Pawn.
      */
