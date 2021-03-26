@@ -48,7 +48,7 @@ public class Game {
             Scanner sc = new Scanner(System.in);
             String input = sc.nextLine();
             if(input.equals("Restart")){
-                gameInit();
+                restartGame();
             }
             PositionValidator positionValidator = new PositionValidator(input);
             Position toGetpossibles = positionValidator.getPositionToGetPossibles();
@@ -72,7 +72,13 @@ public class Game {
             }
         }
     }
-
+    public void restartGame(){
+        chessboard.resetChessBoard();
+        chessboard = new Chessboard();
+        playerWhite = new Player("Player1", PLAYER_WHITE);
+        playerBlack = new Player("Player2", PLAYER_BLACK);
+        gameInit();
+    }
     public void setGameFinished(boolean gameFinished) {
         this.gameFinished = gameFinished;
     }

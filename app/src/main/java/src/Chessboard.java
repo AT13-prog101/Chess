@@ -106,4 +106,11 @@ public class Chessboard {
     public static void setPiece(Piece piece) {
         Chessboard.board[piece.getPosY()][piece.getPosX()] = piece;
     }
+    public void resetChessBoard(){
+        for (int row = 0; row < DIMENSION; row++) {
+            for (int col = 0; col < DIMENSION; col++) {
+                board[row][col] = null;
+            }
+        }
+    }
 }
