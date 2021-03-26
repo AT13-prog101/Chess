@@ -1,5 +1,8 @@
 package src.Utilities;
 
+import src.Views.ChessboardView;
+
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Game {
@@ -11,6 +14,7 @@ public class Game {
     private final boolean PLAYER_WHITE = true;
     private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
+    private ChessboardView chessboardView;
     private Scanner sc;
     /**
      * Game represents a match between 2 players and controls the cycle of turns.
@@ -19,23 +23,32 @@ public class Game {
     public Game(final int id) {
         this.gameId = id;
         chessboard = new Chessboard();
+        chessboard.initializeChessboard();
         playerWhite = new Player("Player1", PLAYER_WHITE);
         playerBlack = new Player("Player2", PLAYER_BLACK);
+        chessboardView = new ChessboardView(this);
     }
-
     /**
      * Initializes the game logic.
      */
     public void gameInit() {
         chessboard.printBoard();
         while (!gameFinished) {
+            playerTurn(playerWhite);
             if (chessboard.kingTakenBy() != null) {
                 gameFinished = true;
-                System.out.println("Game finished\nWinner: " + chessboard.kingTakenBy().getColor());
+                int action = JOptionPane.showConfirmDialog(null,
+                        "New game",
+                        "Cancel",
+                        JOptionPane.YES_NO_CANCEL_OPTION);
+                if(action == JOptionPane.YES_OPTION){
+                    restartGame();
+                }
                 break;
             }
-            playerTurn(playerWhite);
+            chessboardView.setPositionSelected(null);
             playerTurn(playerBlack);
+            chessboardView.setPositionSelected(null);
         }
     }
 
@@ -45,34 +58,25 @@ public class Game {
      */
     public void playerTurn(final Player player) {
         boolean hasMoved = false;
-        while (!hasMoved) {
-            if (player.isWhite()) {
-                System.out.println("White turn: make a Move");
+        Position toGetpossibles = null;
+        Position sourceMove = null;
+        Position targetMove = null;
+        while(!hasMoved) {
+            toGetpossibles = chessboardView.getPositionSelected();
+            System.out.print("");
+            if(toGetpossibles != null && chessboard.thereIsPiece(toGetpossibles) && chessboard.getPiece(toGetpossibles).getColorWhite() == player.isWhite()) {
+                chessboardView.showValidMoves(chessboard.getValidMoves(toGetpossibles, player));
+                chessboardView.setPositionSelected(null);
+                sourceMove = toGetpossibles;
             } else {
-                System.out.println("Black turn: make a Move");
-            }
-                sc = new Scanner(System.in);
-            String input = sc.nextLine();
-            if (input.equals("Restart")) {
-                restartGame();
-            }
-            PositionValidator positionValidator = new PositionValidator(input);
-            Position toGetpossibles = positionValidator.getPositionToGetPossibles();
-            Position sourceMove = positionValidator.getSource();
-            Position targetMove = positionValidator.getTarget();
-            if (toGetpossibles != null && chessboard.thereIsPiece(toGetpossibles)) {
-                chessboard.printValidMoves(chessboard.getValidMoves(toGetpossibles, player));
-            } else {
-                if (sourceMove != null && targetMove != null && chessboard.thereIsPiece(sourceMove)) {
+                if (toGetpossibles != null && (chessboard.getPiece(toGetpossibles) == null || chessboard.getPiece(toGetpossibles).getColorWhite() != player.isWhite())) {
+                    targetMove = toGetpossibles;
                     boolean moved = chessboard.movePiece(sourceMove, targetMove, player);
-                    if (moved) {
-                        chessboard.printBoard();
+                    if (moved == true) {
+                        chessboardView.updateChessboardView();
+                        chessboardView.setPositionSelected(null);
                         hasMoved = true;
-                    } else {
-                        System.out.println("Invalid Input. Try again");
                     }
-                } else {
-                    System.out.println("Invalid Input. Try again");
                 }
             }
         }
@@ -83,9 +87,11 @@ public class Game {
      */
     public void restartGame() {
         chessboard.resetChessBoard();
-        chessboard = new Chessboard();
-        playerWhite = new Player("Player1", PLAYER_WHITE);
-        playerBlack = new Player("Player2", PLAYER_BLACK);
+        chessboard.initializeChessboard();
+        chessboardView.updateChessboardView();
+        chessboard.setWinnerNull();
+        gameFinished = false;
         gameInit();
+
     }
 }
