@@ -21,6 +21,7 @@ public class Game {
     public Game(final int id) {
         this.gameId = id;
         chessboard = new Chessboard();
+        chessboard.initializeChessboard();
         playerWhite = new Player("Player1", PLAYER_WHITE);
         playerBlack = new Player("Player2", PLAYER_BLACK);
     }

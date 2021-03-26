@@ -3,6 +3,7 @@ package src.Pieces;
 import src.PiecesMoves.MovePiece;
 import src.Utilities.Position;
 
+import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public abstract class Piece {
     private char color;
     private boolean isWhite;
     private char figure;
+    public ImageIcon image;
     private int posX;
     private int posY;
     private boolean isCaptured;
@@ -99,5 +101,11 @@ public abstract class Piece {
             validMoves.addAll(movePiece.getPossibleMoves(this));
         }
         return validMoves;
+    }
+    public void setImage(String dir) {
+        this.image = new ImageIcon(dir);
+    }
+    public ImageIcon getImage() {
+        return image;
     }
 }

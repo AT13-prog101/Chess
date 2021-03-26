@@ -1,15 +1,9 @@
 package src.Views;
 
-import com.google.common.collect.Table;
 import src.Chessboard;
 import src.Game;
-import src.Pieces.Piece;
 import src.Position;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,12 +11,13 @@ public class ChessboardView extends JFrame {
     private static final int SIZE_IMAGE = 80;
     private static final int SIZE_WINDOW_WIDTH = Chessboard.DIMENSION * SIZE_IMAGE;
     private static final int SIZE_WINDOW_HEIGHT = Chessboard.DIMENSION * SIZE_IMAGE;
-    private static JLabel[][] board = new JLabel[Chessboard.DIMENSION][Chessboard.DIMENSION];
+    private static JLabel[][] boardView = new JLabel[Chessboard.DIMENSION][Chessboard.DIMENSION];
     private Game game;
     private Color colorFrame = new Color(96, 96, 96);
     private Color colorPositionLabels = new Color(224, 224, 224);
     private final int ASCII_CODE_LOWER_CASE_A = 97;
     private JPanel panelCentral;
+    private Position positionSelected;
 
     public ChessboardView(Game game) {
         this.game = game;
@@ -101,23 +96,31 @@ public class ChessboardView extends JFrame {
         boolean lightColorCell = true;
         for (int row = 0; row < Chessboard.DIMENSION; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                BoardCell cell = new BoardCell(lightColorCell, col, row);
+                BoardCell cell = new BoardCell(this, lightColorCell, col, row);
                 lightColorCell = !lightColorCell;
                 if (col == Chessboard.DIMENSION - 1) {
                     lightColorCell = !lightColorCell;
                 }
-                board[row][col] = cell;
+                boardView[row][col] = cell;
                 this.panelCentral.add(cell);
             }
         }
     }
     public void initializeChessboard() {
-
+        updateChessboardView();
     }
-    public void updateChessboard() {
+    public void updateChessboardView() {
         for (int row = 0; row < Chessboard.DIMENSION; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
+                if (Chessboard.board[row][col] != null)
+                boardView[row][col].setIcon(Chessboard.board[row][col].getImage());
             }
         }
+    }
+    public void setPositionSelected(Position position) {
+        this.positionSelected = position;
+    }
+    public Position getPositionSelected() {
+        return positionSelected;
     }
 }

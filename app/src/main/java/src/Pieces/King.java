@@ -5,7 +5,10 @@ import src.PiecesMoves.KingMove;
 import src.Utilities.Position;
 
 public class King extends Piece {
-    private final char figure = 'K';
+    private char figure = 'K';
+    private final String WHITE_KING_DIR = "src/main/java/resources/WhiteKing.png";
+    private final String BLACK_KING_DIR = "src/main/java/resources/BlackKing.png";
+    private boolean alive=true;
     /**
      *Class to start a King.
      */
@@ -13,6 +16,11 @@ public class King extends Piece {
         super(white, position);
         addMoveType(new KingMove());
         addMoveType(new Castling());
+        if (white == true) {
+            setImage(WHITE_KING_DIR);
+        } else {
+            setImage(BLACK_KING_DIR);
+        }
     }
     /**
      * @return figure Class to get the figure.
