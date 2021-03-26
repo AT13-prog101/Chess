@@ -1,5 +1,7 @@
 package src.Utilities;
 
+import src.Views.ChessboardView;
+
 import java.util.Scanner;
 
 public class Game {
@@ -22,7 +24,10 @@ public class Game {
         playerWhite = new Player("Player1", PLAYER_WHITE);
         playerBlack = new Player("Player2", PLAYER_BLACK);
     }
-
+    public void interfaceGame() {
+        ChessboardView chessboardView = new ChessboardView(this);
+        //chessboardView.initializeChessboard();
+    }
     /**
      * Initializes the game logic.
      */
