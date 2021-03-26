@@ -2,6 +2,9 @@ package src;
 
 import org.junit.Test;
 import src.Pieces.Piece;
+import src.Utilities.GetPieceFactory;
+import src.Utilities.Position;
+import src.Utilities.TypePiece;
 
 import static org.junit.Assert.assertEquals;
 

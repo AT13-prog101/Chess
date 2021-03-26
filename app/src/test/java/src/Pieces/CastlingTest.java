@@ -1,13 +1,11 @@
 package src.Pieces;
 
-import org.checkerframework.checker.units.qual.C;
-import org.checkerframework.checker.units.qual.K;
 import org.junit.Test;
-import src.Chessboard;
-import src.GetPieceFactory;
+import src.Utilities.Chessboard;
+import src.Utilities.GetPieceFactory;
 import src.PiecesMoves.Castling;
-import src.Position;
-import src.TypePiece;
+import src.Utilities.Position;
+import src.Utilities.TypePiece;
 
 import java.util.List;
 

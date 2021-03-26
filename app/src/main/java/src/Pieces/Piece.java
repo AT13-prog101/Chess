@@ -1,7 +1,7 @@
 package src.Pieces;
 
 import src.PiecesMoves.MovePiece;
-import src.Position;
+import src.Utilities.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +24,6 @@ public abstract class Piece {
         this.isMoved = false;
         this.color=white? 'W':'B';
     }
-
-    public void setCaptured(boolean isCaptured) {
-        this.isCaptured = isCaptured;
-    }
-
-    public boolean isCaptured() {
-        return this.isCaptured;
-    }
-
     public int getPosX() {
         return posX;
     }

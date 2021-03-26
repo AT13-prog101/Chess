@@ -1,6 +1,6 @@
 package src;
 
-import java.util.Scanner;
+import src.Utilities.Game;
 
 public class Main {
     public static void main(String[] args) {

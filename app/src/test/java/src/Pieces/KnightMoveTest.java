@@ -2,7 +2,11 @@ package src.Pieces;
 
 import org.junit.Test;
 import java.util.List;
-import src.*;
+
+import src.Utilities.Chessboard;
+import src.Utilities.GetPieceFactory;
+import src.Utilities.Position;
+import src.Utilities.TypePiece;
 
 import static org.junit.Assert.assertEquals;
 

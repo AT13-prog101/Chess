@@ -2,7 +2,7 @@ package src.Pieces;
 
 import src.PiecesMoves.Castling;
 import src.PiecesMoves.KingMove;
-import src.Position;
+import src.Utilities.Position;
 
 public class King extends Piece {
     private char figure = 'K';

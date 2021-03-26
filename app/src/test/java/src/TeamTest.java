@@ -3,6 +3,7 @@ package src;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import src.Pieces.Piece;
+import src.Utilities.Chessboard;
 
 public class TeamTest {
     @Test

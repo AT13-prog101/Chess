@@ -1,8 +1,11 @@
 package src.Pieces;
 
 import org.junit.Test;
-import src.*;
 import src.PiecesMoves.KingMove;
+import src.Utilities.Chessboard;
+import src.Utilities.GetPieceFactory;
+import src.Utilities.Position;
+import src.Utilities.TypePiece;
 
 import java.util.List;
 

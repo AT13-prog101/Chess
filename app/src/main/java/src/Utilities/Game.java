@@ -1,4 +1,4 @@
-package src;
+package src.Utilities;
 
 import java.util.Scanner;
 
@@ -12,6 +12,7 @@ public class Game {
     private final boolean PLAYER_BLACK = false;
     private boolean gameFinished = false;
     Scanner sc;
+
     /**
      * Game represents a match between 2 players and controls the cycle of turns
      */
@@ -37,24 +38,25 @@ public class Game {
             playerTurn(playerBlack);
         }
     }
+
     public void playerTurn(Player player) {
         boolean hasMoved = false;
-        while(hasMoved == false) {
+        while (hasMoved == false) {
             if (player.isWhite()) {
                 System.out.println("White turn: make a Move");
-            } else{
+            } else {
                 System.out.println("Black turn: make a Move");
             }
-            Scanner sc = new Scanner(System.in);
+                sc = new Scanner(System.in);
             String input = sc.nextLine();
-            if(input.equals("Restart")){
+            if (input.equals("Restart")) {
                 restartGame();
             }
             PositionValidator positionValidator = new PositionValidator(input);
             Position toGetpossibles = positionValidator.getPositionToGetPossibles();
             Position sourceMove = positionValidator.getSource();
             Position targetMove = positionValidator.getTarget();
-            if(toGetpossibles != null && chessboard.thereIsPiece(toGetpossibles)) {
+            if (toGetpossibles != null && chessboard.thereIsPiece(toGetpossibles)) {
                 chessboard.printValidMoves(chessboard.getValidMoves(toGetpossibles, player));
             } else {
                 if (sourceMove != null && targetMove != null && chessboard.thereIsPiece(sourceMove)) {
@@ -65,21 +67,18 @@ public class Game {
                     } else {
                         System.out.println("Invalid Input. Try again");
                     }
-                }
-                else {
+                } else {
                     System.out.println("Invalid Input. Try again");
                 }
             }
         }
     }
-    public void restartGame(){
+
+    public void restartGame() {
         chessboard.resetChessBoard();
         chessboard = new Chessboard();
         playerWhite = new Player("Player1", PLAYER_WHITE);
         playerBlack = new Player("Player2", PLAYER_BLACK);
         gameInit();
-    }
-    public void setGameFinished(boolean gameFinished) {
-        this.gameFinished = gameFinished;
     }
 }

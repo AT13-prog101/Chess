@@ -1,8 +1,8 @@
 package src.PiecesMoves;
 
-import src.Chessboard;
+import src.Utilities.Chessboard;
 import src.Pieces.Piece;
-import src.Position;
+import src.Utilities.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,6 @@ public class DiagonalsMove implements MovePiece {
      * @return boolean which say is accessible Position
      */
     public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
-        boolean oppositeColor = !colorPiece;
 
         if (isSpaceEmpty(Chessboard.getPiece(new Position(posY, posX)))) {
             movePoints.add(new Position(posY, posX));
