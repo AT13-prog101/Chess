@@ -19,14 +19,19 @@ public class PositionTraductor {
      * ------------------------         -----------------------
      * a  b  c  d  e  f  g  h          0  1  2  3  4  5  6  7
      */
-    public PositionTraductor() {
-    }
 
     /**
-     * Given an Algebraic notation (Eg: a5, b6) where the 1st char represents the column position and
-     * the 2nd char represents the row position. Returns the corresponding indexes int a matrix for those values
+     * Constructor of Class.
      */
-    public int[] getIndexNotation(String algebraicNotation) {
+    public PositionTraductor() {
+    }
+    /**
+     * Given an Algebraic notation (Eg: a5, b6) where the 1st char represents the column position and
+     * the 2nd char represents the row position. Returns the corresponding indexes int a matrix for those values.
+     * @param algebraicNotation
+     * @return positions
+     */
+    public int[] getIndexNotation(final String algebraicNotation) {
         int[] positions = new int[2];
         //Chars received represents the column and row, will be cast to int and  will be subtracted its ascii value
         char characterCol = algebraicNotation.charAt(0);
@@ -37,28 +42,34 @@ public class PositionTraductor {
     }
 
     /**
-     * Returns the X value from an algebraic format position
+     * Returns the X value from an algebraic format position.
+     * @param algebraicNotation
+     * @return position x.
      */
-    public static int getXIndexNotation(String algebraicNotation) {
+    public static int getXIndexNotation(final String algebraicNotation) {
         char characterCol = algebraicNotation.charAt(0);
         return (int) characterCol - ASCII_CODE_FOR_A;
     }
-
     /**
-     * Returns the Y value from an algebraic format position
+     * Returns the Y value from an algebraic format position.
+     * @param algebraicNotation
+     * @return position y.
      */
-    public static int getYIndexNotation(String algebraicNotation) {
+    public static int getYIndexNotation(final String algebraicNotation) {
         char characterRow = algebraicNotation.charAt(1);
         return Math.abs(((int) characterRow - ASCII_CODE_FOR_0) - Chessboard.DIMENSION);
     }
 
     /**
      * Given 2 values that represent the row and col positions in a matrix. Return the corresponding
-     * algebraic notation for that position
+     * algebraic notation for that position.
+     * @param colIndex
+     * @param rowIndex
+     * @return algebraic position.
      */
-    public static String getAlgebraicNotation(int colIndex, int rowIndex) {
+    public static String getAlgebraicNotation(final int colIndex, final int rowIndex) {
         //Adding column value in algebraic notation
-        String algebraicNotation = String.valueOf((char) (colIndex + 97));
+        String algebraicNotation = String.valueOf((char) (colIndex + ASCII_CODE_FOR_A));
         //2nd value is row position
         int rowAlgebraic = Chessboard.DIMENSION - rowIndex;
         algebraicNotation += String.valueOf(rowAlgebraic);
