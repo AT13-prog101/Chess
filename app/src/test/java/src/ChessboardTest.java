@@ -1,9 +1,9 @@
 package src;
 
 import org.junit.Test;
-import src.Pieces.Piece;
-
-import java.util.List;
+import src.Utilities.Chessboard;
+import src.Utilities.Player;
+import src.Utilities.Position;
 
 import static org.junit.Assert.*;
 

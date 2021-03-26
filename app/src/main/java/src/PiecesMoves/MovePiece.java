@@ -1,7 +1,7 @@
 package src.PiecesMoves;
 
 import src.Pieces.Piece;
-import src.Position;
+import src.Utilities.Position;
 
 import java.util.List;
 

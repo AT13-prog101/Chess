@@ -1,6 +1,7 @@
 package src;
 
 import org.junit.Test;
+import src.Utilities.PositionValidator;
 
 import static org.junit.Assert.assertEquals;
 

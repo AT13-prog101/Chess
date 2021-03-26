@@ -1,7 +1,7 @@
 package src.Pieces;
 
 import src.PiecesMoves.KnightMove;
-import src.Position;
+import src.Utilities.Position;
 
 public class Horse extends Piece{
     private char figure = 'H';

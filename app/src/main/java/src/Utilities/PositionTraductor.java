@@ -1,4 +1,4 @@
-package src;
+package src.Utilities;
 
 public class PositionTraductor {
     private static final int ASCII_CODE_FOR_A = 97;

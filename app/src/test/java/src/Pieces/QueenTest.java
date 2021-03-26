@@ -1,10 +1,10 @@
 package src.Pieces;
 
 import org.junit.Test;
-import src.Chessboard;
-import src.GetPieceFactory;
-import src.Position;
-import src.TypePiece;
+import src.Utilities.Chessboard;
+import src.Utilities.GetPieceFactory;
+import src.Utilities.Position;
+import src.Utilities.TypePiece;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
 package src;
 
 import org.junit.Test;
+import src.Utilities.PositionTraductor;
+
 import static org.junit.Assert.assertEquals;
 
 public class PositionTraductorTest {
