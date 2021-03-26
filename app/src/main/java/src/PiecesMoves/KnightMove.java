@@ -27,8 +27,8 @@ public class KnightMove implements MovePiece{
             int xPosition = xActPos + xKnightMoves[i];
             int yPosition = yActPos + yKnightMoves[i];
             if ( isInLimits(xPosition) && isInLimits(yPosition)) {
-                if(isSpaceEmpty(Chessboard.board[yPosition][xPosition]) ||
-                isSpaceWithEnemy(Chessboard.board[yPosition][xPosition], piece.getColorWhite())) {
+                if(isSpaceEmpty(Chessboard.getPiece(new Position(xPosition,yPosition))) ||
+                        isSpaceWithEnemy(Chessboard.getPiece(new Position(xPosition,yPosition)), piece.getColorWhite())) {
                     movePositions.add(new Position(xPosition, yPosition));
                 }
             }

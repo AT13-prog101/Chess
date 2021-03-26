@@ -14,11 +14,17 @@ public class Chessboard {
     boolean turn;
     private final int posXCastlingKingSide = 6;
     private final int posXCastlingQueenSide = 2;
+
+    public static  Piece getPiece(Position position) {
+        Piece piece = board[position.getPosY()][position.getPosX()];
+        return piece;
+    }
+
     /**
      * Chessboard initializes the pieces from its Team instances
      */
     public Chessboard() {
-        initializeChessboard();
+
     }
     public void initializeChessboard() {
         boolean isWhite = true;

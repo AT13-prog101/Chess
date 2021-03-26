@@ -54,11 +54,11 @@ public class DiagonalsMove implements MovePiece {
     public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
         boolean oppositeColor = !colorPiece;
 
-        if (isSpaceEmpty(Chessboard.board[posX][posY])) {
+        if (isSpaceEmpty(Chessboard.getPiece(new Position(posX, posY)))) {
             movePoints.add(new Position(posY, posX));
             return true;
         }
-        if (isSpaceWithEnemy(Chessboard.board[posX][posY], colorPiece)) {
+        if (isSpaceWithEnemy(Chessboard.getPiece(new Position(posX, posY)), colorPiece)) {
             movePoints.add(new Position(posY, posX));
             return false;
         }

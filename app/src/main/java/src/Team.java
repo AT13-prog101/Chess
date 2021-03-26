@@ -52,7 +52,7 @@ public class Team {
         for (int row = rowSup; row <= rowInf; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
                 Piece piece = getPieceFactory.getPiece(piecesOrder.get(arrayPos), isWhite, new Position(col, row));
-                Chessboard.board[row][col] = piece;
+                Chessboard.setPiece(piece);
                 arrayPos += 1;
             }
         }

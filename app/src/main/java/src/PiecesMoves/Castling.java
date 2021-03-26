@@ -19,9 +19,9 @@ public class Castling implements MovePiece{
         if(!piece.isMoved()) {
 
             int checkEmpty = 0;
-            if(!isHaveMoved(Chessboard.board[piece.getPosY()][xPosK])) {
+            if(!isHaveMoved(Chessboard.getPiece(new Position(xPosK, piece.getPosY())))) {
                 for(int i = 1; i <= LimitKCastling; i++) {
-                    if(!isSpaceEmpty(Chessboard.board[piece.getPosY()][xPosK - i])) {
+                    if(!isSpaceEmpty(Chessboard.getPiece(new Position(xPosK - i, piece.getPosY())))) {
                         break;
                     }
                     checkEmpty++;
@@ -30,10 +30,10 @@ public class Castling implements MovePiece{
                     movePositions.add(new Position(xPosK - 1, piece.getPosY()));
             }
 
-            if(!isHaveMoved(Chessboard.board[piece.getPosY()][xPosQ])) {
+            if(!isHaveMoved(Chessboard.getPiece(new Position(xPosQ, piece.getPosY())))) {
                 checkEmpty = 0;
                 for(int i = 1; i <= limitQCastling; i++) {
-                    if(!isSpaceEmpty(Chessboard.board[piece.getPosY()][xPosQ + i])) {
+                    if(!isSpaceEmpty(Chessboard.getPiece(new Position(xPosQ + i, piece.getPosY())))) {
                         break;
                     }
                     checkEmpty++;
