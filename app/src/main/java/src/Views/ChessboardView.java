@@ -7,6 +7,7 @@ import src.Utilities.Position;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class ChessboardView extends JFrame {
     private static final int SIZE_IMAGE = 80;
@@ -113,10 +114,15 @@ public class ChessboardView extends JFrame {
     public void updateChessboardView() {
         for (int row = 0; row < Chessboard.DIMENSION; row++) {
             for (int col = 0; col < Chessboard.DIMENSION; col++) {
-                if (Chessboard.board[row][col] != null)
-                boardView[row][col].setIcon(Chessboard.board[row][col].getImage());
+                boardView[row][col].setIcon(null);
+                if (Chessboard.board[row][col] != null) {
+                    boardView[row][col].setIcon(Chessboard.board[row][col].getImage());
+                }
             }
         }
+    }
+    public void showValidMoves(List<Position> validMoves) {
+
     }
     public void setPositionSelected(Position position) {
         this.positionSelected = position;
