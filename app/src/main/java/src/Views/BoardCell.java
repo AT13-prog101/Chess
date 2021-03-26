@@ -13,6 +13,10 @@ public class BoardCell extends JLabel {
     private final Color lightColor = new Color(255, 232, 208);
     private final Color darkColor = new Color(196, 150, 105);
     private Position position;
+
+    /**
+     * Cellboard represents a cell in the chessboard and captures the selections made on the board
+     */
     public BoardCell(ChessboardView boardView, boolean isLightColor, int x, int y) {
         if (isLightColor) {
             setBackground(lightColor);

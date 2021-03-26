@@ -1,6 +1,7 @@
 package src.Views;
 
 
+import src.Pieces.Piece;
 import src.Utilities.Chessboard;
 import src.Utilities.Game;
 import src.Utilities.Position;
@@ -21,6 +22,9 @@ public class ChessboardView extends JFrame {
     private JPanel panelCentral;
     private Position positionSelected;
 
+    /**
+     * Interface to display changes in the chessboard
+     */
     public ChessboardView(Game game) {
         this.game = game;
         setSize(830, 750);
@@ -94,6 +98,10 @@ public class ChessboardView extends JFrame {
         add(panelRight,BorderLayout.EAST);
         initializeChessboard();
     }
+
+    /**
+     * Add Boardcells to the interface according to the board cell colors
+     */
     public void addCellsToBoard() {
         boolean lightColorCell = true;
         for (int row = 0; row < Chessboard.DIMENSION; row++) {
@@ -121,12 +129,30 @@ public class ChessboardView extends JFrame {
             }
         }
     }
-    public void showValidMoves(List<Position> validMoves) {
 
+    /**
+     * Display the valid moves of a selected cell with a piece on it.
+     */
+    public void showValidMoves(List<Position> validMoves) {
+        updateChessboardView();
+        for (Position pos : validMoves) {
+            Piece piece = Chessboard.getPiece(pos);
+            if (piece == null) {
+                boardView[pos.getPosY()][pos.getPosX()].setIcon(new ImageIcon("src/main/java/resources/Dot.png"));
+            }
+        }
     }
+
+    /**
+     * Sets the selected position caught from a cellboard mouseListener.
+     */
     public void setPositionSelected(Position position) {
         this.positionSelected = position;
     }
+
+    /**
+     * Returns the selected position.
+     */
     public Position getPositionSelected() {
         return positionSelected;
     }
