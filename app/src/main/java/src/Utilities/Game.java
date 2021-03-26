@@ -19,12 +19,12 @@ public class Game {
      * Game represents a match between 2 players and controls the cycle of turns.
      * @param id of game.
      */
-    public Game(final int id) {
+    public Game(final int id, String whitePlayerName, String blackPlayerName) {
         this.gameId = id;
         chessboard = new Chessboard();
         chessboard.initializeChessboard();
-        playerWhite = new Player("Player1", PLAYER_WHITE);
-        playerBlack = new Player("Player2", PLAYER_BLACK);
+        playerWhite = new Player(whitePlayerName, PLAYER_WHITE);
+        playerBlack = new Player(blackPlayerName, PLAYER_BLACK);
         chessboardView = new ChessboardView(this);
     }
     /**

@@ -7,6 +7,9 @@ import src.Utilities.Game;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -53,6 +56,14 @@ public class Menu extends JFrame {
         JButton startGame = new JButton("Start game");
         startGame.setBounds(50, 250, 300, 50);
         startGame.setBackground(new Color(160, 182, 45));
+        startGame.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (username.getText() != null && username2.getText() != null) {
+                    Game game = new Game(1, username.getText(), username2.getText());
+                    setVisible(false);
+                }
+            }
+        });
         options.add(startGame);
 
         setSize(830, 750);
