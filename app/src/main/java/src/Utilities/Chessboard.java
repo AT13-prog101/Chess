@@ -74,7 +74,7 @@ public class Chessboard {
         List<Position> validMoves = getValidMoves(source, player);
         try {
             if (validMoves.contains(target)) {
-                if (board[source.getPosY()][source.getPosX()].getFigure() == 'K') {
+                if (board[source.getPosY()][source.getPosX()].getFigure() == 'K' && !board[source.getPosY()][source.getPosX()].isMoved()) {
                     return checkCastlingMove(source, target, validMoves);
                 }
                 if (Chessboard.board[target.getPosY()][target.getPosX()] != null) {
@@ -167,20 +167,6 @@ public class Chessboard {
     }
 
     /**
-     * Prints on console the valid moves a piece can make.
-     * @param validMoves all possible moves.
-     */
-    public void printValidMoves(final List<Position> validMoves) {
-        try {
-            for (Position pos : validMoves) {
-                System.out.println(pos.getCharAlg() + " ");
-            }
-        } catch (Exception e) {
-            System.out.println("That is not your piece");
-        }
-    }
-
-    /**
      * Checks if there is a piece in the chessboard in the given position.
      * @param position of possible piece.
      * @return true if there is a piece, false if not.
@@ -209,5 +195,8 @@ public class Chessboard {
                 board[row][col] = null;
             }
         }
+    }
+    public void setWinnerNull() {
+        this.winner = null;
     }
 }

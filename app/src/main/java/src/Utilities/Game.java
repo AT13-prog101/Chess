@@ -2,6 +2,7 @@ package src.Utilities;
 
 import src.Views.ChessboardView;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Game {
@@ -36,15 +37,18 @@ public class Game {
             playerTurn(playerWhite);
             if (chessboard.kingTakenBy() != null) {
                 gameFinished = true;
+                int action = JOptionPane.showConfirmDialog(null,
+                        "New game",
+                        "Cancel",
+                        JOptionPane.YES_NO_CANCEL_OPTION);
+                if(action == JOptionPane.YES_OPTION){
+                    restartGame();
+                }
                 break;
             }
             chessboardView.setPositionSelected(null);
             playerTurn(playerBlack);
             chessboardView.setPositionSelected(null);
-            if (chessboard.kingTakenBy() != null) {
-                gameFinished = true;
-                break;
-            }
         }
     }
 
@@ -83,9 +87,11 @@ public class Game {
      */
     public void restartGame() {
         chessboard.resetChessBoard();
-        chessboard = new Chessboard();
-        playerWhite = new Player("Player1", PLAYER_WHITE);
-        playerBlack = new Player("Player2", PLAYER_BLACK);
+        chessboard.initializeChessboard();
+        chessboardView.updateChessboardView();
+        chessboard.setWinnerNull();
+        gameFinished = false;
         gameInit();
+
     }
 }
