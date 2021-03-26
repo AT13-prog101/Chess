@@ -46,11 +46,11 @@ public class LinedMove implements MovePiece {
      * @return boolean which say is accessible Position
      */
     public boolean isAccessiblePosition(int posY, int posX, boolean colorPiece) {
-        if (isSpaceEmpty(Chessboard.getPiece(new Position(posX,posY)))) {
+        if (isSpaceEmpty(Chessboard.getPiece(new Position(posY,posX)))) {
             movePositions.add(new Position(posY, posX));
             return true;
         }
-        if (isSpaceWithEnemy(Chessboard.getPiece(new Position(posX,posY)), colorPiece)) {
+        if (isSpaceWithEnemy(Chessboard.getPiece(new Position(posY,posX)), colorPiece)) {
             movePositions.add(new Position(posY, posX));
             return false;
         }
